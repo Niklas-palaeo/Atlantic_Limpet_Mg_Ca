@@ -112,7 +112,7 @@ dtw_results <- list()
 
 Corr_data <- tibble()
 
-for (sample in Samples) {
+# for (sample in Samples) {
   temp_D18O <- D18O %>% 
     filter(sampleID == sample) %>% 
     select(d18O) %>% 
@@ -126,7 +126,7 @@ for (sample in Samples) {
     mutate(sample_seq = row_number())
 
   # Apply shell_dtw to the temp dataframes and store the result in the list
-  dtw_results[[sample]] <- shell_dtw_data(temp_D18O, temp_MgCa)
+  dtw_results[[sample]] <- shell_dtw_data(temp_D18O, temp_MgCa,plot_alignment = FALSE)
   
    # Add the sampleID column to temp_data
   temp_data <- dtw_results[[sample]]$data %>% 
@@ -135,7 +135,7 @@ for (sample in Samples) {
   
   # Append temp_data to Corr_data
   Corr_data <- bind_rows(Corr_data, temp_data)
-}
+# }
 
 ```
 
@@ -157,8 +157,8 @@ P_all <- Corr_data %>%
   #   formula = y~x
   # ) +
 
-  scale_colour_manual(values = c("#007f7f", "#d73027", "#ffc100","black"))+
-  scale_fill_manual(values = c("#007f7f", "#d73027", "#ffc100","black"))
+  scale_colour_manual(values = c("#007f7f", "#d73027", "#ffc100","black", "black"))+
+  scale_fill_manual(values = c("#007f7f", "#d73027", "#ffc100","black", "black"))
 # Expanded colour palette with 6 additional colours
 # Updated colour palette with 4 new replacements for the last colours
 # Refined colour palette with 3 additional colours
@@ -175,7 +175,7 @@ P_individual <- P_all+
 
 Plot_Correlations <- P_all/P_individual+plot_layout(heights = c(0.5,0.5))
 
-ggsave(plot=Plot_Correlations, here("Figures", "Correlations.png"), units = "cm", width = 29.7, height = 20.7)
+# ggsave(plot=Plot_Correlations, here("Figures", "Correlations.png"), units = "cm", width = 29.7, height = 20.7)
 ```
 
 
@@ -184,7 +184,7 @@ ggsave(plot=Plot_Correlations, here("Figures", "Correlations.png"), units = "cm"
 ```{r}
 
 
-sample <- "ND-1016-4"
+# sample <- "ND-1016-4"
 
 temp_D18O <- D18O %>% 
     filter(sampleID == sample) %>% 

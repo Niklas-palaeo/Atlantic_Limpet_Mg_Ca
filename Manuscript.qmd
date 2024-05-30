@@ -29,19 +29,21 @@ source("DTW_Script.R")
 
   
 # Files  
-read_csv(D18O,here("data","D18O.csv"))
-read_csv(MgCa,here("data","MgCa.csv"))
+
+
+D18O <- read_csv(here("data","D18O.csv"))
+MgCa <- read_csv(here("data","MgCa.csv"))
 
 
 # Check overlaps
 # Find common sample IDs
-intersect(MgCa$sampleID, NMgCa$sampleID)
+intersect(MgCa$sampleID, D18O$sampleID)
 
 # Find sample IDs only in MgCa
-setdiff(MgCa$sampleID, NMgCa$sampleID)
+setdiff(MgCa$sampleID, D18O$sampleID)
 
 # Find sample IDs only in D18O
-setdiff(NMgCa$sampleID, MgCa$sampleID)
+setdiff(D18O$sampleID, MgCa$sampleID)
 
 ```
 
@@ -88,7 +90,7 @@ Corr_data <- tibble()
 
 sample <- Samples[6]
 
-# for (sample in Samples) {
+for (sample in Samples) {
   temp_D18O <- D18O %>% 
     filter(sampleID == sample) %>% 
     select(d18O) %>% 
@@ -111,7 +113,7 @@ sample <- Samples[6]
   
   # Append temp_data to Corr_data
   Corr_data <- bind_rows(Corr_data, temp_data)
-# }
+}
 
 
 ```
@@ -119,14 +121,15 @@ sample <- Samples[6]
 
 
 ```{r}
-#| label: DTW Results 
-#| fig-cap: 
-#| fig-height:
-#| fig-width:
+#| label: Correlation Graphs 
+#| fig-cap: Correlation graphs for all specimens
+#| fig-height: 20
+#| fig-width: 10
 
 
 P_all <- Corr_data %>% 
   pivot_wider(values_from = "value",names_from = "proxy") %>% 
+  mutate(region = substr(sampleID, 1, 1)) %>% 
   ggplot()+
   aes(d18o,mg_ca,col=sampleID)+
   geom_point(show.legend = FALSE)+
@@ -136,19 +139,27 @@ P_all <- Corr_data %>%
   #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
   #   formula = y~x
   # ) +
-  scale_colour_manual(values = c("#007f7f", "#d73027", "#ffc100", "black", "#1f78b4", "#33a02c", "#ff7f00", "#6a3d9a", "#e74c3c", "#2ecc71", "#f39c12")) +
-scale_fill_manual(values = c("#007f7f", "#d73027", "#ffc100", "black", "#1f78b4", "#33a02c", "#ff7f00", "#6a3d9a", "#e74c3c", "#2ecc71", "#f39c12"))
+  scale_colour_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063")) +
+scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063"))#+
+  # facet_wrap(~region,ncol=2,scales = "free")
+
+
 # Expanded colour palette with 6 additional colours
 # Updated colour palette with 4 new replacements for the last colours
 # Refined colour palette with 3 additional colours
 # c("#007f7f", "#d73027", "#ffc100", "black", "#1a9850", "#542788", "#3288bd", "#99d8c9")
 
 
-P_individual <- P_all+
-  facet_wrap(~sampleID,ncol=2)+#ylim(0.15,NA)+
-  ggpubr::stat_regline_equation(label.x = 1.5, label.y = 0.25,
-    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,
+P_individual <- P_all+ylim(0,0.8)+
+  facet_wrap(~sampleID,ncol=3)+#ylim(0.15,NA)+
+  ggpubr::stat_regline_equation(label.x = 0.5, label.y = 0.65,
+    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label,p.value), sep = "~~~~")),show.legend = FALSE,
     formula = y~x
+  )+
+  theme(
+    strip.background = element_rect(fill = "white", colour = NA),
+    strip.text = element_text(colour = "black"),
+    panel.border = element_rect(colour="black")
   )
 
 
