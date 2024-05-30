@@ -153,7 +153,7 @@ scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7
 P_individual <- P_all+ylim(0,0.8)+
   facet_wrap(~sampleID,ncol=3)+#ylim(0.15,NA)+
   ggpubr::stat_regline_equation(label.x = 0.5, label.y = 0.65,
-    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label,p.value), sep = "~~~~")),show.legend = FALSE,
+    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,
     formula = y~x
   )+
   theme(
