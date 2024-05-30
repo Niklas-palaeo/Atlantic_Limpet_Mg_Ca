@@ -1,0 +1,206 @@
+---
+title: "Template Title"
+author: "Niklas Hausmann"
+date: "Today"
+output: pdf_document
+---
+```{r Libraries,echo=FALSE,message = FALSE,warning = FALSE}
+
+knitr::opts_chunk$set(echo=FALSE,message = FALSE,warning = FALSE)
+
+{
+  pacman::p_load(
+    here,
+    janitor,
+    tidyverse,
+    cowplot,ggx,ggpubr,
+    patchwork,
+    RColorBrewer) 
+  
+  theme_set(theme_cowplot())
+}
+
+
+source("DTW_Script.R")
+
+files <- list.files(path = here("data"), pattern = "\\.csv$", full.names = TRUE)
+
+MgCa <- files %>%
+  set_names() %>%
+  map_dfr(~read_csv(.x, col_names = c("x", "y", "z", "mg_ca", "std", "relstd")), .id = "sampleID") %>%
+  mutate(sampleID = tools::file_path_sans_ext(basename(sampleID))) %>%
+  mutate(sampleID = str_replace(sampleID, "_analyzed_data", "")) %>%
+  mutate(sampleID = str_replace(sampleID, "^(.*?A\\d+).*", "\\1")) %>% 
+  mutate(sampleID = str_replace(sampleID, "-A10", "")) %>% 
+  group_by(sampleID) %>% 
+  mutate(dist=row_number()*0.01) %>% 
+  ungroup() %>% 
+  filter(!(sampleID=="ND-1016-4"&dist>6.5)) %>% 
+  filter(relstd<0.1)
+
+
+D18O <- read_csv(here("data","Isotopes","d18O.csv"))
+
+
+
+```
+
+
+# Plots
+
+```{r}
+#| label: fig-timeline
+#| fig-cap: Timeline of recent earthquakes on La Palma
+#| fig-alt: An event plot of the years of the last 8 eruptions on La Palma.
+#| fig-height: 1.5
+#| fig-width: 6
+
+P1 <- MgCa %>% 
+  filter(std<0.1) %>% 
+  filter(mg_ca<0.7) %>% 
+  filter(dist<10) %>% 
+ggplot()+
+  aes(dist,mg_ca)+
+  geom_path(col="firebrick")+
+  xlim(0,10)+
+  facet_wrap(~sampleID,scales = "free_y",nrow=1)
+
+P2 <- D18O %>% 
+  filter(sampleID %in% MgCa$sampleID) %>% 
+  ggplot()+
+  aes(dist,d18O)+
+  geom_path(col="cornflowerblue")+
+  scale_y_reverse()+
+  facet_wrap(~sampleID,scales = "free_y",nrow=1)
+
+plot_compare <- P1/P2
+
+
+
+
+```
+
+# Compare
+
+```{r}
+D18O %>%
+  filter(sampleID %in% MgCa$sampleID) %>%
+  bind_rows(
+    MgCa %>% filter(std < 0.1) %>%  filter(mg_ca < 0.7) %>%  filter(dist < 10)%>% select(sampleID, dist, mg_ca)
+  ) %>%
+  mutate(d18O = d18O * (-0.05)) %>%
+  pivot_longer(values_to = "value",
+               names_to = "proxy",
+               cols = c(d18O, mg_ca)) %>%
+  na.omit() %>%
+  ggplot() +
+  aes(dist, value, col = proxy) +
+  geom_path() +
+  facet_wrap( ~ sampleID, scales = "free")
+
+
+
+```
+
+
+
+```{r}
+Samples <- unique(MgCa$sampleID)
+
+# Initialize an empty list to store the results of shell_dtw for each sample
+dtw_results <- list()
+
+Corr_data <- tibble()
+
+for (sample in Samples) {
+  temp_D18O <- D18O %>% 
+    filter(sampleID == sample) %>% 
+    select(d18O) %>% 
+    rename(d18o = d18O) %>% 
+    mutate(sample_seq = row_number()) 
+
+  temp_MgCa <- MgCa %>% 
+    filter(sampleID == sample) %>% 
+    filter(!(sampleID=="ND-1016-4"&dist<0.3)) %>% 
+    select(mg_ca) %>% 
+    mutate(sample_seq = row_number())
+
+  # Apply shell_dtw to the temp dataframes and store the result in the list
+  dtw_results[[sample]] <- shell_dtw_data(temp_D18O, temp_MgCa)
+  
+   # Add the sampleID column to temp_data
+  temp_data <- dtw_results[[sample]]$data %>% 
+    mutate(sampleID = sample)
+  
+  
+  # Append temp_data to Corr_data
+  Corr_data <- bind_rows(Corr_data, temp_data)
+}
+
+```
+
+# Show Correlation data
+
+```{r}
+
+
+
+P_all <- Corr_data %>% 
+  pivot_wider(values_from = "value",names_from = "proxy") %>% 
+  ggplot()+
+  aes(d18o,mg_ca,col=sampleID)+
+  geom_point(show.legend = FALSE)+
+  labs(x=expression("‰ δ" ^ "18" * "O [VPDB]"),y="Mg/Ca intensity ratio")+
+  stat_smooth(aes(fill = sampleID,col=sampleID), method = "lm", formula = y~x,show.legend = FALSE) +
+  # stat_regline_equation(label.x = 2, #label.y = 32
+  #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
+  #   formula = y~x
+  # ) +
+
+  scale_colour_manual(values = c("#007f7f", "#d73027", "#ffc100","black"))+
+  scale_fill_manual(values = c("#007f7f", "#d73027", "#ffc100","black"))
+# Expanded colour palette with 6 additional colours
+# Updated colour palette with 4 new replacements for the last colours
+# Refined colour palette with 3 additional colours
+# c("#007f7f", "#d73027", "#ffc100", "black", "#1a9850", "#542788", "#3288bd", "#99d8c9")
+
+
+P_individual <- P_all+
+  facet_wrap(~sampleID,ncol=2)+#ylim(0.15,NA)+
+  ggpubr::stat_regline_equation(label.x = 1.5, label.y = 0.25,
+    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,
+    formula = y~x
+  )
+
+
+Plot_Correlations <- P_all/P_individual+plot_layout(heights = c(0.5,0.5))
+
+ggsave(plot=Plot_Correlations, here("Figures", "Correlations.png"), units = "cm", width = 29.7, height = 20.7)
+```
+
+
+
+# Look at ND-1016-4
+```{r}
+
+
+sample <- "ND-1016-4"
+
+temp_D18O <- D18O %>% 
+    filter(sampleID == sample) %>% 
+    rename(d18o = d18O) %>% 
+    ggplot() +
+  aes(dist, d18o) +
+  scale_y_reverse()+
+  geom_path(col="turquoise")
+
+temp_MgCa <- MgCa %>% 
+    filter(sampleID == sample) %>% 
+    filter(dist>0.3) %>%
+    ggplot()+
+  aes(dist,mg_ca)+
+  geom_path(col="coral")
+
+
+temp_MgCa/temp_D18O
+```

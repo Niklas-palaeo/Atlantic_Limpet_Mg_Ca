@@ -1,0 +1,76 @@
+---
+title: "Manuscript"
+format: html
+output:
+  units: cm
+---
+
+```{r}
+#| label: Libray and datasets
+#| echo: FALSE
+#| message: FALSE
+#| warning: FALSE
+
+knitr::opts_chunk$set(echo=FALSE,message = FALSE,warning = FALSE)
+# Packages
+  pacman::p_load(
+    here,
+    janitor,
+    tidyverse,
+    cowplot,ggx,ggpubr,
+    patchwork,
+    RColorBrewer) 
+  
+  theme_set(theme_cowplot())
+
+# Scripts
+source("DTW_Script.R")
+
+  
+# Files  
+
+MgCa <- read_csv(here("data","MgCa.csv")) %>% 
+  arrange(sampleID)
+D18O <- read_csv(here("data","d18O.csv")) %>% 
+    arrange(sampleID)
+
+
+# Check overlaps
+# Find common sample IDs
+intersect(MgCa$sampleID, D18O$sampleID)
+
+# Find sample IDs only in MgCa
+setdiff(MgCa$sampleID, D18O$sampleID)
+
+# Find sample IDs only in D18O
+setdiff(D18O$sampleID, MgCa$sampleID)
+
+```
+
+```{r}
+#| label: Raw Data
+#| fig-cap: Raw Mg/Ca and δ^18^O Data
+#| fig-height: 30
+#| fig-width: 8
+
+P1 <- MgCa %>% 
+  filter(std<0.1) %>% 
+  # filter(mg_ca<0.7) %>% 
+  # filter(dist<10) %>% 
+ggplot()+
+  aes(dist,mg_ca)+
+  geom_path(col="firebrick")+
+  # xlim(0,10)+
+  facet_wrap(~sampleID,ncol=1,scales = "free")
+
+P2 <- D18O %>% 
+  filter(sampleID %in% MgCa$sampleID) %>% 
+  ggplot()+
+  aes(dist,d18O)+
+  geom_path(col="cornflowerblue")+
+  scale_y_reverse()+
+  facet_wrap(~sampleID,scales = "free",ncol=1)
+
+P1|P2
+
+```
