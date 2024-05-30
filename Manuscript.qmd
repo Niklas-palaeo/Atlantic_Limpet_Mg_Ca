@@ -1,6 +1,7 @@
 ---
 title: "Manuscript"
 format: html
+author: Niklas Hausmann
 output:
   units: cm
 ---
