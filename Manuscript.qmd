@@ -29,22 +29,19 @@ source("DTW_Script.R")
 
   
 # Files  
-
-MgCa <- read_csv(here("data","MgCa.csv")) %>% 
-  arrange(sampleID)
-D18O <- read_csv(here("data","d18O.csv")) %>% 
-    arrange(sampleID)
+read_csv(D18O,here("data","D18O.csv"))
+read_csv(MgCa,here("data","MgCa.csv"))
 
 
 # Check overlaps
 # Find common sample IDs
-intersect(MgCa$sampleID, D18O$sampleID)
+intersect(MgCa$sampleID, NMgCa$sampleID)
 
 # Find sample IDs only in MgCa
-setdiff(MgCa$sampleID, D18O$sampleID)
+setdiff(MgCa$sampleID, NMgCa$sampleID)
 
 # Find sample IDs only in D18O
-setdiff(D18O$sampleID, MgCa$sampleID)
+setdiff(NMgCa$sampleID, MgCa$sampleID)
 
 ```
 
@@ -74,4 +71,91 @@ P2 <- D18O %>%
 
 P1|P2
 
+
+
 ```
+
+
+```{r}
+#| label: DTW Analysis
+
+Samples <- unique(MgCa$sampleID)
+
+# Initialize an empty list to store the results of shell_dtw for each sample
+dtw_results <- list()
+
+Corr_data <- tibble()
+
+sample <- Samples[6]
+
+# for (sample in Samples) {
+  temp_D18O <- D18O %>% 
+    filter(sampleID == sample) %>% 
+    select(d18O) %>% 
+    rename(d18o = d18O) %>% 
+    mutate(sample_seq = row_number()) 
+
+  temp_MgCa <- MgCa %>% 
+    filter(sampleID == sample) %>% 
+    filter(!(sampleID=="ND-1016-4"&dist<0.3)) %>% 
+    select(mg_ca) %>% 
+    mutate(sample_seq = row_number())
+
+  # Apply shell_dtw to the temp dataframes and store the result in the list
+  dtw_results[[sample]] <- shell_dtw_data(temp_D18O, temp_MgCa)
+  
+   # Add the sampleID column to temp_data
+  temp_data <- dtw_results[[sample]]$data %>% 
+    mutate(sampleID = sample)
+  
+  
+  # Append temp_data to Corr_data
+  Corr_data <- bind_rows(Corr_data, temp_data)
+# }
+
+
+```
+
+
+
+```{r}
+#| label: DTW Results 
+#| fig-cap: 
+#| fig-height:
+#| fig-width:
+
+
+P_all <- Corr_data %>% 
+  pivot_wider(values_from = "value",names_from = "proxy") %>% 
+  ggplot()+
+  aes(d18o,mg_ca,col=sampleID)+
+  geom_point(show.legend = FALSE)+
+  labs(x=expression("‰ δ" ^ "18" * "O [VPDB]"),y="Mg/Ca intensity ratio")+
+  stat_smooth(aes(fill = sampleID,col=sampleID), method = "lm", formula = y~x,show.legend = FALSE) +
+  # stat_regline_equation(label.x = 2, #label.y = 32
+  #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
+  #   formula = y~x
+  # ) +
+  scale_colour_manual(values = c("#007f7f", "#d73027", "#ffc100", "black", "#1f78b4", "#33a02c", "#ff7f00", "#6a3d9a", "#e74c3c", "#2ecc71", "#f39c12")) +
+scale_fill_manual(values = c("#007f7f", "#d73027", "#ffc100", "black", "#1f78b4", "#33a02c", "#ff7f00", "#6a3d9a", "#e74c3c", "#2ecc71", "#f39c12"))
+# Expanded colour palette with 6 additional colours
+# Updated colour palette with 4 new replacements for the last colours
+# Refined colour palette with 3 additional colours
+# c("#007f7f", "#d73027", "#ffc100", "black", "#1a9850", "#542788", "#3288bd", "#99d8c9")
+
+
+P_individual <- P_all+
+  facet_wrap(~sampleID,ncol=2)+#ylim(0.15,NA)+
+  ggpubr::stat_regline_equation(label.x = 1.5, label.y = 0.25,
+    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,
+    formula = y~x
+  )
+
+
+P_all/P_individual+plot_layout(heights = c(0.5,0.5))
+
+
+
+
+```
+

@@ -36,7 +36,7 @@ shell_dtw_data <- function(D18o, MgCa, show.dtw.plot = FALSE, plot_alignment = F
       
       Data_aligned <- rbind(Aligned_d18o, Aligned_mg_ca) %>%
         group_by(x, proxy) %>% summarise(value = mean(value)) %>%
-        ungroup() %>% mutate(value = round(value + 1e-04 *
+        ungroup() %>% mutate(value = round(value + 1e-05 *
                                              row_number(), 5)) %>% group_by(proxy, value) %>%
         summarise(x = mean(x))
       lmp <- function(modelobject) {
