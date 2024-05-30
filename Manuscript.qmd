@@ -1,6 +1,5 @@
 ---
-title: "Manuscript"
-subtitle: A Short Subtitle
+title: "Interspecies comparisons of Mg/Ca ratios in limpet shells"
 author:
   - name: Niklas Hausmann
     affiliations:
@@ -9,10 +8,38 @@ author:
         city: Mainz
         country: Germany
         postal-code: 55116
-    orcid: 0000-0000-0000-0000
+    orcid: 0000–0002–4381–8334
     email: niklas@palaeo.eu
     attributes:
-        corresponding: true
+      corresponding: true
+  - name: Donna Surge
+    affiliations:
+      - name: University of North Carolina
+        address: 104 South Road, 225 Geology Building
+        city: Chapel Hill, NC
+        country: US
+        postal-code: 27599-3315
+  - name: Francisco Zangrando
+    affiliations:
+      - name: CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas)
+        address: Avenida Maipú 305
+        city: Ushuaia
+        country: Argentina
+        postal-code: V9410BJA
+  - name: Angelica Tivoli
+    affiliations:
+      - name: CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas)
+        address: Avenida Maipú 305
+        city: Ushuaia
+        country: Argentina
+        postal-code: V9410BJA
+  - name: Ivan Briz-Godino
+    affiliations:
+      - name: 
+        address: 
+        city: 
+        country: Spain
+        postal-code: 
 abstract: |
   This document is a template demonstrating the Aps format.
 keywords: 
@@ -32,8 +59,9 @@ output:
   units: cm
 ---
 
-```{r}
-#| label: Libray and datasets
+# Introduction {#Introduction}
+
+```{r Libray and datasets}
 #| echo: FALSE
 #| message: FALSE
 #| warning: FALSE
@@ -73,39 +101,9 @@ MgCa <- read_csv(here("data","MgCa.csv"))
 
 ```
 
-```{r}
-#| label: Raw Data
-#| fig-cap: Raw Mg/Ca and δ^18^O Data
-#| fig-height: 30
-#| fig-width: 8
+# Methods {#Methods}
 
-P1 <- MgCa %>% 
-  filter(std<0.1) %>% 
-  # filter(mg_ca<0.7) %>% 
-  # filter(dist<10) %>% 
-ggplot()+
-  aes(dist,mg_ca)+
-  geom_path(col="firebrick")+
-  # xlim(0,10)+
-  facet_wrap(~sampleID,ncol=1,scales = "free")
-
-P2 <- D18O %>% 
-  filter(sampleID %in% MgCa$sampleID) %>% 
-  ggplot()+
-  aes(dist,d18O)+
-  geom_path(col="cornflowerblue")+
-  scale_y_reverse()+
-  facet_wrap(~sampleID,scales = "free",ncol=1)
-
-P1|P2
-
-
-
-```
-
-
-```{r}
-#| label: DTW Analysis
+```{r DTW Analysis}
 
 Samples <- unique(MgCa$sampleID)
 
@@ -144,10 +142,9 @@ for (sample in Samples) {
 
 ```
 
+# Results {#Results}
 
-
-```{r}
-#| label: Correlation Graphs 
+```{r Correlation Graphs }
 #| fig-cap: Correlation graphs for all specimens
 #| fig-height: 20
 #| fig-width: 10
@@ -196,3 +193,42 @@ P_all/P_individual+plot_layout(heights = c(0.5,0.5))
 
 ```
 
+| Species            | Locality       | Specimen | Correlation R^2^ | Study                                                          |
+|-------------------|---------------|---------------|---------------|---------------|
+| *Patella depressa* | Northern Spain | LAN541   | 0.87             | [**10.3390/app11072959**](https://doi.org/10.3390/app11072959) |
+|                    |                | LAN545   | 0.86             |                                                                |
+|                    |                | LAN554   | 0.78             |                                                                |
+|                    |                | LAN559   | 0.82             |                                                                |
+| Patella caerulea   | Croatia        | ISTPC1   | 0.9              | 10.1038/s41598-019-39959-9                                     |
+|                    |                | ISTPC2   | 0.84             |                                                                |
+|                    | Crete          | AF1911A  | 0.91[^1]         |                                                                |
+|                    |                | AF3003A  | 0.92[^2]         |                                                                |
+|                    | Israel         | AKKPC2   | 0.96             |                                                                |
+|                    |                | AKKPC3   | 0.89             |                                                                |
+|                    |                | FRMPC1   | 0.84             |                                                                |
+|                    |                | FRMPC2   | 0.96             |                                                                |
+|                    | Libya          | MO31A    | 0.83             |                                                                |
+|                    |                | MP64A    | 0.33             |                                                                |
+|                    |                | MP67A    | 0.96             |                                                                |
+|                    |                | MP68A    | 0.81             |                                                                |
+|                    | Malta          | MA10     | 0.82             |                                                                |
+|                    | Tunisia        | TUNPC1   | 0.81             |                                                                |
+|                    |                | TUNPC2   | 0.78             |                                                                |
+|                    | Turkey         | ANTPC1   | 0.95             |                                                                |
+|                    |                | ANTPC2   | 0.93             |                                                                |
+|                    |                | KIZPC1   | 0.94             |                                                                |
+|                    |                | KIZPC2   | 0.86             |                                                                |
+|                    |                |          |                  |                                                                |
+|                    |                |          |                  |                                                                |
+|                    |                |          |                  |                                                                |
+|                    |                |          |                  |                                                                |
+|                    |                |          |                  |                                                                |
+|                    |                |          |                  |                                                                |
+|                    |                |          |                  |                                                                |
+|                    |                |          |                  |                                                                |
+
+: Overview of comparative correlations {#tab:correlations}
+
+[^1]: SST only, no other geochemical data available
+
+[^2]: SST only, no geochemical data available
