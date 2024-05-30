@@ -4,9 +4,9 @@
 \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 %
 \documentclass[
-  letterpaper,
-  DIV=11,
-  numbers=noendperiod]{scrartcl}
+  super,
+  preprint,
+  3p]{elsarticle}
 
 \usepackage{amsmath,amssymb}
 \usepackage{iftex}
@@ -41,7 +41,7 @@
 \makeatother
 \usepackage{xcolor}
 \setlength{\emergencystretch}{3em} % prevent overfull lines
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\setcounter{secnumdepth}{5}
 % Make \paragraph and \subparagraph free-standing
 \ifx\paragraph\undefined\else
   \let\oldparagraph\paragraph
@@ -78,7 +78,6 @@
 \def\fps@figure{htbp}
 \makeatother
 
-\KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \AtBeginDocument{%
@@ -120,9 +119,12 @@
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
+\journal{Palaeo3}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\usepackage[]{natbib}
+\bibliographystyle{elsarticle-num}
 \usepackage{bookmark}
 
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -130,6 +132,7 @@
 \hypersetup{
   pdftitle={Manuscript},
   pdfauthor={Niklas Hausmann},
+  pdfkeywords={keyword1, keyword2},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -137,13 +140,37 @@
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
 
-\title{Manuscript}
-\author{Niklas Hausmann}
-\date{}
-
+\setlength{\parindent}{6pt}
 \begin{document}
-\maketitle
 
+\begin{frontmatter}
+\title{Manuscript \\\large{A Short Subtitle} }
+\author[1]{Niklas Hausmann%
+\corref{cor1}%
+}
+ \ead{niklas@palaeo.eu} 
+
+\affiliation[1]{organization={Leibniz Zentrum für
+Archäologie},addressline={Ludwig-Lindenschmit-Forum
+1},city={Mainz},country={Germany},countrysep={,},postcode={55116},postcodesep={}}
+
+\cortext[cor1]{Corresponding author}
+
+        
+\begin{abstract}
+This document is a template demonstrating the Aps format.
+\end{abstract}
+
+
+
+
+
+\begin{keyword}
+    keyword1 \sep 
+    keyword2
+\end{keyword}
+\end{frontmatter}
+    
 \begin{verbatim}
  [1] "QG1-7188-1" "QG1-7189-2" "QG2-1061-1" "QG2-1064-1" "QG2-7180-1"
  [6] "QG2-7180-2" "QG1-7246-1" "ND-1016-3"  "ND-1016-4"  "NM-1016-1" 
@@ -178,6 +205,8 @@ character(0)
 
 \end{figure}%
 
+
+  \bibliography{bibliography.bib}
 
 
 \end{document}

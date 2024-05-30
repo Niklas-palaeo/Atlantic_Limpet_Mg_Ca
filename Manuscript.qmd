@@ -1,7 +1,33 @@
 ---
 title: "Manuscript"
-format: html
-author: Niklas Hausmann
+subtitle: A Short Subtitle
+author:
+  - name: Niklas Hausmann
+    affiliations:
+      - name: Leibniz Zentrum für Archäologie
+        address: Ludwig-Lindenschmit-Forum 1
+        city: Mainz
+        country: Germany
+        postal-code: 55116
+    orcid: 0000-0000-0000-0000
+    email: niklas@palaeo.eu
+    attributes:
+        corresponding: true
+abstract: |
+  This document is a template demonstrating the Aps format.
+keywords: 
+  - keyword1
+  - keyword2
+date: last-modified
+bibliography: bibliography.bib
+format:
+  elsevier-pdf:
+    keep-tex: true
+    journal:
+      name: Palaeo^3^
+      formatting: preprint
+      model: 3p
+      cite-style: authoryear
 output:
   units: cm
 ---
@@ -35,15 +61,15 @@ D18O <- read_csv(here("data","D18O.csv"))
 MgCa <- read_csv(here("data","MgCa.csv"))
 
 
-# Check overlaps
-# Find common sample IDs
-intersect(MgCa$sampleID, D18O$sampleID)
-
-# Find sample IDs only in MgCa
-setdiff(MgCa$sampleID, D18O$sampleID)
-
-# Find sample IDs only in D18O
-setdiff(D18O$sampleID, MgCa$sampleID)
+# # Check overlaps
+# # Find common sample IDs
+# intersect(MgCa$sampleID, D18O$sampleID)
+# 
+# # Find sample IDs only in MgCa
+# setdiff(MgCa$sampleID, D18O$sampleID)
+# 
+# # Find sample IDs only in D18O
+# setdiff(D18O$sampleID, MgCa$sampleID)
 
 ```
 
