@@ -61,7 +61,7 @@ output:
 
 # Introduction {#Introduction}
 
-```{r Libray and datasets}
+```{r Library and datasets}
 #| echo: FALSE
 #| message: FALSE
 #| warning: FALSE
@@ -79,7 +79,8 @@ knitr::opts_chunk$set(echo=FALSE,message = FALSE,warning = FALSE)
   theme_set(theme_cowplot())
 
 # Scripts
-source("DTW_Script.R")
+# source("DTW_Script.R")
+source("DTW_Script-update.R")
 
   
 # Files  
@@ -88,6 +89,8 @@ source("DTW_Script.R")
 D18O <- read_csv(here("data","D18O.csv"))
 MgCa <- read_csv(here("data","MgCa.csv"))
 
+Ferguson_data <- read_csv(here("data","Ferguson-data.csv")) %>% 
+  na.omit()
 
 # # Check overlaps
 # # Find common sample IDs
@@ -101,6 +104,12 @@ MgCa <- read_csv(here("data","MgCa.csv"))
 
 ```
 
+This paper is a short reassessment of Atlantic limpet shells and their correlations to Mg/Ca ratios.
+
+In previous studies, various limpet specimens (Patella vulgata, Nacella magellanica and Nacella odifosdio) have been studied using Mg/Ca with mixed results. While Patella vulgata along the Spanish shoreline has since then repeatedly produced reliable correlations between sst and Mg/Ca ratios, this is not the case for other species.
+
+In this study, we present elemental maps of various such species together with stable oxygen isotope values for some of the specimens. Some of these...
+
 # Methods {#Methods}
 
 ```{r DTW Analysis}
@@ -112,7 +121,7 @@ dtw_results <- list()
 
 Corr_data <- tibble()
 
-sample <- Samples[6]
+# sample <- Samples[12]
 
 for (sample in Samples) {
   temp_D18O <- D18O %>% 
@@ -124,6 +133,7 @@ for (sample in Samples) {
   temp_MgCa <- MgCa %>% 
     filter(sampleID == sample) %>% 
     filter(!(sampleID=="ND-1016-4"&dist<0.3)) %>% 
+
     select(mg_ca) %>% 
     mutate(sample_seq = row_number())
 
@@ -162,8 +172,8 @@ P_all <- Corr_data %>%
   #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
   #   formula = y~x
   # ) +
-  scale_colour_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063")) +
-scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063"))#+
+  scale_colour_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063","pink1")) +
+scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063","pink1"))#+
   # facet_wrap(~region,ncol=2,scales = "free")
 
 
@@ -189,46 +199,175 @@ P_individual <- P_all+ylim(0,0.8)+
 P_all/P_individual+plot_layout(heights = c(0.5,0.5))
 
 
+```
+
+# Discussion
+
+```{r Ferguson Data}
+#| fig-cap: Correlation graphs for Ferguson et al. specimens
+#| fig-height: 20
+#| fig-width: 10
+
+Ferg_all <-
+  Ferguson_data %>% 
+  ggplot()+
+  aes(d18o,mg_ca,col=shell)+
+  geom_point(show.legend = FALSE)+
+  labs(x=expression("‰ δ" ^ "18" * "O [VPDB]"),y="Mg/Ca intensity ratio")+
+  stat_smooth(aes(fill = shell,col=shell), method = "lm", formula = y~x,show.legend = FALSE) +
+  # stat_regline_equation(label.x = 2, #label.y = 32
+  #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
+  #   formula = y~x
+  # ) +
+  scale_colour_manual(values = c(  "#EC7063", "#007f7f", "#1f78b4", "#542788","black", "#d73027", "#EC7063")) +
+scale_fill_manual(values = c(  "#EC7063", "#007f7f", "#1f78b4", "#542788","black", "#d73027", "#EC7063"))
+
+
+# Expanded colour palette with 6 additional colours
+# Updated colour palette with 4 new replacements for the last colours
+# Refined colour palette with 3 additional colours
+# c("#007f7f", "#d73027", "#ffc100", "black", "#1a9850", "#542788", "#3288bd", "#99d8c9")
+
+
+Ferg_individual <- Ferg_all+
+  facet_wrap(~shell,ncol=2)+#ylim(0.15,NA)+
+  ggpubr::stat_regline_equation(label.x = 1, label.y = 26,
+    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,
+    formula = y~x
+  )+
+  theme(
+    strip.background = element_rect(fill = "white", colour = NA),
+    strip.text = element_text(colour = "black"),
+    panel.border = element_rect(colour="black")
+  )
+
+
+Ferg_all/Ferg_individual+plot_layout(heights = c(0.5,0.5))
 
 
 ```
 
-| Species            | Locality       | Specimen | Correlation R^2^ | Study                                                          |
-|-------------------|---------------|---------------|---------------|---------------|
-| *Patella depressa* | Northern Spain | LAN541   | 0.87             | [**10.3390/app11072959**](https://doi.org/10.3390/app11072959) |
-|                    |                | LAN545   | 0.86             |                                                                |
-|                    |                | LAN554   | 0.78             |                                                                |
-|                    |                | LAN559   | 0.82             |                                                                |
-| Patella caerulea   | Croatia        | ISTPC1   | 0.9              | 10.1038/s41598-019-39959-9                                     |
-|                    |                | ISTPC2   | 0.84             |                                                                |
-|                    | Crete          | AF1911A  | 0.91[^1]         |                                                                |
-|                    |                | AF3003A  | 0.92[^2]         |                                                                |
-|                    | Israel         | AKKPC2   | 0.96             |                                                                |
-|                    |                | AKKPC3   | 0.89             |                                                                |
-|                    |                | FRMPC1   | 0.84             |                                                                |
-|                    |                | FRMPC2   | 0.96             |                                                                |
-|                    | Libya          | MO31A    | 0.83             |                                                                |
-|                    |                | MP64A    | 0.33             |                                                                |
-|                    |                | MP67A    | 0.96             |                                                                |
-|                    |                | MP68A    | 0.81             |                                                                |
-|                    | Malta          | MA10     | 0.82             |                                                                |
-|                    | Tunisia        | TUNPC1   | 0.81             |                                                                |
-|                    |                | TUNPC2   | 0.78             |                                                                |
-|                    | Turkey         | ANTPC1   | 0.95             |                                                                |
-|                    |                | ANTPC2   | 0.93             |                                                                |
-|                    |                | KIZPC1   | 0.94             |                                                                |
-|                    |                | KIZPC2   | 0.86             |                                                                |
-|                    |                |          |                  |                                                                |
-|                    |                |          |                  |                                                                |
-|                    |                |          |                  |                                                                |
-|                    |                |          |                  |                                                                |
-|                    |                |          |                  |                                                                |
-|                    |                |          |                  |                                                                |
-|                    |                |          |                  |                                                                |
-|                    |                |          |                  |                                                                |
+| Species            | Locality       | Specimen | Correlation R^2^ | Study                                                                                                                              |
+|-------------|-------------|-------------|-------------|----------------------|
+| *Patella depressa* | Northern Spain | LAN541   | 0.87             | [**10.3390/app11072959**](https://doi.org/10.3390/app11072959)                                                                     |
+|                    |                | LAN545   | 0.86             |                                                                                                                                    |
+|                    |                | LAN554   | 0.78             |                                                                                                                                    |
+|                    |                | LAN559   | 0.82             |                                                                                                                                    |
+| *Patella caerulea* | Croatia        | ISTPC1   | 0.9              | 10.1038/s41598-019-39959-9                                                                                                         |
+|                    |                | ISTPC2   | 0.84             |                                                                                                                                    |
+|                    | Crete          | AF1911A  | 0.91[^1]         |                                                                                                                                    |
+|                    |                | AF3003A  | 0.92[^2]         |                                                                                                                                    |
+|                    | Israel         | AKKPC2   | 0.96             |                                                                                                                                    |
+|                    |                | AKKPC3   | 0.89             |                                                                                                                                    |
+|                    |                | FRMPC1   | 0.84             |                                                                                                                                    |
+|                    |                | FRMPC2   | 0.96             |                                                                                                                                    |
+|                    | Libya          | MO31A    | 0.83             |                                                                                                                                    |
+|                    |                | MP64A    | 0.33             |                                                                                                                                    |
+|                    |                | MP67A    | 0.96             |                                                                                                                                    |
+|                    |                | MP68A    | 0.81             |                                                                                                                                    |
+|                    | Malta          | MA10     | 0.82             |                                                                                                                                    |
+|                    | Tunisia        | TUNPC1   | 0.81             |                                                                                                                                    |
+|                    |                | TUNPC2   | 0.78             |                                                                                                                                    |
+|                    | Turkey         | ANTPC1   | 0.95             |                                                                                                                                    |
+|                    |                | ANTPC2   | 0.93             |                                                                                                                                    |
+|                    |                | KIZPC1   | 0.94             |                                                                                                                                    |
+|                    |                | KIZPC2   | 0.86             |                                                                                                                                    |
+| Patella rustica    | Gibraltar      | JL1      | 0.02             | [doi.org/10.1016/j.epsl.2011.05.054](https://doi.org/10.1016/j.epsl.2011.05.054 "Persistent link using digital object identifier") |
+|                    |                | JL2      | 0.8 (0.79)       |                                                                                                                                    |
+| Patella caerulea   | Gibraltar      | JM00     | 0.69 (0.79)      |                                                                                                                                    |
+|                    |                | JM30     | 0.83 (0.79)      |                                                                                                                                    |
+|                    |                |          |                  |                                                                                                                                    |
+|                    |                |          |                  |                                                                                                                                    |
+|                    |                |          |                  |                                                                                                                                    |
+|                    |                |          |                  |                                                                                                                                    |
 
 : Overview of comparative correlations {#tab:correlations}
 
 [^1]: SST only, no other geochemical data available
 
 [^2]: SST only, no geochemical data available
+
+## Reanalysis of ORK-LT5
+
+```{r}
+
+P1 <-
+  MgCa %>% 
+  filter(sampleID=="ORK_LT5") %>% 
+  # filter(std<0.1) %>% 
+  # filter(mg_ca<0.7) %>% 
+  # filter(dist<20) %>% 
+ggplot()+
+  aes(dist,mg_ca)+
+  geom_path(col="firebrick")+
+  # xlim(0,10)+
+  facet_wrap(~sampleID,scales = "free",nrow=1)
+
+P2 <-
+  D18O %>% 
+  filter(sampleID=="ORK_LT5") %>% 
+  ggplot()+
+  aes(dist,d18O)+
+  geom_path(col="cornflowerblue")+
+  scale_y_reverse()+
+  facet_wrap(~sampleID,scales = "free",nrow=1)
+
+plot_compare <- P1/P2
+
+plot_compare
+
+```
+
+```{r subsample}
+
+
+# Function to create the desired subsampled tibble
+subsample_data <- function(data, window_size = 0.05, step_size = 0.15) {
+  max_dist <- max(data$dist)
+  subsample_intervals <- seq(0, max_dist, by = step_size)
+  
+  subsampled_data <- subsample_intervals %>%
+    purrr::map_df(~ {
+      window_start <- .x
+      window_end <- .x + window_size
+      
+      data_in_window <- data %>%
+        filter(dist >= window_start & dist < window_end)
+      
+      if (nrow(data_in_window) > 0) {
+        summarised_data <- data_in_window %>%
+          summarise(across(c(x, y, z, mg_ca, std, relstd, dist), mean, .names = "mean_{.col}"))
+        summarised_data <- summarised_data %>%
+          mutate(window_start = window_start, window_end = window_end)
+        return(summarised_data)
+      } else {
+        return(tibble())
+      }
+    })
+  
+  return(subsampled_data)
+}
+
+# Apply the function to your data
+MgCa_filtered <- MgCa %>%
+  filter(sampleID == "ORK_LT5")
+
+MgCa_subsampled_150 <- subsample_data(MgCa_filtered,step_size = 0.15)
+
+MgCa_subsampled_300 <-  subsample_data(MgCa_filtered,step_size = 0.30)
+
+P3.1 <-
+  MgCa_subsampled_150 %>% 
+ggplot()+
+  aes(mean_dist,mean_mg_ca)+
+  geom_path(col="firebrick2")
+
+P3.2 <-
+  MgCa_subsampled_300 %>% 
+ggplot()+
+  aes(mean_dist,mean_mg_ca)+
+  geom_path(col="firebrick4")
+
+P1/P3.1/P3.2
+
+```
