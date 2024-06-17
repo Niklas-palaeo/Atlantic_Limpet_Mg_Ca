@@ -18,7 +18,7 @@ shell_dtw_data <- function(D18o, MgCa, show.dtw.plot = FALSE, plot_alignment = F
       alignment <- dtw(D18o_warp * -1,
                        MgCa_warp,
                        keep = TRUE,
-                       step.pattern = symmetric1)
+                       step.pattern = symmetric2)
       Aligned_d18o <- D18o %>% mutate(x = 1:length(D18o$d18o),
                                       proxy = "d18o") %>% rename(value = d18o) %>%
         select(x, value, proxy)

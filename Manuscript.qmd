@@ -43,8 +43,10 @@ author:
 abstract: |
   This document is a template demonstrating the Aps format.
 keywords: 
-  - keyword1
-  - keyword2
+  - Sclerochronology
+  - Limpets
+  - Elemental Ratio
+  - Mg/Ca
 date: last-modified
 bibliography: bibliography.bib
 format:
@@ -104,7 +106,7 @@ Ferguson_data <- read_csv(here("data","Ferguson-data.csv")) %>%
 
 ```
 
-This paper is a short reassessment of Atlantic limpet shells and their correlations to Mg/Ca ratios.
+This study provides a short reassessment of the use of Magnesium to Calcium (Mg/Ca) ratios in Atlantic limpet shells to determine past sea surface temperatures. While recent studies of particularly *Patella* sp. in the Mediterranean and Southwest Europe have provided promising results [@Hausmann2019-fi; @Garcia-Escarzaga2015-jc; @Garcia-Escarzaga2018-nf].
 
 In previous studies, various limpet specimens (Patella vulgata, Nacella magellanica and Nacella odifosdio) have been studied using Mg/Ca with mixed results. While Patella vulgata along the Spanish shoreline has since then repeatedly produced reliable correlations between sst and Mg/Ca ratios, this is not the case for other species.
 
@@ -247,39 +249,39 @@ Ferg_all/Ferg_individual+plot_layout(heights = c(0.5,0.5))
 
 ```
 
-| Species            | Locality       | Specimen | Correlation R^2^ | Study                                                                                                                              |
-|-------------|-------------|-------------|-------------|----------------------|
-| *Patella depressa* | Northern Spain | LAN541   | 0.87             | [**10.3390/app11072959**](https://doi.org/10.3390/app11072959)                                                                     |
-|                    |                | LAN545   | 0.86             |                                                                                                                                    |
-|                    |                | LAN554   | 0.78             |                                                                                                                                    |
-|                    |                | LAN559   | 0.82             |                                                                                                                                    |
-| *Patella caerulea* | Croatia        | ISTPC1   | 0.9              | 10.1038/s41598-019-39959-9                                                                                                         |
-|                    |                | ISTPC2   | 0.84             |                                                                                                                                    |
-|                    | Crete          | AF1911A  | 0.91[^1]         |                                                                                                                                    |
-|                    |                | AF3003A  | 0.92[^2]         |                                                                                                                                    |
-|                    | Israel         | AKKPC2   | 0.96             |                                                                                                                                    |
-|                    |                | AKKPC3   | 0.89             |                                                                                                                                    |
-|                    |                | FRMPC1   | 0.84             |                                                                                                                                    |
-|                    |                | FRMPC2   | 0.96             |                                                                                                                                    |
-|                    | Libya          | MO31A    | 0.83             |                                                                                                                                    |
-|                    |                | MP64A    | 0.33             |                                                                                                                                    |
-|                    |                | MP67A    | 0.96             |                                                                                                                                    |
-|                    |                | MP68A    | 0.81             |                                                                                                                                    |
-|                    | Malta          | MA10     | 0.82             |                                                                                                                                    |
-|                    | Tunisia        | TUNPC1   | 0.81             |                                                                                                                                    |
-|                    |                | TUNPC2   | 0.78             |                                                                                                                                    |
-|                    | Turkey         | ANTPC1   | 0.95             |                                                                                                                                    |
-|                    |                | ANTPC2   | 0.93             |                                                                                                                                    |
-|                    |                | KIZPC1   | 0.94             |                                                                                                                                    |
-|                    |                | KIZPC2   | 0.86             |                                                                                                                                    |
-| Patella rustica    | Gibraltar      | JL1      | 0.02             | [doi.org/10.1016/j.epsl.2011.05.054](https://doi.org/10.1016/j.epsl.2011.05.054 "Persistent link using digital object identifier") |
-|                    |                | JL2      | 0.8 (0.79)       |                                                                                                                                    |
-| Patella caerulea   | Gibraltar      | JM00     | 0.69 (0.79)      |                                                                                                                                    |
-|                    |                | JM30     | 0.83 (0.79)      |                                                                                                                                    |
-|                    |                |          |                  |                                                                                                                                    |
-|                    |                |          |                  |                                                                                                                                    |
-|                    |                |          |                  |                                                                                                                                    |
-|                    |                |          |                  |                                                                                                                                    |
+| Species            | Locality       | Specimen | Correlation R^2^        | Study                                                                                                                              |
+|-----------|-----------|-----------|-----------|----------------------------|
+| *Patella depressa* | Northern Spain | LAN541   | 0.87                    | [**10.3390/app11072959**](https://doi.org/10.3390/app11072959)                                                                     |
+|                    |                | LAN545   | 0.86                    |                                                                                                                                    |
+|                    |                | LAN554   | 0.78                    |                                                                                                                                    |
+|                    |                | LAN559   | 0.82                    |                                                                                                                                    |
+| *Patella caerulea* | Croatia        | ISTPC1   | 0.9                     | 10.1038/s41598-019-39959-9                                                                                                         |
+|                    |                | ISTPC2   | 0.84                    |                                                                                                                                    |
+|                    | Crete          | AF1911A  | 0.91[^1]                |                                                                                                                                    |
+|                    |                | AF3003A  | 0.92[^2]                |                                                                                                                                    |
+|                    | Israel         | AKKPC2   | 0.96                    |                                                                                                                                    |
+|                    |                | AKKPC3   | 0.89                    |                                                                                                                                    |
+|                    |                | FRMPC1   | 0.84                    |                                                                                                                                    |
+|                    |                | FRMPC2   | 0.96                    |                                                                                                                                    |
+|                    | Libya          | MO31A    | 0.83                    |                                                                                                                                    |
+|                    |                | MP64A    | 0.33                    |                                                                                                                                    |
+|                    |                | MP67A    | 0.96                    |                                                                                                                                    |
+|                    |                | MP68A    | 0.81                    |                                                                                                                                    |
+|                    | Malta          | MA10     | 0.82                    |                                                                                                                                    |
+|                    | Tunisia        | TUNPC1   | 0.81                    |                                                                                                                                    |
+|                    |                | TUNPC2   | 0.78                    |                                                                                                                                    |
+|                    | Turkey         | ANTPC1   | 0.95                    |                                                                                                                                    |
+|                    |                | ANTPC2   | 0.93                    |                                                                                                                                    |
+|                    |                | KIZPC1   | 0.94                    |                                                                                                                                    |
+|                    |                | KIZPC2   | 0.86                    |                                                                                                                                    |
+| Patella rustica    | Gibraltar      | JL1      | 0.02                    | [doi.org/10.1016/j.epsl.2011.05.054](https://doi.org/10.1016/j.epsl.2011.05.054 "Persistent link using digital object identifier") |
+|                    |                | JL2      | 0.8 (0.79)              |                                                                                                                                    |
+| Patella caerulea   | Gibraltar      | JM00     | 0.69 (0.79)             |                                                                                                                                    |
+|                    |                | JM30     | 0.83 (0.79)             |                                                                                                                                    |
+| Patella vulgata    | Orkney         | ORK-LT5  | not reported, here 0.88 | doi.org/10.1016/j.palaeo.2016.10.021 and this study                                                                                |
+|                    |                |          |                         |                                                                                                                                    |
+|                    |                |          |                         |                                                                                                                                    |
+|                    |                |          |                         |                                                                                                                                    |
 
 : Overview of comparative correlations {#tab:correlations}
 
