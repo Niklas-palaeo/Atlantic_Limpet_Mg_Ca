@@ -41,7 +41,7 @@ author:
         country: Spain
         postal-code: 
 abstract: |
-  This document is a template demonstrating the Aps format.
+  This study provides a short reassessment of the use of Magnesium to Calcium (Mg/Ca) ratios in Atlantic limpet shells to determine past sea surface temperatures. While *Patella vulgata* along the Spanish shoreline has since then repeatedly produced reliable correlations between sea surface temperature and Mg/Ca ratios, this is not the case for other patelloid species. *Patella vulgata* and *Nacella deaureata* have been studied using Mg/Ca with mixed or contrary results. In this study, we present elemental maps of various such species together with stable oxygen isotope values for some of the specimens. Our dataset also includes specimens that were previously unsuccessful in providing significant correlations between δ^18^O and Mg/Ca ratios. By reassessing these previous specimens and including a wider range of  modern and archaeological samples from three patelloid species (*P. vulgata*, *N. deaureata*, and *N. magellanica*) we further add to the growing set of evidence for the reliable use of Mg/Ca ratios to detect palaeotemperature change and serve as a means to determine ontogenetic age and season of capture as well as to reveal locations of interest within the growth record (i.e. annual temperature minima and maxima) for the targeted analysis using δ^18^O or clumped oxygen isotope analysis.
 keywords: 
   - Sclerochronology
   - Limpets
@@ -106,13 +106,27 @@ Ferguson_data <- read_csv(here("data","Ferguson-data.csv")) %>%
 
 ```
 
-This study provides a short reassessment of the use of Magnesium to Calcium (Mg/Ca) ratios in Atlantic limpet shells to determine past sea surface temperatures. While recent studies of particularly *Patella* sp. in the Mediterranean and Southwest Europe have provided promising results [@Hausmann2019-fi; @Garcia-Escarzaga2015-jc; @Garcia-Escarzaga2018-nf].
+While recent studies of particularly *Patella* sp. in the Mediterranean and Southwest Europe have provided promising results [@Hausmann2019-fi; @Garcia-Escarzaga2015-jc; @Garcia-Escarzaga2018-nf].
 
-In previous studies, various limpet specimens (Patella vulgata, Nacella magellanica and Nacella odifosdio) have been studied using Mg/Ca with mixed results. While Patella vulgata along the Spanish shoreline has since then repeatedly produced reliable correlations between sst and Mg/Ca ratios, this is not the case for other species.
+# Materials and Methods {#Methods}
 
-In this study, we present elemental maps of various such species together with stable oxygen isotope values for some of the specimens. Some of these...
+## Limpet specimens
 
-# Methods {#Methods}
+### Modern specimens
+
+### Archaeological specimens
+
+## Oxygen isotopes
+
+## Mg/Ca ratios
+
+# Results {#Results}
+
+## Patella vulgata
+
+## Nacella deaureata
+
+## Nacella magellanica
 
 ```{r DTW Analysis}
 
@@ -154,7 +168,7 @@ for (sample in Samples) {
 
 ```
 
-# Results {#Results}
+# 
 
 ```{r Correlation Graphs }
 #| fig-cap: Correlation graphs for all specimens
@@ -205,6 +219,8 @@ P_all/P_individual+plot_layout(heights = c(0.5,0.5))
 
 # Discussion
 
+## Other correlations
+
 ```{r Ferguson Data}
 #| fig-cap: Correlation graphs for Ferguson et al. specimens
 #| fig-height: 20
@@ -250,7 +266,7 @@ Ferg_all/Ferg_individual+plot_layout(heights = c(0.5,0.5))
 ```
 
 | Species            | Locality       | Specimen | Correlation R^2^        | Study                                                                                                                              |
-|-----------|-----------|-----------|-----------|----------------------------|
+|-------------|-------------|-------------|-------------|----------------------|
 | *Patella depressa* | Northern Spain | LAN541   | 0.87                    | [**10.3390/app11072959**](https://doi.org/10.3390/app11072959)                                                                     |
 |                    |                | LAN545   | 0.86                    |                                                                                                                                    |
 |                    |                | LAN554   | 0.78                    |                                                                                                                                    |
@@ -289,7 +305,7 @@ Ferg_all/Ferg_individual+plot_layout(heights = c(0.5,0.5))
 
 [^2]: SST only, no geochemical data available
 
-## Reanalysis of ORK-LT5
+## Comparison of ORK-LT5
 
 ```{r}
 
@@ -373,3 +389,52 @@ ggplot()+
 P1/P3.1/P3.2
 
 ```
+
+```{r}
+# This is data extracted from Fig. 6E of Graniero et al. 2016
+GranieroDF <- tibble::tribble(
+                ~dist, ~mg_ca,
+                  0.1,     19,
+                  0.2,   20.6,
+                  0.4,   23.8,
+                  0.6,   20.4,
+                    1,   19.1,
+                  1.3,   14.9,
+                  1.6,     16,
+                  1.9,   17.8,
+                  2.3,   15.8,
+                  2.8,   17.3,
+                  3.1,   13.8,
+                  3.3,   24.9,
+                  3.7,   16.1,
+                    4,   15.6,
+                  4.3,   18.4,
+                  4.6,   15.5,
+                  5.2,   18.6,
+                  5.2,   21.2,
+                  5.5,   24.1,
+                  5.8,   18.7,
+                  6.2,   19.3,
+                  6.3,   15.5,
+                  6.7,   16.7,
+                  6.9,   15.3,
+                  7.3,   17.9,
+                  7.6,   13.7,
+                    8,   11.8,
+                  8.2,   16.2,
+                  8.5,   18.1,
+                  8.9,     18,
+                  9.1,   19.7,
+                  9.4,   20.8,
+                  9.7,   19.6,
+                   10,   22.2,
+                 10.2,   20.2,
+                 10.5,   19.3,
+                 10.8,   22.8,
+                 11.2,   18.7,
+                 11.8,   22.1
+                )
+
+```
+
+<!--# Maybe get the actual data from the image itself. -->
