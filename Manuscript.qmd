@@ -122,10 +122,9 @@ Relying and adding onto published datasets, allowed us to simultaneously avoid c
 
 ### Modern specimens
 
-The analysed specimens, their origin and respective studies with research background information can be found in Table 1. Here we will briefly summarise their contextual information, which can be accessed in more detail at the respective studies [@Nicastro2020-ih; @Surge2012-ba; @Graniero2017-io]. While those studies also included other specimens, their accessibility or state of preservation did not all lend them to be re-analysed.
+The analysed specimens, their origin and respective studies with research background information can be found in [Table 1](#Table_1). Here we will briefly summarise their contextual information, which can be accessed in more detail at the respective studies [@Nicastro2020-ih; @Surge2012-ba; @Graniero2017-io]. While those studies also included other specimens, their accessibility or state of preservation did not all lend them to be re-analysed.
 
-There are two main locations that we sourced specimens from: the island of West Ray in Orkney (UK) and the Beagle Channel in Tierra del Fuego (Argentina). A modern shell on West Ray was collected in Rack Wick Bay in August 2009, which experiences virtually no freshwater input. The temperature
-
+::: {#Table_1}
 | Context        | Study              | Species          | Location                                        | Sample ID     | Previous analyses                                           |
 |------------|------------|------------|------------|------------|------------|
 | Modern         | [@Nicastro2020-ih] | *N. deaureata*   | Cambaceres Bay - Tierra del Fuego (AR)          | ND-1016-3     | Stable oxygen and carbon isotope analysis                   |
@@ -150,30 +149,51 @@ There are two main locations that we sourced specimens from: the island of West 
 |                |                    | *N. deaureata*   |                                                 | Heshkaia_35-8 |                                                             |
 |                |                    | *N. magellanica* |                                                 | Heshkaia_35-9 |                                                             |
 
-: Table 1 Overview of the modern and archaeological limpet specimens analysed in this study {#tab:specimens}
+: Overview of the modern and archaeological limpet specimens analysed in this study.
+:::
 
 ```{r SST Data}
-#| fig-cap: SST values averaged over the last 20 years. SST values were sourced from [@europeanunion-copernicusmarineservice2015]
-#| fig-height: 10
-#| fig-width: 10
 
 # Read the CSV files, skipping the comments
-df1 <- read_csv(here("data","Westray-SST.csv"), comment = "#")
-df2 <- read_csv(here("data","Tierra_del_Fuego-SST.csv"), comment = "#")
+Westray_SST <- read_csv(here("data","Westray-SST.csv"), comment = "#")
+TdF_SST <- read_csv(here("data","Tierra_del_Fuego-SST.csv"), comment = "#")
 
 # Combine the datasets with new names and add year and month columns
-combined_df <- bind_rows(df1 %>% mutate(dataset = "Westray"),
-                         df2 %>% mutate(dataset = "Tierra del Fuego")) %>%
+SST_df <- bind_rows(Westray_SST %>% mutate(dataset = "Westray - Orkney"),
+                         TdF_SST %>% mutate(dataset = "Cambaceres Bay - Tierra del Fuego")) %>%
   mutate(analysed_sst = analysed_sst - 273.15,
          time = as_datetime(time),
          year = year(time),
          month = month(time, label = TRUE)) %>%
   group_by(dataset, year, month) %>%
   summarise(mean_sst = mean(analysed_sst, na.rm = TRUE),
-            sd_sst = sd(mean_sst, na.rm = TRUE))
+            sd_sst = sd(analysed_sst, na.rm = TRUE))
+
+WestrayMin <- SST_df %>% filter(dataset=="Westray - Orkney") %>% 
+  pull(mean_sst) %>% min() %>% round(1)
+WestrayMax <- SST_df %>% filter(dataset=="Westray - Orkney") %>% 
+  pull(mean_sst) %>% max() %>% round(1)
+
+CamBayMin <- SST_df %>% filter(dataset=="Cambaceres Bay - Tierra del Fuego") %>% 
+  pull(mean_sst) %>% min() %>% round(1)
+CamBayMax <- SST_df %>% filter(dataset=="Cambaceres Bay - Tierra del Fuego") %>% 
+  pull(mean_sst) %>% max() %>% round(1)
+
+```
+
+There are two main locations that we sourced specimens from: the Beagle Channel in Tierra del Fuego (Argentina) and the island of West Ray in Orkney (UK). Four specimens were collected from the Beagle Channel in Cambaceres Bay. The area receives around 570 mm precipitation but the channel waters are predominantly influenced by marine currents and in the period of October 2015 to October 2016 stayed around 30.7 ± 0.7 psu [@Nicastro2020-ih]. SSTs range from `r CamBayMin`ºC in August to `r CamBayMax`ºC in February.
+
+On Westray one modern shell (ORK-LT5) was collected in Rack Wick Bay in August 2009. Westray lies about 70 km north of the Scottish mainland and experiences virtually no freshwater input with salinity values of 34.0 – 34.5 psu. The annual SST ranges from `r WestrayMin`ºC in March to `r WestrayMax`ºC in August (@fig-SSTs).
+
+```{r SST plot}
+#| fig-cap: SST values averaged from  years. SST values were sourced from [@europeanunion-copernicusmarineservice2015]
+#| fig-height: 10
+#| fig-width: 10
+#| label: fig-SSTs
+
 
 # Plot the data
-combined_df %>% 
+SST_df %>% 
     group_by(dataset, month) %>%
   summarise(sd_sst = sd(mean_sst, na.rm = TRUE),
             mean_sst = mean(mean_sst, na.rm = TRUE)) %>%
@@ -183,7 +203,7 @@ ggplot(aes(x = month, y = mean_sst, colour = dataset,group=dataset)) +
   scale_colour_manual(values = c( "#007f7f", "#EC7063")) +
 scale_fill_manual(values = c( "#007f7f", "#EC7063"))+
   labs(title = "Monthly Sea Surface Temperature",
-       x = "Year-Month",
+       x = "Month",
        y = "Mean Analysed SST (°C)") +
     theme(axis.text.x = element_text(angle = 90, hjust = 1),
     legend.position = c(0.1, 0.9))+  
