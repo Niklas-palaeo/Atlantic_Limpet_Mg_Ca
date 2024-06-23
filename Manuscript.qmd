@@ -122,33 +122,76 @@ Relying and adding onto published datasets, allowed us to simultaneously avoid c
 
 ### Modern specimens
 
-The analysed specimens, their origin and studies with background information can be found in Table 1.
+The analysed specimens, their origin and respective studies with research background information can be found in Table 1. Here we will briefly summarise their contextual information, which can be accessed in more detail at the respective studies [@Nicastro2020-ih; @Surge2012-ba; @Graniero2017-io]. While those studies also included other specimens, their accessibility or state of preservation did not all lend them to be re-analysed.
 
-| Context        | Study              | Species          | Location                                          | Sample ID     | Previous analyses                                           |
+There are two main locations that we sourced specimens from: the island of West Ray in Orkney (UK) and the Beagle Channel in Tierra del Fuego (Argentina). A modern shell on West Ray was collected in Rack Wick Bay in August 2009, which experiences virtually no freshwater input. The temperature
+
+| Context        | Study              | Species          | Location                                        | Sample ID     | Previous analyses                                           |
 |------------|------------|------------|------------|------------|------------|
-| Modern         | [@Nicastro2020-ih] | *N. deaureata*   | Bahía Cambaceres Exterior - Tierra del Fuego (AR) | ND-1016-3     | Stable oxygen and carbon isotope analysis                   |
-|                |                    |                  |                                                   | ND-1016-4     |                                                             |
-|                |                    | *N. magellanica* |                                                   | NM-1016-1     |                                                             |
-|                |                    |                  |                                                   | NM-1016-3     |                                                             |
-|                | [@Graniero2017-io] | *P. vulgata*     | Rack Wick Bay - Westray (UK)                      | ORK-LT5       | Stable oxygen and carbon isotope analysis; Mg, Li, Sr, Ca,. |
-| Archaeological | [@Surge2012-ba]    | *P. vulgata*     | Rack Wick Bay - Westray (UK)                      | QG1-7188-1    | Stable oxygen and carbon isotope analysis                   |
-|                |                    |                  |                                                   | QG1-7189-2    |                                                             |
-|                |                    |                  |                                                   | QG2-1061-1    |                                                             |
-|                |                    |                  |                                                   | QG2-1064-1    |                                                             |
-|                |                    |                  |                                                   | QG2-7180-1    |                                                             |
-|                |                    |                  |                                                   | QG2-7180-2    |                                                             |
-|                |                    |                  |                                                   | QG1-7246-1    |                                                             |
-|                | This study         | *N. magellanica* | Heshkaia 35                                       | Heshkaia_35-1 | *none*                                                      |
-|                |                    | *N. deaureata*   |                                                   | Heshkaia_35-2 |                                                             |
-|                |                    | *N. deaureata*   |                                                   | Heshkaia_35-3 |                                                             |
-|                |                    | *N. magellanica* |                                                   | Heshkaia_35-4 |                                                             |
-|                |                    | *N. magellanica* |                                                   | Heshkaia_35-5 |                                                             |
-|                |                    | *N. magellanica* |                                                   | Heshkaia_35-6 |                                                             |
-|                |                    | *N. magellanica* |                                                   | Heshkaia_35-7 |                                                             |
-|                |                    | *N. deaureata*   |                                                   | Heshkaia_35-8 |                                                             |
-|                |                    | *N. magellanica* |                                                   | Heshkaia_35-9 |                                                             |
+| Modern         | [@Nicastro2020-ih] | *N. deaureata*   | Cambaceres Bay - Tierra del Fuego (AR)          | ND-1016-3     | Stable oxygen and carbon isotope analysis                   |
+|                |                    |                  |                                                 | ND-1016-4     |                                                             |
+|                |                    | *N. magellanica* |                                                 | NM-1016-1     |                                                             |
+|                |                    |                  |                                                 | NM-1016-3     |                                                             |
+|                | [@Graniero2017-io] | *P. vulgata*     | Rack Wick Bay - Westray (UK)                    | ORK-LT5       | Stable oxygen and carbon isotope analysis; Mg, Li, Sr, Ca,. |
+| Archaeological | [@Surge2012-ba]    | *P. vulgata*     | Rack Wick Bay - Westray (UK)                    | QG1-7188-1    | Stable oxygen and carbon isotope analysis                   |
+|                |                    |                  |                                                 | QG1-7189-2    |                                                             |
+|                |                    |                  |                                                 | QG2-1061-1    |                                                             |
+|                |                    |                  |                                                 | QG2-1064-1    |                                                             |
+|                |                    |                  |                                                 | QG2-7180-1    |                                                             |
+|                |                    |                  |                                                 | QG2-7180-2    |                                                             |
+|                |                    |                  |                                                 | QG1-7246-1    |                                                             |
+|                | This study         | *N. magellanica* | Heshkaia 35 in Moat Bay - Tierra del Fuego (AR) | Heshkaia_35-1 | *none*                                                      |
+|                |                    | *N. deaureata*   |                                                 | Heshkaia_35-2 |                                                             |
+|                |                    | *N. deaureata*   |                                                 | Heshkaia_35-3 |                                                             |
+|                |                    | *N. magellanica* |                                                 | Heshkaia_35-4 |                                                             |
+|                |                    | *N. magellanica* |                                                 | Heshkaia_35-5 |                                                             |
+|                |                    | *N. magellanica* |                                                 | Heshkaia_35-6 |                                                             |
+|                |                    | *N. magellanica* |                                                 | Heshkaia_35-7 |                                                             |
+|                |                    | *N. deaureata*   |                                                 | Heshkaia_35-8 |                                                             |
+|                |                    | *N. magellanica* |                                                 | Heshkaia_35-9 |                                                             |
 
 : Table 1 Overview of the modern and archaeological limpet specimens analysed in this study {#tab:specimens}
+
+```{r SST Data}
+#| fig-cap: SST values averaged over the last 20 years. 
+#| fig-height: 10
+#| fig-width: 10
+
+# Read the CSV files, skipping the comments
+df1 <- read_csv(here("data","Westray-SST.csv"), comment = "#")
+df2 <- read_csv(here("data","Tierra_del_Fuego-SST.csv"), comment = "#")
+
+# Combine the datasets with new names and add year and month columns
+combined_df <- bind_rows(df1 %>% mutate(dataset = "Westray"),
+                         df2 %>% mutate(dataset = "Tierra del Fuego")) %>%
+  mutate(analysed_sst = analysed_sst - 273.15,
+         time = as_datetime(time),
+         year = year(time),
+         month = month(time, label = TRUE)) %>%
+  group_by(dataset, year, month) %>%
+  summarise(mean_sst = mean(analysed_sst, na.rm = TRUE),
+            sd_sst = sd(mean_sst, na.rm = TRUE))
+
+# Plot the data
+combined_df %>% 
+    group_by(dataset, month) %>%
+  summarise(sd_sst = sd(mean_sst, na.rm = TRUE),
+            mean_sst = mean(mean_sst, na.rm = TRUE)) %>%
+ggplot(aes(x = month, y = mean_sst, colour = dataset,group=dataset)) +
+  geom_ribbon(aes(ymin = mean_sst - sd_sst, ymax = mean_sst + sd_sst,fill=dataset), alpha = 0.2,col="white") +
+  geom_path() +
+  scale_colour_manual(values = c( "#007f7f", "#EC7063")) +
+scale_fill_manual(values = c( "#007f7f", "#EC7063"))+
+  labs(title = "Monthly Sea Surface Temperature",
+       x = "Year-Month",
+       y = "Mean Analysed SST (°C)") +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+    legend.position = c(0.1, 0.9))+  
+  scale_y_continuous(breaks = c(5, 10, 15),limits = c(3,15)) +
+  labs(colour="",fill="")
+
+
+```
 
 ### Archaeological specimens
 
