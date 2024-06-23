@@ -189,7 +189,7 @@ There are two main locations that we sourced specimens from: the Beagle Channel 
 On Westray one modern shell (ORK-LT5) was collected in Rack Wick Bay in August 2009. Westray lies about 70 km north of the Scottish mainland and experiences virtually no freshwater input with salinity values of 34.0 – 34.5 psu [@Inall2009-ho]. The annual SST ranges from `r WestrayMin`ºC in March to `r WestrayMax`ºC in August (@fig-SSTs).
 
 ```{r SST plot}
-#| fig-cap: SST values averaged from  years. SST values were sourced from [@europeanunion-copernicusmarineservice2015]
+#| fig-cap: SST values averaged from  years. SST values were sourced from @Good2020-nl
 #| fig-height: 5
 #| fig-width: 5
 #| label: fig-SSTs
@@ -483,7 +483,7 @@ Ferg_all/Ferg_individual+plot_layout(heights = c(0.5,0.5))
 
 | Species       | Locality       | Specimen | Correlation R^2^        | Study                             |
 |---------------|---------------|---------------|---------------|---------------|
-| *P. depressa* | Northern Spain | LAN541   | 0.87                    |                                   |
+| *P. depressa* | Northern Spain | LAN541   | 0.87                    | [@Garcia-Escarzaga2021-ij]        |
 |               |                | LAN545   | 0.86                    |                                   |
 |               |                | LAN554   | 0.78                    |                                   |
 |               |                | LAN559   | 0.82                    |                                   |
