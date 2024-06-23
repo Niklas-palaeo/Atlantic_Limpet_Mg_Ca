@@ -153,7 +153,7 @@ There are two main locations that we sourced specimens from: the island of West 
 : Table 1 Overview of the modern and archaeological limpet specimens analysed in this study {#tab:specimens}
 
 ```{r SST Data}
-#| fig-cap: SST values averaged over the last 20 years. 
+#| fig-cap: SST values averaged over the last 20 years. SST values were sourced from [@europeanunion-copernicusmarineservice2015]
 #| fig-height: 10
 #| fig-width: 10
 
