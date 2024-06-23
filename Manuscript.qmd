@@ -112,6 +112,10 @@ Problematically, links between Mg/Ca ratios and SST changes in limpets have also
 
 While recent research particularly of *Patella* sp. in the Mediterranean and Southwest Europe have provided promising results [@Hausmann2019-fi; @Garcia-Escarzaga2015-jc; @Garcia-Escarzaga2018-nf]. There remains unclarity for Atlantic limpet species, particularly since it was last shown here, that they are not reliable recorders of palaeotemperature [@Graniero2015-zv].
 
+In this study we will repeat and expand the analysis of Atlantic limpets to determine the reliability of Mg/Ca ratios as palaeotemperature proxies. To do this, we sampled a set of previously published and unpublished limpet specimens dating to modern and archaeological contexts using LIBS. LIBS allows us to carry out 2D imaging of entire shell sections, which helps us to navigate the complex elemental structure of the shell and better separate the external, temperature-related changes from the internal and less understood factors that influence the Mg/Ca ratio.
+
+Relying and adding onto published datasets, allowed us to simultaneously avoid costs for new high-resolution δ^18^O-data, use real-world examples, and also provide pilot-data for areas of existing research interest. Generally establishing the usefulness and reliabilty of Mg/Ca as SST proxy in limpets should help to provide a platform for future research and an important stepping stone to better understand elemental ratios in other marine mollusc shells.
+
 # Materials and Methods {#Methods}
 
 ## Limpet specimens
