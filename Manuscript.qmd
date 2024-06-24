@@ -49,15 +49,14 @@ keywords:
   - Mg/Ca
 date: last-modified
 bibliography: bibliography.bib
-format: html
-  
-  # elsevier-pdf:
-  #   keep-tex: true
-  #   journal:
-  #     name: Palaeo^3^
-  #     formatting: preprint
-  #     model: 3p
-  #     cite-style: authoryear
+format:
+  elsevier-pdf:
+    keep-tex: true
+    journal:
+      name: Palaeo^3^
+      formatting: preprint
+      model: 3p
+      cite-style: authoryear
 output:
   units: cm
 ---
@@ -90,7 +89,12 @@ source("DTW_Script-update.R")
 
 
 D18O <- read_csv(here("data","D18O.csv")) %>% 
-  mutate(period=case_when(startsWith(sampleID,"Q") ~ "Archaeological",TRUE ~ "Modern"))
+  mutate(period=case_when(startsWith(sampleID,"Q") ~ "Archaeological",TRUE ~ "Modern")) %>% 
+  mutate(species = case_when(
+      startsWith(sampleID, "ND") ~ "Nacella deaureata",
+      startsWith(sampleID, "NM") ~ "Nacella magellanica",
+      TRUE ~ "Patella vulgata"
+    ))
 
   
 MgCa <- read_csv(here("data","MgCa.csv"))
@@ -196,6 +200,7 @@ On Westray one modern shell (ORK-LT5) was collected in Rack Wick Bay in August 2
 #| label: fig-SSTs
 
 
+
 # Plot the data
 SST_df %>% 
     group_by(dataset, month) %>%
@@ -221,50 +226,30 @@ scale_fill_manual(values = c( "#007f7f", "#EC7063"))+
 
 In total, we studied 16 archaeological specimens. Of those, seven *P. vulgata* come from Quoygrew on Westray dating to 900 – 1200 CE. These shells have previously been studied to characterise seasonal temperature change during the Medieval Climate Anomaly and the Little Ice Age [@Surge2012-ba]. Together they show a range of lifespans, with some comparatively long for their size (QG1-7246-1, 12 years within 16 mm of growth) making them particularly susceptible to time-averaging. That said, the majority are under 5 years old. These shells are an ideal comparative dataset from an archaeological assemblage to compare to the modern shell ORK_LT5 [@Graniero2017-io].
 
-Nine additional shells of *N. magellanica* (n=6) and *N*. *deaureata* (n=3) have been selected for LIBS analysis only, to provide a comparative dataset to the modern *Nacella* sp. shells. These have not been analysed for δ^18^O-values, but rather as a test to see whether patterns visible in the modern Mg/Ca ratio distributions are also preserved and apparent in the archaeological shells. They derive from the site of Heshkaia 35
+Nine additional shells of *N. magellanica* (n=6) and *N*. *deaureata* (n=3) have been selected for LIBS analysis only, to provide a comparative dataset to the modern *Nacella* sp. shells. These have not been analysed for δ^18^O-values, but rather as a test to see whether patterns visible in the modern Mg/Ca ratio distributions are also preserved and apparent in the archaeological shells. They derive from the site of Heshkaia 35 situated within Moat Bay, around 30 km east of where the modern specimens in our study were collected [@Zangrando2014-qi; @Zangrando2021-qg]. With radiocarbon dates putting the shells into the Late Holocene (1300 – 1450 CE) they are of similar age — if somewhat younger — as the assemblage from Quoygrew.
 
 ## Methods {#methods}
 
-### Oxygen isotopes
-
-High-quality oxygen isotope values (δ^18^O) were acquired from previous publications on *P. vulgata* [@Surge2012-ba; @Graniero2017-io], *N. deaureata* and *N. magellanica* [@Nicastro2020-ih], where detailed descriptions of the stable isotope analysis methodology can be found. In short, all shells were sectioned along the main growth axis to expose the internal growth structure. From the exposed section carbonate powder samples were acquired using a micromilling approach with resolutions of 100–200 µm and targeting the calcitic M+2 layer of the shells. Analytical precision of the isotope values was consistently at 0.05–0.10‰ and values are reported in per mil units (‰) relative to the VPDB (Vienna Pee Dee Belemnite) standard.
-
 ### Mg/Ca ratios
 
-Mg/Ca elemental imaging was carried out using Laser Induced Breakdown Spectroscopy at the Leibniz Zentrum für Archäologie (Mainz-Germany) using previously published methods [@Hausmann2023-ih]. These involve the ablation of the shell section using an infrared (1064 nm) laser pulse (1–2 mJ, 100 Hz) onto a surface area of 20–30 µm to generate a plasma plume. This plume emits light, which is measured using a synchronised spectrometer. The resulting light spectrum quantifies the emission lines of magnesium () and calcium () to determine their intensity ratio. While these two peaks alone do not represent the molar concentrations of both elements (as opposed to calibration free LIBS; e.g. [@Martinez-Minchero2022-jz]), the intensity ratio is linearly correlated to the molar concentration [@Hausmann2017-oa].
+Mg/Ca elemental imaging was carried out using Laser Induced Breakdown Spectroscopy at the Leibniz Zentrum für Archäologie (Mainz-Germany) using previously published methods [@Hausmann2023-ih]. These involve the ablation of the shell section using an infrared (1064 nm) laser (1–2 mJ, 100 Hz) onto a surface area of 20–30 µm to generate a plasma plume. This plume emits light, which is measured using a synchronised spectrometer. The resulting light spectrum quantifies the emission lines of magnesium (MgII; 279.553 nm) and calcium (CaII; 315.887 nm) to determine their intensity ratio. While these two peaks alone do not represent the molar concentrations of both elements (as opposed to calibration free LIBS; e.g. [@Martinez-Minchero2022-jz]), the intensity ratio is linearly correlated to the molar concentration [@Hausmann2017-oa] and can be used as a reliable indicator of Mg/Ca changes within the shell carbonate.
 
-# Results {#Results}
+### Oxygen isotopes
 
-### Modern Specimens
+High-quality oxygen isotope values (δ^18^O) were acquired from previous publications on *P. vulgata* [@Surge2012-ba; @Graniero2017-io], *N. deaureata* and *N. magellanica* [@Nicastro2020-ih], in which detailed descriptions of the stable isotope analysis methodology can be found. In short, all shells were sectioned along the main growth axis to expose the internal growth structure. From the exposed section carbonate powder samples were acquired using a micromill with resolutions of 100–200 µm and by targeting the calcitic M+2 layer of the shells. Analytical precision of the isotope values was consistently at 0.05–0.10‰ and values are reported in per mil units (‰) relative to the VPDB (Vienna Pee Dee Belemnite) standard.
 
-```{r Modern iso ranges}
-# Ranges <- D18O %>% 
-#   filter(!(sampleID == "ORK_LT5" & d18O < 0.2)) %>% #excluding outlier
-# group_by(sampleID,period) %>% 
-#   mutate(range=max(d18O)-min(d18O),
-#          range=round(range,2)) %>% 
-#   select(period, sampleID,range) %>% unique()
-# 
-# Modern_Ranges <- Ranges %>% 
-#   filter(period=="Modern") %>% 
-#   arrange(range)
+@fig-Nac_iso and @fig-Pat_iso show the previously acquired sequential δ^18^O-values of limpet shells by species. Due to the high sampling resolution, all shells show seasonally resolved and multi-year quasi-sinusoidal records of SST change , with *Nacella* sp. shells living 2–3 years and *Patella v*. regularly over 3 years. In those instances where longer lifetimes are encountered (i.e. specimen QG1-7246-1, @fig-Pat_iso b). Interestingly, the ranges in δ^18^O-values are not similar between the coeval *Nacella* sp. specimens with δ^18^O values for the previous summer temperatures ranging from 0.4‰ to above 1.0‰, and for winter values between 3.0‰ and 2.0‰. *P. vulgata* has similarly variable δ^18^O-values for summer and winter seasons, alas the lack of more that one modern specimens, means that we cannot quantify the variability of recorded annual ranges between specimens.
 
-#Interestingly, the overall annual range in δ18O-values on Orkney (~r Modern_Ranges$range[3]‰, excluding the anomalous value of 3.38‰) is comparable to the range in the Nacella sp. shells (r min(Modern_Ranges$range)‰ to r max(Modern_Ranges$range)‰) despite the different SST ranges.
-
-```
-
-All modern shells show multi-year quasi-sinusoidal records of SST change (@fig-Mod_iso), with *Nacella* sp. shells living 2–3 years and *Patella v*. over 5 years. The δ^18^O values of the Orcadian shell have not been directly compared to the local SST, but accurately reflect the seasonal changes expected barring one extreme, anomalous value in the second summer of recorded growth.
-
-```{r Modern Isotope plot}
-#| fig-cap: Isotope values of modern limpet shells from Cambaceres Bay (*a-f*) and Westray (*g*).
+```{r Nacella_Isotope_plot}
+#| fig-cap: Isotope values of Nacella sp. limpet shells from Cambaceres Bay (*a-f*).
 #| fig-height: 10
 #| fig-width: 10
-#| label: fig-Mod_iso
+#| label: fig-Nac_iso
 # Filter data for Modern period
-modern_data <- D18O %>% filter(period == "Modern")
+Nacella_iso <- D18O %>% filter(grepl("Nacella", species))
 
 # Get unique sample IDs
-sample_ids <- unique(modern_data$sampleID)
+sample_ids <- unique(Nacella_iso$sampleID)
 
 # Initialise an empty list to store plots
 plots <- list()
@@ -272,13 +257,11 @@ plots <- list()
 # Loop over each sampleID to create individual plots
 for (i in seq_along(sample_ids)) {
   sample_id <- sample_ids[i]
-  plot <- modern_data %>%
+  plot <- Nacella_iso %>%
     filter(sampleID == sample_id) %>%
     ggplot(aes(dist, d18O)) +
     geom_path() +
-    geom_point() +
-    xlim(0,15)+
-    labs(
+    geom_point() +    labs(
       x = "Distance from margin in mm",
       y = expression(delta^18*O~("\u2030")),
       subtitle = sample_id,
@@ -292,22 +275,20 @@ for (i in seq_along(sample_ids)) {
 }
 
 # Combine plots using patchwork and add letters
-wrap_plots(plots,nrow=4) + plot_annotation(tag_levels = 'a')
+wrap_plots(plots,nrow=3) + plot_annotation(tag_levels = 'a')
 
 ```
 
-### Archaeological Specimens
-
-```{r Archaeological Isotope plot}
-#| fig-cap: Isotope values of Archaeological limpet shells from Quoygrew
+```{r Patella_Isotope_plot}
+#| fig-cap: Isotope values of Patella vulagata limpet shells from Quoygrew (QG, *a-g*) and Rack Wick Bay (ORK, *h*) on Westray, Orkney.
 #| fig-height: 10
 #| fig-width: 10
-#| label: fig-Arch_iso
+#| label: fig-Pat_iso
 # Filter data for Modern period
-arch_data <- D18O %>% filter(period == "Archaeological")
+Patella_iso <- D18O %>% filter(grepl("Patella", species))
 
 # Get unique sample IDs
-sample_ids <- unique(arch_data$sampleID)
+sample_ids <- unique(Patella_iso$sampleID)
 
 # Initialise an empty list to store plots
 plots <- list()
@@ -315,7 +296,7 @@ plots <- list()
 # Loop over each sampleID to create individual plots
 for (i in seq_along(sample_ids)) {
   sample_id <- sample_ids[i]
-  plot <- arch_data %>%
+  plot <- Patella_iso %>%
     filter(sampleID == sample_id) %>%
     ggplot(aes(dist, d18O)) +
     geom_path() +
@@ -339,11 +320,13 @@ wrap_plots(plots,nrow=4) + plot_annotation(tag_levels = 'a')
 
 ```
 
-## Patella vulgata
+# Results {#Results}
 
-## Nacella deaureata
+## *Patella vulgata*
 
-## Nacella magellanica
+## *Nacella deaureata*
+
+## *Nacella magellanica*
 
 ```{r DTW Analysis}
 
@@ -655,3 +638,22 @@ GranieroDF <- tibble::tribble(
 ```
 
 <!--# Maybe get the actual data from the image itself. -->
+
+# References
+```{r Modern iso ranges}
+# Ranges <- D18O %>%
+#   filter(!(sampleID == "ORK_LT5" & d18O < 0.2)) %>% #excluding outlier
+# group_by(sampleID,period) %>%
+#   mutate(max=max(d18O),
+#          min=min(d18O)) %>%
+#   select(min, sampleID,max) %>% unique()
+# 
+# Modern_Ranges <- Ranges %>%
+#   filter(period=="Modern") %>%
+#   arrange(range)
+
+
+# Interestingly, the overall annual range in δ^18^O-values on Orkney (\~`r Modern_Ranges$range[3]`‰, excluding the anomalous value of 3.38‰) is comparable to the range in the Nacella sp. shells (`r min(Modern_Ranges$range)`‰ to `r max(Modern_Ranges$range)`‰) despite the different SST ranges.
+
+```
+
