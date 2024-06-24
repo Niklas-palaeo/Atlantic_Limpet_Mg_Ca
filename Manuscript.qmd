@@ -49,7 +49,7 @@ keywords:
   - Mg/Ca
 date: last-modified
 bibliography: bibliography.bib
-format:
+format: 
   elsevier-pdf:
     keep-tex: true
     journal:
@@ -112,6 +112,8 @@ Ferguson_data <- read_csv(here("data","Ferguson-data.csv")) %>%
 # # Find sample IDs only in D18O
 # setdiff(D18O$sampleID, MgCa$sampleID)
 
+D18O <-   D18O %>% filter(sampleID %in% MgCa$sampleID)
+
 ```
 
 Limpet shells are commonly found within archaeological sites and and past shorelines due to their robust carbonate structure and the long-term use of limpets as a marine food source. They have successfully been studied in the past in the context of coastal subsistence economies, site occupation on seasonal [@Shackleton1973-ij; @Parker2018-wf; @Bosch2018-ud] or long-term scale [@Ortiz2015-mr], as well as palaeotemperature [@Fenger2007-gf; @Surge2012-ba; @Wang2012-ee; @Colonese2012-ct; @Ferguson2011-zl]. Determining past sea surface temperature (SST) change largely relies on the measurement of δ^18^O-values within the calcitic parts of the shell, but attempts have been made to also use elemental ratios, such as magnesium to calcium (Mg/Ca), to have an alternative measure, that potentially provides a more accurate SST estimate than δ^18^O-values, which are also affected by changes in salinity. In addition, the data acquisition of elemental ratios — either through laser-ablation-isotope-ratio-mass-spectrometry (LA-ICP-MS) or laser induced breakdown spectroscopy (LIBS), can be much faster and cost-effective, increasing the number of specimens that can be studied overall [@Durham2017-fh; @Hausmann2023-ih].
@@ -160,7 +162,7 @@ The analysed specimens, their origin and respective studies with research backgr
 : Overview of the modern and archaeological limpet specimens analysed in this study.
 :::
 
-```{r SST Data}
+```{r SST_Data}
 
 # Read the CSV files, skipping the comments
 Westray_SST <- read_csv(here("data","Westray-SST.csv"), comment = "#")
@@ -193,7 +195,7 @@ There are two main locations that we sourced specimens from: the Beagle Channel 
 
 On Westray one modern shell (ORK-LT5) was collected in Rack Wick Bay in August 2009. Westray lies about 70 km north of the Scottish mainland and experiences virtually no freshwater input with salinity values of 34.0 – 34.5 psu [@Inall2009-ho]. The annual SST ranges from `r WestrayMin`ºC in March to `r WestrayMax`ºC in August (@fig-SSTs).
 
-```{r SST plot}
+```{r SST_plot}
 #| fig-cap: SST values averaged from  years. SST values were sourced from @Good2020-nl
 #| fig-height: 5
 #| fig-width: 5
@@ -234,14 +236,16 @@ Nine additional shells of *N. magellanica* (n=6) and *N*. *deaureata* (n=3) have
 
 Mg/Ca elemental imaging was carried out using Laser Induced Breakdown Spectroscopy at the Leibniz Zentrum für Archäologie (Mainz-Germany) using previously published methods [@Hausmann2023-ih]. These involve the ablation of the shell section using an infrared (1064 nm) laser (1–2 mJ, 100 Hz) onto a surface area of 20–30 µm to generate a plasma plume. This plume emits light, which is measured using a synchronised spectrometer. The resulting light spectrum quantifies the emission lines of magnesium (MgII; 279.553 nm) and calcium (CaII; 315.887 nm) to determine their intensity ratio. While these two peaks alone do not represent the molar concentrations of both elements (as opposed to calibration free LIBS; e.g. [@Martinez-Minchero2022-jz]), the intensity ratio is linearly correlated to the molar concentration [@Hausmann2017-oa] and can be used as a reliable indicator of Mg/Ca changes within the shell carbonate.
 
+Using this system we carried out elemental imaging of the shell specimens at a resolution of 50 µm distance between sampling spots. Each spot was irradiated 10 times with the 3 first spectra used for cleaning steps and the remaining summed to get an average Mg/Ca intensity ratio for each sample spot. Subsequently, we re-sampled the section using a line scan at 10 µm resolution. This leads to an overlap between sample spots, but also allows for a continuous record without gaps. Intensity ratios were filtered for cases with high relative standard deviation (i.e. more than 10%). These occurred in places where the previous sampling procedures for carbonate powder as part of the oxygen isotope analysis left an uneven sample surfaces introducing variability in the plasma generation and thus uncertainty in the data of these locations.
+
 ### Oxygen isotopes
 
 High-quality oxygen isotope values (δ^18^O) were acquired from previous publications on *P. vulgata* [@Surge2012-ba; @Graniero2017-io], *N. deaureata* and *N. magellanica* [@Nicastro2020-ih], in which detailed descriptions of the stable isotope analysis methodology can be found. In short, all shells were sectioned along the main growth axis to expose the internal growth structure. From the exposed section carbonate powder samples were acquired using a micromill with resolutions of 100–200 µm and by targeting the calcitic M+2 layer of the shells. Analytical precision of the isotope values was consistently at 0.05–0.10‰ and values are reported in per mil units (‰) relative to the VPDB (Vienna Pee Dee Belemnite) standard.
 
-@fig-Nac_iso and @fig-Pat_iso show the previously acquired sequential δ^18^O-values of limpet shells by species. Due to the high sampling resolution, all shells show seasonally resolved and multi-year quasi-sinusoidal records of SST change , with *Nacella* sp. shells living 2–3 years and *Patella v*. regularly over 3 years. In those instances where longer lifetimes are encountered (i.e. specimen QG1-7246-1, @fig-Pat_iso b). Interestingly, the ranges in δ^18^O-values are not similar between the coeval *Nacella* sp. specimens with δ^18^O values for the previous summer temperatures ranging from 0.4‰ to above 1.0‰, and for winter values between 3.0‰ and 2.0‰. *P. vulgata* has similarly variable δ^18^O-values for summer and winter seasons, alas the lack of more that one modern specimens, means that we cannot quantify the variability of recorded annual ranges between specimens.
+@fig-Nac_iso and @fig-Pat_iso show the previously acquired sequential δ^18^O-values of limpet shells by species. Due to the high sampling resolution, all shells show seasonally resolved and multi-year quasi-sinusoidal records of SST change , with *Nacella* sp. shells living 2–3 years and *Patella v*. regularly over 3 years. In those instances where longer lifetimes are encountered (i.e. specimen QG1-7246-1, @fig-Pat_iso b). Interestingly, the annual ranges in δ^18^O-values are not similar between the coeval *Nacella* sp. specimens with δ^18^O values for the previous summer temperatures ranging from 0.4‰ to above 1.0‰, and for winter values between 2.7‰ and 2.0‰. *P. vulgata* has similarly variable δ^18^O-values for summer and winter seasons, alas the lack of more that one modern specimens, means that we cannot quantify the variability of recorded annual ranges between specimens.
 
 ```{r Nacella_Isotope_plot}
-#| fig-cap: Isotope values of Nacella sp. limpet shells from Cambaceres Bay (*a-f*).
+#| fig-cap: Isotope values of *Nacella* sp. limpet shells from Cambaceres Bay (*a-f*).
 #| fig-height: 10
 #| fig-width: 10
 #| label: fig-Nac_iso
@@ -280,7 +284,7 @@ wrap_plots(plots,nrow=3) + plot_annotation(tag_levels = 'a')
 ```
 
 ```{r Patella_Isotope_plot}
-#| fig-cap: Isotope values of Patella vulagata limpet shells from Quoygrew (QG, *a-g*) and Rack Wick Bay (ORK, *h*) on Westray, Orkney.
+#| fig-cap: Isotope values of *Patella vulgata* limpet shells from Quoygrew (QG, *a-g*) and Rack Wick Bay (ORK, *h*) on Westray, Orkney.
 #| fig-height: 10
 #| fig-width: 10
 #| label: fig-Pat_iso
@@ -320,13 +324,9 @@ wrap_plots(plots,nrow=4) + plot_annotation(tag_levels = 'a')
 
 ```
 
-# Results {#Results}
+## Dynamic Time Warping
 
-## *Patella vulgata*
-
-## *Nacella deaureata*
-
-## *Nacella magellanica*
+Because the exact location used in the analysis of stable oxygen isotopes is not possible to reconstruct for each carbonate powder sample, we used dynamic time warping (DTW) to align the time series of δ^18^O-values and Mg/Ca ratios. DTW is an algorithm that measures similarity between two proxy-sequences, which may vary in sampling resolution or interval. By stretching or compressing sections of the series, DTW finds the probable alignment between the two sequences. This allows us to compare the proxy data sets more effectively, ensuring that the temporal dynamics of each shell are accurately matched despite possible discrepancies in sampling intervals or rates. We applied the DTW algorithm using the `dtw` package in R [@Giorgino2009-sj; @R_Core_Team2020-mk], which provides a robust framework for aligning time series data. This involved selecting appropriate distance measures and constraints to ensure meaningful alignment. The process involved iterative adjustments to minimise the overall distance between corresponding points in the two data sets. The code used for this analysis as well as the data required to run it can be found in this **OSF repository**.
 
 ```{r DTW Analysis}
 
@@ -368,17 +368,76 @@ for (sample in Samples) {
 
 ```
 
-# 
+# Results {#Results}
 
-```{r Correlation Graphs }
-#| fig-cap: Correlation graphs for all specimens
+## *Patella vulgata*
+
+-   Show one or a few of the LIBS maps as well as the line scans.
+-   Show one the line scans together with isotope data.
+-   Show correlation graphs.
+
+```{r Patella_Correlation_Graphs }
+#| fig-cap: Correlation graphs for *Patella vulgata* specimens
 #| fig-height: 20
-#| fig-width: 10
+#| fig-width: 15
 
 
 P_all <- Corr_data %>% 
   pivot_wider(values_from = "value",names_from = "proxy") %>% 
-  mutate(region = substr(sampleID, 1, 1)) %>% 
+  # mutate(region = substr(sampleID, 1, 1)) %>% 
+  left_join(D18O %>% select(sampleID,period,species) %>% unique(),by="sampleID") %>% 
+  filter(species=="Patella vulgata") %>% 
+  ggplot()+
+  aes(d18o,mg_ca,col=sampleID)+
+  geom_point(show.legend = FALSE)+
+  labs(x=expression("‰ δ" ^ "18" * "O [VPDB]"),y="Mg/Ca intensity ratio")+
+  stat_smooth(aes(fill = sampleID,col=sampleID), method = "lm", formula = y~x,show.legend = FALSE) +
+  # stat_regline_equation(label.x = 2, #label.y = 32
+  #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
+  #   formula = y~x
+  # ) +
+  scale_colour_manual(values = c("#542788","#007f7f", "#77b0a3","black", "#1f78b4","grey50", "#d73027", "#EC7063")) +
+scale_fill_manual(values = c( "#542788","#007f7f", "#77b0a3","black", "#1f78b4","grey50", "#d73027", "#EC7063"))#+
+  # facet_wrap(~region,ncol=2,scales = "free")
+
+
+# Expanded colour palette with 6 additional colours
+# Updated colour palette with 4 new replacements for the last colours
+# Refined colour palette with 3 additional colours
+# c("#007f7f", "#d73027", "#ffc100", "black", "#1a9850", "#542788", "#3288bd", "#99d8c9")
+
+P_individual <- P_all+ylim(0,0.8)+
+  facet_wrap(~sampleID,ncol=4)+#ylim(0.15,NA)+
+  ggpubr::stat_regline_equation(label.x = 0.2, label.y = 0.65,
+    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,size=6,
+    formula = y~x
+  )+
+  theme_cowplot(20)+
+  theme(
+    strip.background = element_rect(fill = "white", colour = NA),
+    strip.text = element_text(colour = "black"),
+    panel.border = element_rect(colour="black")
+  )
+
+
+
+P_all/P_individual+plot_layout(heights = c(0.5,0.5))
+
+
+```
+
+## *Nacella* sp.
+
+```{r Nacella_Correlation_Graphs}
+#| fig-cap: Correlation graphs for *Nacella* sp. specimens
+#| fig-height: 15
+#| fig-width: 15
+
+
+P_all <- Corr_data %>% 
+  pivot_wider(values_from = "value",names_from = "proxy") %>% 
+  left_join(D18O %>% select(sampleID,period,species) %>% unique(),by="sampleID") %>% 
+  filter(grepl("Nacella", species)) %>% 
   ggplot()+
   aes(d18o,mg_ca,col=sampleID)+
   geom_point(show.legend = FALSE)+
@@ -400,11 +459,12 @@ scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7
 
 
 P_individual <- P_all+ylim(0,0.8)+
-  facet_wrap(~sampleID,ncol=3)+#ylim(0.15,NA)+
-  ggpubr::stat_regline_equation(label.x = 0.5, label.y = 0.65,
-    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,
+  facet_wrap(~sampleID,ncol=4)+#ylim(0.15,NA)+
+  ggpubr::stat_regline_equation(label.x = 0.2, label.y = 0.65,
+    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,size=6,
     formula = y~x
   )+
+  theme_cowplot(20)+
   theme(
     strip.background = element_rect(fill = "white", colour = NA),
     strip.text = element_text(colour = "black"),
@@ -412,7 +472,7 @@ P_individual <- P_all+ylim(0,0.8)+
   )
 
 
-P_all/P_individual+plot_layout(heights = c(0.5,0.5))
+P_all/P_individual+plot_layout(heights = c(0.8,0.2))
 
 
 ```
@@ -640,6 +700,7 @@ GranieroDF <- tibble::tribble(
 <!--# Maybe get the actual data from the image itself. -->
 
 # References
+
 ```{r Modern iso ranges}
 # Ranges <- D18O %>%
 #   filter(!(sampleID == "ORK_LT5" & d18O < 0.2)) %>% #excluding outlier
@@ -657,3 +718,49 @@ GranieroDF <- tibble::tribble(
 
 ```
 
+```{r Correlation Graphs, eval=FALSE }
+#| fig-cap: Correlation graphs for all specimens
+#| fig-height: 20
+#| fig-width: 10
+
+
+P_all <- Corr_data %>% 
+  pivot_wider(values_from = "value",names_from = "proxy") %>% 
+  mutate(region = substr(sampleID, 1, 1)) %>% 
+  ggplot()+
+  aes(d18o,mg_ca,col=sampleID)+
+  geom_point(show.legend = FALSE)+
+  labs(x=expression("‰ δ" ^ "18" * "O [VPDB]"),y="Mg/Ca intensity ratio")+
+  stat_smooth(aes(fill = sampleID,col=sampleID), method = "lm", formula = y~x,show.legend = FALSE) +
+  # stat_regline_equation(label.x = 2, #label.y = 32
+  #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
+  #   formula = y~x
+  # ) +
+  scale_colour_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063","pink1")) +
+scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063","pink1"))#+
+  # facet_wrap(~region,ncol=2,scales = "free")
+
+
+# Expanded colour palette with 6 additional colours
+# Updated colour palette with 4 new replacements for the last colours
+# Refined colour palette with 3 additional colours
+# c("#007f7f", "#d73027", "#ffc100", "black", "#1a9850", "#542788", "#3288bd", "#99d8c9")
+
+
+P_individual <- P_all+ylim(0,0.8)+
+  facet_wrap(~sampleID,ncol=3)+#ylim(0.15,NA)+
+  ggpubr::stat_regline_equation(label.x = 0.5, label.y = 0.65,
+    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,
+    formula = y~x
+  )+
+  theme(
+    strip.background = element_rect(fill = "white", colour = NA),
+    strip.text = element_text(colour = "black"),
+    panel.border = element_rect(colour="black")
+  )
+
+
+P_all/P_individual+plot_layout(heights = c(0.5,0.5))
+
+
+```

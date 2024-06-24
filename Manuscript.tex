@@ -445,6 +445,19 @@ correlated to the molar concentration \citep{Hausmann2017-oa} and can be
 used as a reliable indicator of Mg/Ca changes within the shell
 carbonate.
 
+Using this system we carried out elemental imaging of the shell
+specimens at a resolution of 50 µm distance between sampling spots. Each
+spot was irradiated 10 times with the 3 first spectra used for cleaning
+steps and the remaining summed to get an average Mg/Ca intensity ratio
+for each sample spot. Subsequently, we re-sampled the section using a
+line scan at 10 µm resolution. This leads to an overlap between sample
+spots, but also allows for a continuous record without gaps. Intensity
+ratios were filtered for cases with high relative standard deviation
+(i.e.~more than 10\%). These occurred in places where the previous
+sampling procedures for carbonate powder as part of the oxygen isotope
+analysis left an uneven sample surfaces introducing variability in the
+plasma generation and thus uncertainty in the data of these locations.
+
 \subsubsection{Oxygen isotopes}\label{oxygen-isotopes}
 
 High-quality oxygen isotope values (δ\textsuperscript{18}O) were
@@ -467,11 +480,11 @@ seasonally resolved and multi-year quasi-sinusoidal records of SST
 change , with \emph{Nacella} sp. shells living 2--3 years and
 \emph{Patella v}. regularly over 3 years. In those instances where
 longer lifetimes are encountered (i.e.~specimen QG1-7246-1,
-Figure~\ref{fig-Pat_iso} b). Interestingly, the ranges in
+Figure~\ref{fig-Pat_iso} b). Interestingly, the annual ranges in
 δ\textsuperscript{18}O-values are not similar between the coeval
 \emph{Nacella} sp. specimens with δ\textsuperscript{18}O values for the
 previous summer temperatures ranging from 0.4‰ to above 1.0‰, and for
-winter values between 3.0‰ and 2.0‰. \emph{P. vulgata} has similarly
+winter values between 2.7‰ and 2.0‰. \emph{P. vulgata} has similarly
 variable δ\textsuperscript{18}O-values for summer and winter seasons,
 alas the lack of more that one modern specimens, means that we cannot
 quantify the variability of recorded annual ranges between specimens.
@@ -484,8 +497,8 @@ quantify the variability of recorded annual ranges between specimens.
 
 }
 
-\caption{\label{fig-Nac_iso}Isotope values of Nacella sp. limpet shells
-from Cambaceres Bay (\emph{a-f}).}
+\caption{\label{fig-Nac_iso}Isotope values of \emph{Nacella} sp. limpet
+shells from Cambaceres Bay (\emph{a-f}).}
 
 \end{figure}%
 
@@ -497,32 +510,68 @@ from Cambaceres Bay (\emph{a-f}).}
 
 }
 
-\caption{\label{fig-Pat_iso}Isotope values of Patella vulagata limpet
-shells from Quoygrew (QG, \emph{a-g}) and Rack Wick Bay (ORK, \emph{h})
-on Westray, Orkney.}
+\caption{\label{fig-Pat_iso}Isotope values of \emph{Patella vulgata}
+limpet shells from Quoygrew (QG, \emph{a-g}) and Rack Wick Bay (ORK,
+\emph{h}) on Westray, Orkney.}
 
 \end{figure}%
+
+\subsection{Dynamic Time Warping}\label{dynamic-time-warping}
+
+Because the exact location used in the analysis of stable oxygen
+isotopes is not possible to reconstruct for each carbonate powder
+sample, we used dynamic time warping (DTW) to align the time series of
+δ\textsuperscript{18}O-values and Mg/Ca ratios. DTW is an algorithm that
+measures similarity between two proxy-sequences, which may vary in
+sampling resolution or interval. By stretching or compressing sections
+of the series, DTW finds the probable alignment between the two
+sequences. This allows us to compare the proxy data sets more
+effectively, ensuring that the temporal dynamics of each shell are
+accurately matched despite possible discrepancies in sampling intervals
+or rates. We applied the DTW algorithm using the \texttt{dtw} package in
+R \citep{Giorgino2009-sj, R_Core_Team2020-mk}, which provides a robust
+framework for aligning time series data. This involved selecting
+appropriate distance measures and constraints to ensure meaningful
+alignment. The process involved iterative adjustments to minimise the
+overall distance between corresponding points in the two data sets. The
+code used for this analysis as well as the data required to run it can
+be found in this \textbf{OSF repository}.
 
 \section{Results}\label{Results}
 
 \subsection{\texorpdfstring{\emph{Patella
 vulgata}}{Patella vulgata}}\label{patella-vulgata}
 
-\subsection{\texorpdfstring{\emph{Nacella
-deaureata}}{Nacella deaureata}}\label{nacella-deaureata}
-
-\subsection{\texorpdfstring{\emph{Nacella
-magellanica}}{Nacella magellanica}}\label{nacella-magellanica}
-
-\section{}\label{section}
+\begin{itemize}
+\tightlist
+\item
+  Show one or a few of the LIBS maps as well as the line scans.
+\item
+  Show one the line scans together with isotope data.
+\item
+  Show correlation graphs.
+\end{itemize}
 
 \begin{figure}[H]
 
-{\centering \includegraphics{Manuscript_files/figure-pdf/Correlation Graphs-1.pdf}
+{\centering \includegraphics{Manuscript_files/figure-pdf/Patella_Correlation_Graphs-1.pdf}
 
 }
 
-\caption{Correlation graphs for all specimens}
+\caption{Correlation graphs for \emph{Patella vulgata} specimens}
+
+\end{figure}%
+
+\subsection{\texorpdfstring{\emph{Nacella}
+sp.}{Nacella sp.}}\label{nacella-sp.}
+
+\begin{figure}[H]
+
+{\centering \includegraphics{Manuscript_files/figure-pdf/Nacella_Correlation_Graphs-1.pdf}
+
+}
+
+\caption{Correlation graphs for \emph{Nacella} sp. specimens}
 
 \end{figure}%
 
