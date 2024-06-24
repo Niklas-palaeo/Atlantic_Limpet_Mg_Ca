@@ -49,14 +49,15 @@ keywords:
   - Mg/Ca
 date: last-modified
 bibliography: bibliography.bib
-format:
-  elsevier-pdf:
-    keep-tex: true
-    journal:
-      name: Palaeo^3^
-      formatting: preprint
-      model: 3p
-      cite-style: authoryear
+format: html
+  
+  # elsevier-pdf:
+  #   keep-tex: true
+  #   journal:
+  #     name: Palaeo^3^
+  #     formatting: preprint
+  #     model: 3p
+  #     cite-style: authoryear
 output:
   units: cm
 ---
@@ -111,13 +112,13 @@ Ferguson_data <- read_csv(here("data","Ferguson-data.csv")) %>%
 
 Limpet shells are commonly found within archaeological sites and and past shorelines due to their robust carbonate structure and the long-term use of limpets as a marine food source. They have successfully been studied in the past in the context of coastal subsistence economies, site occupation on seasonal [@Shackleton1973-ij; @Parker2018-wf; @Bosch2018-ud] or long-term scale [@Ortiz2015-mr], as well as palaeotemperature [@Fenger2007-gf; @Surge2012-ba; @Wang2012-ee; @Colonese2012-ct; @Ferguson2011-zl]. Determining past sea surface temperature (SST) change largely relies on the measurement of δ^18^O-values within the calcitic parts of the shell, but attempts have been made to also use elemental ratios, such as magnesium to calcium (Mg/Ca), to have an alternative measure, that potentially provides a more accurate SST estimate than δ^18^O-values, which are also affected by changes in salinity. In addition, the data acquisition of elemental ratios — either through laser-ablation-isotope-ratio-mass-spectrometry (LA-ICP-MS) or laser induced breakdown spectroscopy (LIBS), can be much faster and cost-effective, increasing the number of specimens that can be studied overall [@Durham2017-fh; @Hausmann2023-ih].
 
-Problematically, links between Mg/Ca ratios and SST changes in limpets have also been shown to be unreliable [@Graniero2015-zv] and even where they were successful, anomalous patterns in some specimens had to be filtered out, reducing the overall robustness of the results of those successful studies [@Ferguson2011-zl].
+Problematically, links between Mg/Ca ratios and SST changes in many marine mollusc shells, including limpets, have shown to be unreliable [@Surge2008-ri; @Wanamaker2008-zl; @Schone2010-yl; @Freitas2012-tx; @Graniero2015-zv; @Poulain2015-dg; @Vihtakari2017-wd]. This is particularly the case where there is little available additional information on metabolic processes, organic components of the shell matrix, intra-increment and intra-shell variability, and growth rates, which can independently and unpredictably affect Mg/Ca ratios and confound their interpretation as temperature proxy. Confusingly, multiple different temperature equations have been found for the same species (see [@Freitas2012-tx; @Vihtakari2017-wd] and references therein). Coeval specimens sharing one locality can also show differences in their relation to SST [@Hausmann2019-fi]. Where the use of Mg/Ca as a palaeotemperature proxy was successful, anomalous patterns in some specimens had still to be filtered out by hand, reducing the overall robustness of the results of those successful studies [@Ferguson2011-zl].
 
-While recent research particularly of *Patella* sp. in the Mediterranean and Southwest Europe have provided promising results [@Hausmann2019-fi; @Garcia-Escarzaga2015-jc; @Garcia-Escarzaga2018-nf]. There remains unclarity for Atlantic limpet species, particularly since it was last shown here, that they are not reliable recorders of palaeotemperature [@Graniero2015-zv].
+While recent research particularly of *Patella* sp. in the Mediterranean and Southwest Europe have provided promising results [@Hausmann2019-fi; @Garcia-Escarzaga2015-jc; @Garcia-Escarzaga2018-nf]. There remains a lack of clarity for Atlantic limpet species, particularly since it was last shown here, that they are not reliable recorders of palaeotemperature [@Graniero2015-zv].
 
 In this study we will repeat and expand the analysis of Atlantic limpets to determine the reliability of Mg/Ca ratios as palaeotemperature proxies. To do this, we sampled a set of previously published and unpublished limpet specimens dating to modern and archaeological contexts using LIBS. LIBS allows us to carry out 2D imaging of entire shell sections, which helps us to navigate the complex elemental structure of the shell and better separate the external, temperature-related changes from the internal and less understood factors that influence the Mg/Ca ratio.
 
-Relying and adding onto published datasets, allowed us to simultaneously avoid costs for new high-resolution δ^18^O-data, use real-world examples, and also provide pilot-data for areas of existing research interest. Generally establishing the usefulness and reliabilty of Mg/Ca as SST proxy in limpets should help to provide a platform for future research and an important stepping stone to better understand elemental ratios in other marine mollusc shells.
+By relying and adding onto published datasets, we were able to simultaneously avoid costs for new high-resolution δ^18^O-data, to use real-world examples, and to also provide pilot-data for areas of existing research interest. Generally establishing the usefulness and reliability of Mg/Ca as SST proxy in limpets should help to provide a platform for future research and an important stepping stone to better understand elemental ratios in other marine mollusc shells.
 
 # Materials and Methods {#Methods}
 
@@ -218,9 +219,9 @@ scale_fill_manual(values = c( "#007f7f", "#EC7063"))+
 
 ### Archaeological specimens
 
-In total, we studied 16 archaeological specimens. Of those, seven come from Quoygrew on Westray dating to 900 – 1200 CE. These shells have previously been studied to characterise seasonal temperature change during the Medieval Climate Anomaly and the Little Ice Age [@Surge2012-ba]. Together they show a range of lifespans, with some comparatively long for their size (QG1-7246-1, 12 years within 16 mm of growth) making them particularly susceptible to time-averaging. That said, the majority are under 5 years old. These shells are an ideal comparative dataset from an archaeological assemblage to compare to the modern shell ORK_LT5 [@Graniero2017-io].
+In total, we studied 16 archaeological specimens. Of those, seven *P. vulgata* come from Quoygrew on Westray dating to 900 – 1200 CE. These shells have previously been studied to characterise seasonal temperature change during the Medieval Climate Anomaly and the Little Ice Age [@Surge2012-ba]. Together they show a range of lifespans, with some comparatively long for their size (QG1-7246-1, 12 years within 16 mm of growth) making them particularly susceptible to time-averaging. That said, the majority are under 5 years old. These shells are an ideal comparative dataset from an archaeological assemblage to compare to the modern shell ORK_LT5 [@Graniero2017-io].
 
-Nine additional shells have been selected for LIBS analysis only, to provide a comparative dataset to the modern *Nacella* sp. shells. These have not been analysed for δ^18^O-values, but rather as a test to see whether patterns visible in the modern Mg/Ca ratio distributions are also preserved and apparent in the archaeological shells.
+Nine additional shells of *N. magellanica* (n=6) and *N*. *deaureata* (n=3) have been selected for LIBS analysis only, to provide a comparative dataset to the modern *Nacella* sp. shells. These have not been analysed for δ^18^O-values, but rather as a test to see whether patterns visible in the modern Mg/Ca ratio distributions are also preserved and apparent in the archaeological shells. They derive from the site of Heshkaia 35
 
 ## Methods {#methods}
 

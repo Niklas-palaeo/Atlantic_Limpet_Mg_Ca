@@ -7,8 +7,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Niklas Hausmann">
+<meta name="author" content="Donna Surge">
+<meta name="author" content="Francisco Zangrando">
+<meta name="author" content="Angelica Tivoli">
+<meta name="author" content="Ivan Briz-Godino">
+<meta name="dcterms.date" content="2024-06-24">
+<meta name="keywords" content="Sclerochronology, Limpets, Elemental Ratio, Mg/Ca">
 
-<title>Manuscript</title>
+<title>Interspecies comparisons of Mg/Ca ratios in limpet shells</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,7 +27,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="Manuscript_files/libs/clipboard/clipboard.min.js"></script>
@@ -35,6 +61,35 @@ ul.task-list li input[type="checkbox"] {
 <link href="Manuscript_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="Manuscript_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -46,52 +101,378 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Manuscript</h1>
+<h1 class="title">Interspecies comparisons of Mg/Ca ratios in limpet shells</h1>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Niklas Hausmann <a href="mailto:niklas@palaeo.eu" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000–0002–4381–8334" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Leibniz Zentrum für Archäologie
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Donna Surge </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of North Carolina
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Francisco Zangrando </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas)
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Angelica Tivoli </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas)
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">Ivan Briz-Godino </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
+      
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-             <p>Niklas Hausmann </p>
-          </div>
-  </div>
-    
-  
-    
+      <p class="date">June 24, 2024</p>
+    </div>
   </div>
   
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    <p>This study provides a short reassessment of the use of Magnesium to Calcium (Mg/Ca) ratios in Atlantic limpet shells to determine past sea surface temperatures. While <em>Patella vulgata</em> along the Spanish shoreline has since then repeatedly produced reliable correlations between sea surface temperature and Mg/Ca ratios, this is not the case for other patelloid species. <em>Patella vulgata</em> and <em>Nacella deaureata</em> have been studied using Mg/Ca with mixed or contrary results. In this study, we present elemental maps of various such species together with stable oxygen isotope values for some of the specimens. Our dataset also includes specimens that were previously unsuccessful in providing significant correlations between δ<sup>18</sup>O and Mg/Ca ratios. By reassessing these previous specimens and including a wider range of modern and archaeological samples from three patelloid species (<em>P. vulgata</em>, <em>N. deaureata</em>, and <em>N. magellanica</em>) we further add to the growing set of evidence for the reliable use of Mg/Ca ratios to detect palaeotemperature change and serve as a means to determine ontogenetic age and season of capture as well as to reveal locations of interest within the growth record (i.e.&nbsp;annual temperature minima and maxima) for the targeted analysis using δ<sup>18</sup>O or clumped oxygen isotope analysis.</p>
+  </div>
+</div>
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>Sclerochronology, Limpets, Elemental Ratio, Mg/Ca</p>
+  </div>
+</div>
 
 </header>
 
 
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "QG1-7188-1" "QG1-7189-2" "QG2-1061-1" "QG2-1064-1" "QG2-7180-1"
- [6] "QG2-7180-2" "QG1-7246-1" "ND-1016-3"  "ND-1016-4"  "NM-1016-1" 
-[11] "NM-1016-3" </code></pre>
+<section id="Introduction" class="level1">
+<h1>Introduction</h1>
+<p>Limpet shells are commonly found within archaeological sites and and past shorelines due to their robust carbonate structure and the long-term use of limpets as a marine food source. They have successfully been studied in the past in the context of coastal subsistence economies, site occupation on seasonal <span class="citation" data-cites="Shackleton1973-ij Parker2018-wf Bosch2018-ud">(<a href="#ref-Shackleton1973-ij" role="doc-biblioref">Shackleton 1973</a>; <a href="#ref-Parker2018-wf" role="doc-biblioref">Parker et al. 2018</a>; <a href="#ref-Bosch2018-ud" role="doc-biblioref">Bosch et al. 2018</a>)</span> or long-term scale <span class="citation" data-cites="Ortiz2015-mr">(<a href="#ref-Ortiz2015-mr" role="doc-biblioref">Ortiz et al. 2015</a>)</span>, as well as palaeotemperature <span class="citation" data-cites="Fenger2007-gf Surge2012-ba Wang2012-ee Colonese2012-ct Ferguson2011-zl">(<a href="#ref-Fenger2007-gf" role="doc-biblioref">Fenger et al. 2007</a>; <a href="#ref-Surge2012-ba" role="doc-biblioref">Surge and Barrett 2012</a>; <a href="#ref-Wang2012-ee" role="doc-biblioref">Wang, Surge, and Mithen 2012</a>; <a href="#ref-Colonese2012-ct" role="doc-biblioref">Colonese et al. 2012</a>; <a href="#ref-Ferguson2011-zl" role="doc-biblioref">Ferguson et al. 2011</a>)</span>. Determining past sea surface temperature (SST) change largely relies on the measurement of δ<sup>18</sup>O-values within the calcitic parts of the shell, but attempts have been made to also use elemental ratios, such as magnesium to calcium (Mg/Ca), to have an alternative measure, that potentially provides a more accurate SST estimate than δ<sup>18</sup>O-values, which are also affected by changes in salinity. In addition, the data acquisition of elemental ratios — either through laser-ablation-isotope-ratio-mass-spectrometry (LA-ICP-MS) or laser induced breakdown spectroscopy (LIBS), can be much faster and cost-effective, increasing the number of specimens that can be studied overall <span class="citation" data-cites="Durham2017-fh Hausmann2023-ih">(<a href="#ref-Durham2017-fh" role="doc-biblioref">Durham et al. 2017</a>; <a href="#ref-Hausmann2023-ih" role="doc-biblioref">Niklas Hausmann et al. 2023</a>)</span>.</p>
+<p>Problematically, links between Mg/Ca ratios and SST changes in many marine mollusc shells, including limpets, have shown to be unreliable <span class="citation" data-cites="Surge2008-ri Wanamaker2008-zl Schone2010-yl Freitas2012-tx Graniero2015-zv Poulain2015-dg Vihtakari2017-wd">(<a href="#ref-Surge2008-ri" role="doc-biblioref">Surge and Lohmann 2008</a>; <a href="#ref-Wanamaker2008-zl" role="doc-biblioref">Wanamaker et al. 2008</a>; <a href="#ref-Schone2010-yl" role="doc-biblioref">Schöne et al. 2010</a>; <a href="#ref-Freitas2012-tx" role="doc-biblioref">Freitas et al. 2012</a>; <a href="#ref-Graniero2015-zv" role="doc-biblioref">L. Graniero, Surge, and Gillikin 2015</a>; <a href="#ref-Poulain2015-dg" role="doc-biblioref">Poulain et al. 2015</a>; <a href="#ref-Vihtakari2017-wd" role="doc-biblioref">Vihtakari et al. 2017</a>)</span>. This is particularly the case where there is little available additional information on metabolic processes, organic components of the shell matrix, intra-increment and intra-shell variability, and growth rates, which can independently and unpredictably affect Mg/Ca ratios and confound their interpretation as temperature proxy. Confusingly, multiple different temperature equations have been found for the same species (see <span class="citation" data-cites="Freitas2012-tx Vihtakari2017-wd">(<a href="#ref-Freitas2012-tx" role="doc-biblioref">Freitas et al. 2012</a>; <a href="#ref-Vihtakari2017-wd" role="doc-biblioref">Vihtakari et al. 2017</a>)</span> and references therein). Coeval specimens sharing one locality can also show differences in their relation to SST <span class="citation" data-cites="Hausmann2019-fi">(<a href="#ref-Hausmann2019-fi" role="doc-biblioref">N. Hausmann et al. 2019</a>)</span>. Where the use of Mg/Ca as a palaeotemperature proxy was successful, anomalous patterns in some specimens had still to be filtered out by hand, reducing the overall robustness of the results of those successful studies <span class="citation" data-cites="Ferguson2011-zl">(<a href="#ref-Ferguson2011-zl" role="doc-biblioref">Ferguson et al. 2011</a>)</span>.</p>
+<p>While recent research particularly of <em>Patella</em> sp. in the Mediterranean and Southwest Europe have provided promising results <span class="citation" data-cites="Hausmann2019-fi Garcia-Escarzaga2015-jc Garcia-Escarzaga2018-nf">(<a href="#ref-Hausmann2019-fi" role="doc-biblioref">N. Hausmann et al. 2019</a>; <a href="#ref-Garcia-Escarzaga2015-jc" role="doc-biblioref">A. Garcı́a-Escárzaga et al. 2015</a>; <a href="#ref-Garcia-Escarzaga2018-nf" role="doc-biblioref">Asier Garcı́a-Escárzaga et al. 2018</a>)</span>. There remains a lack of clarity for Atlantic limpet species, particularly since it was last shown here, that they are not reliable recorders of palaeotemperature <span class="citation" data-cites="Graniero2015-zv">(<a href="#ref-Graniero2015-zv" role="doc-biblioref">L. Graniero, Surge, and Gillikin 2015</a>)</span>.</p>
+<p>In this study we will repeat and expand the analysis of Atlantic limpets to determine the reliability of Mg/Ca ratios as palaeotemperature proxies. To do this, we sampled a set of previously published and unpublished limpet specimens dating to modern and archaeological contexts using LIBS. LIBS allows us to carry out 2D imaging of entire shell sections, which helps us to navigate the complex elemental structure of the shell and better separate the external, temperature-related changes from the internal and less understood factors that influence the Mg/Ca ratio.</p>
+<p>By relying and adding onto published datasets, we were able to simultaneously avoid costs for new high-resolution δ<sup>18</sup>O-data, to use real-world examples, and to also provide pilot-data for areas of existing research interest. Generally establishing the usefulness and reliability of Mg/Ca as SST proxy in limpets should help to provide a platform for future research and an important stepping stone to better understand elemental ratios in other marine mollusc shells.</p>
+</section>
+<section id="Methods" class="level1">
+<h1>Materials and Peoops</h1>
+<section id="limpet-specimens" class="level2">
+<h2 class="anchored" data-anchor-id="limpet-specimens">Limpet specimens</h2>
+<section id="modern-specimens" class="level3">
+<h3 class="anchored" data-anchor-id="modern-specimens">Modern specimens</h3>
+<p>The analysed specimens, their origin and respective studies with research background information can be found in <a href="#Table_1">Table 1</a>. Here we will briefly summarise their contextual information, which can be accessed in more detail at the respective studies <span class="citation" data-cites="Nicastro2020-ih Surge2012-ba Graniero2017-io">(<a href="#ref-Nicastro2020-ih" role="doc-biblioref">Nicastro et al. 2020</a>; <a href="#ref-Surge2012-ba" role="doc-biblioref">Surge and Barrett 2012</a>; <a href="#ref-Graniero2017-io" role="doc-biblioref">L. E. Graniero et al. 2017</a>)</span>. While those studies also included other specimens, their accessibility or state of preservation did not all lend them to be re-analysed.</p>
+<div id="Table_1">
+<table class="table">
+<caption>Overview of the modern and archaeological limpet specimens analysed in this study.</caption>
+<colgroup>
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Context</th>
+<th>Study</th>
+<th>Species</th>
+<th>Location</th>
+<th>Sample ID</th>
+<th>Previous analyses</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Modern</td>
+<td><span class="citation" data-cites="Nicastro2020-ih">(<a href="#ref-Nicastro2020-ih" role="doc-biblioref">Nicastro et al. 2020</a>)</span></td>
+<td><em>N. deaureata</em></td>
+<td>Cambaceres Bay - Tierra del Fuego (AR)</td>
+<td>ND-1016-3</td>
+<td>Stable oxygen and carbon isotope analysis</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>ND-1016-4</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><em>N. magellanica</em></td>
+<td></td>
+<td>NM-1016-1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>NM-1016-3</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="citation" data-cites="Graniero2017-io">(<a href="#ref-Graniero2017-io" role="doc-biblioref">L. E. Graniero et al. 2017</a>)</span></td>
+<td><em>P. vulgata</em></td>
+<td>Rack Wick Bay - Westray (UK)</td>
+<td>ORK-LT5</td>
+<td>Stable oxygen and carbon isotope analysis; Mg, Li, Sr, Ca,.</td>
+</tr>
+<tr class="even">
+<td>Archaeological</td>
+<td><span class="citation" data-cites="Surge2012-ba">(<a href="#ref-Surge2012-ba" role="doc-biblioref">Surge and Barrett 2012</a>)</span></td>
+<td><em>P. vulgata</em></td>
+<td>Rack Wick Bay - Westray (UK)</td>
+<td>QG1-7188-1</td>
+<td>Stable oxygen and carbon isotope analysis</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>QG1-7189-2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>QG2-1061-1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>QG2-1064-1</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>QG2-7180-1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>QG2-7180-2</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>QG1-7246-1</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>This study</td>
+<td><em>N. magellanica</em></td>
+<td>Heshkaia 35 in Moat Bay - Tierra del Fuego (AR)</td>
+<td>Heshkaia_35-1</td>
+<td><em>none</em></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><em>N. deaureata</em></td>
+<td></td>
+<td>Heshkaia_35-2</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><em>N. deaureata</em></td>
+<td></td>
+<td>Heshkaia_35-3</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><em>N. magellanica</em></td>
+<td></td>
+<td>Heshkaia_35-4</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><em>N. magellanica</em></td>
+<td></td>
+<td>Heshkaia_35-5</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><em>N. magellanica</em></td>
+<td></td>
+<td>Heshkaia_35-6</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><em>N. magellanica</em></td>
+<td></td>
+<td>Heshkaia_35-7</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td><em>N. deaureata</em></td>
+<td></td>
+<td>Heshkaia_35-8</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td><em>N. magellanica</em></td>
+<td></td>
+<td>Heshkaia_35-9</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>character(0)</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "ND-1016-1" "NM-1016-5"</code></pre>
-</div>
-</div>
+<p>There are two main locations that we sourced specimens from: the Beagle Channel in Tierra del Fuego (Argentina) and the island of West Ray in Orkney (UK). Four specimens were collected from the Beagle Channel in Cambaceres Bay in October 2016. The area receives around 570 mm precipitation but the channel waters are predominantly influenced by marine currents and in the period of October 2015 to October 2016 stayed around 30.7 ± 0.7 psu <span class="citation" data-cites="Nicastro2020-ih">(<a href="#ref-Nicastro2020-ih" role="doc-biblioref">Nicastro et al. 2020</a>)</span>. SSTs range from 4.7ºC in August to 10ºC in February.</p>
+<p>On Westray one modern shell (ORK-LT5) was collected in Rack Wick Bay in August 2009. Westray lies about 70 km north of the Scottish mainland and experiences virtually no freshwater input with salinity values of 34.0 – 34.5 psu <span class="citation" data-cites="Inall2009-ho">(<a href="#ref-Inall2009-ho" role="doc-biblioref">Inall et al. 2009</a>)</span>. The annual SST ranges from 6.3ºC in March to 13.8ºC in August (<a href="#fig-SSTs" class="quarto-xref">Figure&nbsp;1</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Manuscript_files/figure-html/Raw%20Data-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption>Raw Mg/Ca and δ<sup>18</sup>O Data</figcaption>
+<div id="fig-SSTs" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-SSTs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Manuscript_files/figure-html/fig-SSTs-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-SSTs-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: SST values averaged from years. SST values were sourced from <span class="citation" data-cites="Good2020-nl">Good et al. (<a href="#ref-Good2020-nl" role="doc-biblioref">2020</a>)</span>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="archaeological-specimens" class="level3">
+<h3 class="anchored" data-anchor-id="archaeological-specimens">Archaeological specimens</h3>
+<p>In total, we studied 16 archaeological specimens. Of those, seven come from Quoygrew on Westray dating to 900 – 1200 CE. These shells have previously been studied to characterise seasonal temperature change during the Medieval Climate Anomaly and the Little Ice Age <span class="citation" data-cites="Surge2012-ba">(<a href="#ref-Surge2012-ba" role="doc-biblioref">Surge and Barrett 2012</a>)</span>. Together they show a range of lifespans, with some comparatively long for their size (QG1-7246-1, 12 years within 16 mm of growth) making them particularly susceptible to time-averaging. That said, the majority are under 5 years old. These shells are an ideal comparative dataset from an archaeological assemblage to compare to the modern shell ORK_LT5 <span class="citation" data-cites="Graniero2017-io">(<a href="#ref-Graniero2017-io" role="doc-biblioref">L. E. Graniero et al. 2017</a>)</span>.</p>
+<p>Nine additional shells have been selected for LIBS analysis only, to provide a comparative dataset to the modern <em>Nacella</em> sp. shells. These have not been analysed for δ<sup>18</sup>O-values, but rather as a test to see whether patterns visible in the modern Mg/Ca ratio distributions are also preserved and apparent in the archaeological shells.</p>
+</section>
+</section>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="oxygen-isotopes" class="level3">
+<h3 class="anchored" data-anchor-id="oxygen-isotopes">Oxygen isotopes</h3>
+<p>High-quality oxygen isotope values (δ<sup>18</sup>O) were acquired from previous publications on <em>P. vulgata</em> <span class="citation" data-cites="Surge2012-ba Graniero2017-io">(<a href="#ref-Surge2012-ba" role="doc-biblioref">Surge and Barrett 2012</a>; <a href="#ref-Graniero2017-io" role="doc-biblioref">L. E. Graniero et al. 2017</a>)</span>, <em>N. deaureata</em> and <em>N. magellanica</em> <span class="citation" data-cites="Nicastro2020-ih">(<a href="#ref-Nicastro2020-ih" role="doc-biblioref">Nicastro et al. 2020</a>)</span>, where detailed descriptions of the stable isotope analysis methodology can be found. In short, all shells were sectioned along the main growth axis to expose the internal growth structure. From the exposed section carbonate powder samples were acquired using a micromilling approach with resolutions of 100–200 µm and targeting the calcitic M+2 layer of the shells. Analytical precision of the isotope values was consistently at 0.05–0.10‰ and values are reported in per mil units (‰) relative to the VPDB (Vienna Pee Dee Belemnite) standard.</p>
+</section>
+<section id="mgca-ratios" class="level3">
+<h3 class="anchored" data-anchor-id="mgca-ratios">Mg/Ca ratios</h3>
+<p>Mg/Ca elemental imaging was carried out using Laser Induced Breakdown Spectroscopy at the Leibniz Zentrum für Archäologie (Mainz-Germany) using previously published methods <span class="citation" data-cites="Hausmann2023-ih">(<a href="#ref-Hausmann2023-ih" role="doc-biblioref">Niklas Hausmann et al. 2023</a>)</span>. These involve the ablation of the shell section using an infrared (1064 nm) laser pulse (1–2 mJ, 100 Hz) onto a surface area of 20–30 µm to generate a plasma plume. This plume emits light, which is measured using a synchronised spectrometer. The resulting light spectrum quantifies the emission lines of magnesium () and calcium () to determine their intensity ratio. While these two peaks alone do not represent the molar concentrations of both elements (as opposed to calibration free LIBS; e.g. <span class="citation" data-cites="Martinez-Minchero2022-jz">(<a href="#ref-Martinez-Minchero2022-jz" role="doc-biblioref">Martı́nez-Minchero et al. 2022</a>)</span>), the intensity ratio is linearly correlated to the molar concentration <span class="citation" data-cites="Hausmann2017-oa">(<a href="#ref-Hausmann2017-oa" role="doc-biblioref">N. Hausmann et al. 2017</a>)</span>.</p>
+</section>
+</section>
+</section>
+<section id="Results" class="level1">
+<h1>Results</h1>
+<section id="modern-specimens-1" class="level3">
+<h3 class="anchored" data-anchor-id="modern-specimens-1">Modern Specimens</h3>
+<p>All modern shells show multi-year quasi-sinusoidal records of SST change (<a href="#fig-Mod_iso" class="quarto-xref">Figure&nbsp;2</a>), with <em>Nacella</em> sp. shells living 2–3 years and <em>Patella v</em>. over 5 years. The δ<sup>18</sup>O values of the Orcadian shell have not been directly compared to the local SST, but accurately reflect the seasonal changes expected barring one extreme, anomalous value in the second summer of recorded growth.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-Mod_iso" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Mod_iso-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Manuscript_files/figure-html/fig-Mod_iso-1.png" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Mod_iso-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Isotope values of modern limpet shells from Cambaceres Bay (<em>a-f</em>) and Westray (<em>g</em>).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="archaeological-specimens-1" class="level3">
+<h3 class="anchored" data-anchor-id="archaeological-specimens-1">Archaeological Specimens</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-Arch_iso" class="quarto-figure quarto-figure-center quarto-float anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-Arch_iso-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Manuscript_files/figure-html/fig-Arch_iso-1.png" class="img-fluid figure-img" width="960">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-Arch_iso-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Isotope values of Archaeological limpet shells from Quoygrew
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="patella-vulgata" class="level2">
+<h2 class="anchored" data-anchor-id="patella-vulgata">Patella vulgata</h2>
+</section>
+<section id="nacella-deaureata" class="level2">
+<h2 class="anchored" data-anchor-id="nacella-deaureata">Nacella deaureata</h2>
+</section>
+<section id="nacella-magellanica" class="level2">
+<h2 class="anchored" data-anchor-id="nacella-magellanica">Nacella magellanica</h2>
+</section>
+</section>
+<section id="section" class="level1">
+<h1></h1>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -102,8 +483,378 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<section id="other-correlations" class="level2">
+<h2 class="anchored" data-anchor-id="other-correlations">Other correlations</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Manuscript_files/figure-html/Ferguson%20Data-1.png" class="img-fluid figure-img" width="960"></p>
+<figcaption>Correlation graphs for Ferguson et al.&nbsp;specimens</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<table class="table">
+<caption>Table 2: Overview of comparative correlations {#tab:correlations}</caption>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Species</th>
+<th>Locality</th>
+<th>Specimen</th>
+<th>Correlation R<sup>2</sup></th>
+<th>Study</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>P. depressa</em></td>
+<td>Northern Spain</td>
+<td>LAN541</td>
+<td>0.87</td>
+<td><span class="citation" data-cites="Garcia-Escarzaga2021-ij">(<a href="#ref-Garcia-Escarzaga2021-ij" role="doc-biblioref">Asier Garcı́a-Escárzaga et al. 2021</a>)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>LAN545</td>
+<td>0.86</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>LAN554</td>
+<td>0.78</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>LAN559</td>
+<td>0.82</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><em>P. caerulea</em></td>
+<td>Croatia</td>
+<td>ISTPC1</td>
+<td>0.9</td>
+<td><span class="citation" data-cites="Hausmann2019-fi">(<a href="#ref-Hausmann2019-fi" role="doc-biblioref">N. Hausmann et al. 2019</a>)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>ISTPC2</td>
+<td>0.84</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Crete</td>
+<td>AF1911A</td>
+<td>0.91<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>AF3003A</td>
+<td>0.92<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Israel</td>
+<td>AKKPC2</td>
+<td>0.96</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>AKKPC3</td>
+<td>0.89</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>FRMPC1</td>
+<td>0.84</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>FRMPC2</td>
+<td>0.96</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Libya</td>
+<td>MO31A</td>
+<td>0.83</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>MP64A</td>
+<td>0.33</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>MP67A</td>
+<td>0.96</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>MP68A</td>
+<td>0.81</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>Malta</td>
+<td>MA10</td>
+<td>0.82</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Tunisia</td>
+<td>TUNPC1</td>
+<td>0.81</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>TUNPC2</td>
+<td>0.78</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>Turkey</td>
+<td>ANTPC1</td>
+<td>0.95</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>ANTPC2</td>
+<td>0.93</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td>KIZPC1</td>
+<td>0.94</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>KIZPC2</td>
+<td>0.86</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>P. rustica</em></td>
+<td>Gibraltar</td>
+<td>JL1</td>
+<td>0.02</td>
+<td><span class="citation" data-cites="Ferguson2011-zl">(<a href="#ref-Ferguson2011-zl" role="doc-biblioref">Ferguson et al. 2011</a>)</span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>JL2</td>
+<td>0.8 (0.79)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>P. caerulea</em></td>
+<td>Gibraltar</td>
+<td>JM00</td>
+<td>0.69 (0.79)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td>JM30</td>
+<td>0.83 (0.79)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><em>P. vulgata</em></td>
+<td>Orkney</td>
+<td>ORK-LT5</td>
+<td>not reported, here 0.88</td>
+<td><span class="citation" data-cites="Graniero2017-io">(<a href="#ref-Graniero2017-io" role="doc-biblioref">L. E. Graniero et al. 2017</a>)</span> and this study</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="comparison-of-ork-lt5" class="level2">
+<h2 class="anchored" data-anchor-id="comparison-of-ork-lt5">Comparison of ORK-LT5</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Manuscript_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Manuscript_files/figure-html/subsample-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<!--# Maybe get the actual data from the image itself. -->
 
-</main>
+</section>
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Bosch2018-ud" class="csl-entry" role="listitem">
+Bosch, Marjolein D, Marcello A Mannino, Amy L Prendergast, Frank P Wesselingh, Tamsin C O’Connell, and Jean-Jacques Hublin. 2018. <span>“Year-Round Shellfish Exploitation in the Levant and Implications for Upper Palaeolithic Hunter-Gatherer Subsistence.”</span> <em>Journal of Archaeological Science: Reports</em> 21 (October): 1198–1214. <a href="https://doi.org/10.1016/j.jasrep.2017.08.014">https://doi.org/10.1016/j.jasrep.2017.08.014</a>.
+</div>
+<div id="ref-Colonese2012-ct" class="csl-entry" role="listitem">
+Colonese, André Carlo, Ester Verdún-Castelló, Myrian Álvarez, Ivan Briz i Godino, Débora Zurro, and Lorena Salvatelli. 2012. <span>“Oxygen Isotopic Composition of Limpet Shells from the Beagle Channel: Implications for Seasonal Studies in Shell Middens of Tierra Del Fuego.”</span> <em>J. Archaeol. Sci.</em> 39 (6): 1738–48. <a href="https://doi.org/10.1016/j.jas.2012.01.012">https://doi.org/10.1016/j.jas.2012.01.012</a>.
+</div>
+<div id="ref-Durham2017-fh" class="csl-entry" role="listitem">
+Durham, Stephen R, David P Gillikin, David H Goodwin, and Gregory P Dietl. 2017. <span>“Rapid Determination of Oyster Lifespans and Growth Rates Using <span>LA-ICP-MS</span> Line Scans of Shell <span>Mg/Ca</span> Ratios.”</span> <em>Palaeogeogr. Palaeoclimatol. Palaeoecol.</em> 485 (November): 201–9. <a href="https://doi.org/10.1016/j.palaeo.2017.06.013">https://doi.org/10.1016/j.palaeo.2017.06.013</a>.
+</div>
+<div id="ref-Fenger2007-gf" class="csl-entry" role="listitem">
+Fenger, Tracy, Donna Surge, Bernd Schöne, and Nicky Milner. 2007. <span>“Sclerochronology and Geochemical Variation in Limpet Shells ( Patella Vulgata): A New Archive to Reconstruct Coastal Sea Surface Temperature.”</span> <em>Geochem. Geophys. Geosyst.</em> 8 (7).
+</div>
+<div id="ref-Ferguson2011-zl" class="csl-entry" role="listitem">
+Ferguson, Julie E, Gideon M Henderson, Darren A Fa, J Clive Finlayson, and Norman R Charnley. 2011. <span>“Increased Seasonality in the Western Mediterranean During the Last Glacial from Limpet Shell Geochemistry.”</span> <em>Earth Planet. Sci. Lett.</em> 308 (3–4): 325–33. <a href="https://doi.org/10.1016/j.epsl.2011.05.054">https://doi.org/10.1016/j.epsl.2011.05.054</a>.
+</div>
+<div id="ref-Freitas2012-tx" class="csl-entry" role="listitem">
+Freitas, Pedro S, Leon J Clarke, Hilary Kennedy, and Christopher A Richardson. 2012. <span>“The Potential of Combined <span>Mg/Ca</span> and <span><span class="math inline">\(\delta\)</span>18O</span> Measurements Within the Shell of the Bivalve Pecten Maximus to Estimate Seawater <span><span class="math inline">\(\delta\)</span>18O</span> Composition.”</span> <em>Chem. Geol.</em> 291 (January): 286–93. <a href="https://doi.org/10.1016/j.chemgeo.2011.10.023">https://doi.org/10.1016/j.chemgeo.2011.10.023</a>.
+</div>
+<div id="ref-Garcia-Escarzaga2015-jc" class="csl-entry" role="listitem">
+Garcı́a-Escárzaga, A, S Moncayo, I Gutiérrez-Zugasti, M R González-Morales, J Martı́n-Chivelet, and J O Cáceres. 2015. <span>“<span>Mg/Ca</span> Ratios Measured by Laser Induced Breakdown Spectroscopy (<span>LIBS)</span>: A New Approach to Decipher Environmental Conditions.”</span> <em>J. Anal. At. Spectrom.</em> 30 (9): 1913–19. <a href="https://doi.org/10.1039/C5JA00168D">https://doi.org/10.1039/C5JA00168D</a>.
+</div>
+<div id="ref-Garcia-Escarzaga2018-nf" class="csl-entry" role="listitem">
+Garcı́a-Escárzaga, Asier, Leon J Clarke, Igor Gutiérrez-Zugasti, Manuel R González-Morales, Marina Martinez, José-Miguel López-Higuera, and Adolfo Cobo. 2018. <span>“<span>Mg/Ca</span> Profiles Within Archaeological Mollusc (Patella Vulgata) Shells: <span>Laser-Induced</span> Breakdown Spectroscopy Compared to Inductively Coupled <span>Plasma-Optical</span> Emission Spectrometry.”</span> <em>Spectrochim. Acta Part B At. Spectrosc.</em> 148 (October): 8–15. <a href="https://doi.org/10.1016/j.sab.2018.05.026">https://doi.org/10.1016/j.sab.2018.05.026</a>.
+</div>
+<div id="ref-Garcia-Escarzaga2021-ij" class="csl-entry" role="listitem">
+Garcı́a-Escárzaga, Asier, Marina Martı́nez-Minchero, Adolfo Cobo, Igor Gutiérrez-Zugasti, Alvaro Arrizabalaga, and Patrick Roberts. 2021. <span>“Using <span>Mg/Ca</span> Ratios from the Limpet Patella Depressa Pennant, 1777 Measured by <span>Laser-Induced</span> Breakdown Spectroscopy (<span>LIBS</span>) to Reconstruct Paleoclimate.”</span> <em>NATO Adv. Sci. Inst. Ser. E Appl. Sci.</em> 11 (7): 2959. <a href="https://doi.org/10.3390/app11072959">https://doi.org/10.3390/app11072959</a>.
+</div>
+<div id="ref-Good2020-nl" class="csl-entry" role="listitem">
+Good, Simon, Emma Fiedler, Chongyuan Mao, Matthew J Martin, Adam Maycock, Rebecca Reid, Jonah Roberts-Jones, et al. 2020. <span>“The Current Configuration of the <span>OSTIA</span> System for Operational Production of Foundation Sea Surface Temperature and Ice Concentration Analyses.”</span> <em>Remote Sensing</em> 12 (4): 720. <a href="https://doi.org/10.3390/rs12040720">https://doi.org/10.3390/rs12040720</a>.
+</div>
+<div id="ref-Graniero2017-io" class="csl-entry" role="listitem">
+Graniero, L E, D Surge, D P Gillikin, I Briz i Godino, and M Álvarez. 2017. <span>“Assessing Elemental Ratios as a Paleotemperature Proxy in the Calcite Shells of Patelloid Limpets.”</span> <em>Palaeogeogr. Palaeoclimatol. Palaeoecol.</em> 465, Part B (January): 376–85. <a href="https://doi.org/10.1016/j.palaeo.2016.10.021">https://doi.org/10.1016/j.palaeo.2016.10.021</a>.
+</div>
+<div id="ref-Graniero2015-zv" class="csl-entry" role="listitem">
+Graniero, Lauren, Donna Surge, and David Gillikin. 2015. <span>“Assessing the Utility of Elemental Ratios as a Paleotemperature Proxy in Shells of Patelloid Limpets.”</span> In <em><span>EGU</span> General Assembly Conference Abstracts</em>. Vol. 17. adsabs.harvard.edu.
+</div>
+<div id="ref-Hausmann2023-ih" class="csl-entry" role="listitem">
+Hausmann, Niklas, Danai Theodoraki, Victor Piñon, Panagiotis Siozos, Andreas Lemonis, and Demetrios Anglos. 2023. <span>“Applying Laser Induced Breakdown Spectroscopy (<span>LIBS</span>) and Elemental Imaging on Marine Shells for Archaeological and Environmental Research.”</span> <em>Sci. Rep.</em> 13 (1): 19812. <a href="https://doi.org/10.1038/s41598-023-46453-w">https://doi.org/10.1038/s41598-023-46453-w</a>.
+</div>
+<div id="ref-Hausmann2019-fi" class="csl-entry" role="listitem">
+Hausmann, N, A L Prendergast, A Lemonis, J Zech, P Roberts, P Siozos, and D Anglos. 2019. <span>“Extensive Elemental Mapping Unlocks <span>Mg/Ca</span> Ratios as Climate Proxy in Seasonal Records of Mediterranean Limpets.”</span> <em>Scientific Reports</em> 9 (1): 3698. <a href="https://doi.org/10.1038/s41598-019-39959-9">https://doi.org/10.1038/s41598-019-39959-9</a>.
+</div>
+<div id="ref-Hausmann2017-oa" class="csl-entry" role="listitem">
+Hausmann, N, P Siozos, A Lemonis, A C Colonese, H K Robson, and D Anglos. 2017. <span>“Elemental Mapping of <span>Mg/Ca</span> Intensity Ratios in Marine Mollusc Shells Using Laser-Induced Breakdown Spectroscopy.”</span> <em>J. Anal. At. Spectrom.</em> 32 (8): 1467–72. <a href="https://doi.org/10.1039/C7JA00131B">https://doi.org/10.1039/C7JA00131B</a>.
+</div>
+<div id="ref-Inall2009-ho" class="csl-entry" role="listitem">
+Inall, Mark, Gillibran, Colin Griffiths, Neil MacDougal, and Kimberly Blackwell. 2009. <span>“On the Oceanographic Variability of the <span>North-West</span> European Shelf to the West of Scotland.”</span> <em>J. Mar. Syst.</em> 77 (3): 210–26. <a href="https://doi.org/10.1016/j.jmarsys.2007.12.012">https://doi.org/10.1016/j.jmarsys.2007.12.012</a>.
+</div>
+<div id="ref-Martinez-Minchero2022-jz" class="csl-entry" role="listitem">
+Martı́nez-Minchero, Marina, Adolfo Cobo, Ana Méndez-Vicente, Jorge Pisonero, Nerea Bordel, Igor Gutiérrez-Zugasti, Patrick Roberts, et al. 2022. <span>“Comparison of <span>Mg/Ca</span> Concentration Series from Patella Depressa Limpet Shells Using <span>CF-LIBS</span> and <span>LA-ICP-MS</span>.”</span> <em>Talanta</em> 251 (August): 123757. <a href="https://doi.org/10.1016/j.talanta.2022.123757">https://doi.org/10.1016/j.talanta.2022.123757</a>.
+</div>
+<div id="ref-Nicastro2020-ih" class="csl-entry" role="listitem">
+Nicastro, Adam, Donna Surge, Ivan Briz i Godino, Myrian Álvarez, Bernd R Schöne, and Maria Bas. 2020. <span>“High-Resolution Records of Growth Temperature and Life History of Two Nacella Limpet Species, Tierra Del Fuego, Argentina.”</span> <em>Palaeogeogr. Palaeoclimatol. Palaeoecol.</em> 540 (February): 109526. <a href="https://doi.org/10.1016/j.palaeo.2019.109526">https://doi.org/10.1016/j.palaeo.2019.109526</a>.
+</div>
+<div id="ref-Ortiz2015-mr" class="csl-entry" role="listitem">
+Ortiz, José E, Igor Gutiérrez-Zugasti, Trinidad Torres, Manuel González-Morales, and Yolanda Sánchez-Palencia. 2015. <span>“Protein Diagenesis in Patella Shells: Implications for Amino Acid Racemisation Dating.”</span> <em>Quat. Geochronol.</em> 27 (April): 105–18. <a href="https://doi.org/10.1016/j.quageo.2015.02.008">https://doi.org/10.1016/j.quageo.2015.02.008</a>.
+</div>
+<div id="ref-Parker2018-wf" class="csl-entry" role="listitem">
+Parker, Wesley, Yurena Yanes, Eduardo Mesa Hernández, Juan Carlos Hernández Marrero, Jorge Pais, Nora Soto Contreras, and Donna Surge. 2018. <span>“Shellfish Exploitation in the Western Canary Islands over the Last Two Millennia.”</span> <em>Environ. Archaeol.</em>, July, 1–23. <a href="https://doi.org/10.1080/14614103.2018.1497821">https://doi.org/10.1080/14614103.2018.1497821</a>.
+</div>
+<div id="ref-Poulain2015-dg" class="csl-entry" role="listitem">
+Poulain, C, D P Gillikin, Julien Thébault, Jean-Marie Munaron, Marcel Bohn, Rene Robert, Y-M Paulet, and Anne Lorrain. 2015. <span>“An Evaluation of <span>Mg/Ca</span>, <span>Sr/Ca</span>, and <span>Ba/Ca</span> Ratios as Environmental Proxies in Aragonite Bivalve Shells.”</span> <em>Chem. Geol.</em> 396: 42–50.
+</div>
+<div id="ref-Schone2010-yl" class="csl-entry" role="listitem">
+Schöne, Bernd R, Zengjie Zhang, Dorrit Jacob, David P Gillikin, Thomas Tütken, Dieter Garbe-Schönberg, and Analı́a Soldati. 2010. <span>“Effect of Organic Matrices on the Determination of the Trace Element Chemistry (Mg, Sr, <span>Mg/Ca</span>, <span>Sr/Ca</span>) of Aragonitic Bivalve Shells (Arctica Islandica)—Comparison of <span>ICP-OES</span> and <span>LA-ICP-MS</span> Data.”</span> <em>Geochem. J.</em> 44 (1): 23–37.
+</div>
+<div id="ref-Shackleton1973-ij" class="csl-entry" role="listitem">
+Shackleton, Nicholas J. 1973. <span>“Oxygen Isotope Analysis as a Means of Determining Season of Occupation of Prehistoric Midden Sites.”</span> <em>Archaeometry</em> 15 (1): 133–41.
+</div>
+<div id="ref-Surge2012-ba" class="csl-entry" role="listitem">
+Surge, Donna, and James H Barrett. 2012. <span>“Marine Climatic Seasonality During Medieval Times (10th to 12th Centuries) Based on Isotopic Records in Viking Age Shells from Orkney, Scotland.”</span> <em>Palaeogeogr. Palaeoclimatol. Palaeoecol.</em> 350-352 (September): 236–46. <a href="https://doi.org/10.1016/j.palaeo.2012.07.003">https://doi.org/10.1016/j.palaeo.2012.07.003</a>.
+</div>
+<div id="ref-Surge2008-ri" class="csl-entry" role="listitem">
+Surge, Donna, and Kyger C Lohmann. 2008. <span>“Evaluating <span>Mg/Ca</span> Ratios as a Temperature Proxy in the Estuarine Oyster, Crassostrea Virginica.”</span> <em>J. Geophys. Res.</em> 113 (G2): G02001. <a href="https://doi.org/10.1029/2007JG000623">https://doi.org/10.1029/2007JG000623</a>.
+</div>
+<div id="ref-Vihtakari2017-wd" class="csl-entry" role="listitem">
+Vihtakari, Mikko, William G Ambrose Jr., Paul E Renaud, William L Locke V, Michael L Carroll, Jørgen Berge, Leon J Clarke, Finlo Cottier, and Haakon Hop. 2017. <span>“A Key to the Past? Element Ratios as Environmental Proxies in Two Arctic Bivalves.”</span> <em>Palaeogeogr. Palaeoclimatol. Palaeoecol.</em> 465, Part B (January): 316–32. <a href="https://doi.org/10.1016/j.palaeo.2016.10.020">https://doi.org/10.1016/j.palaeo.2016.10.020</a>.
+</div>
+<div id="ref-Wanamaker2008-zl" class="csl-entry" role="listitem">
+Wanamaker, Alan D, Jr, Karl J Kreutz, Tiffany Wilson, Harold W Borns Jr, Douglas S Introne, and Scott Feindel. 2008. <span>“Experimentally Determined <span>Mg/Ca</span> and <span>Sr/Ca</span> Ratios in Juvenile Bivalve Calcite for Mytilus Edulis: Implications for Paleotemperature Reconstructions.”</span> <em>Geo-Mar. Lett.</em> 28 (5-6): 359–68. <a href="https://doi.org/10.1007/s00367-008-0112-8">https://doi.org/10.1007/s00367-008-0112-8</a>.
+</div>
+<div id="ref-Wang2012-ee" class="csl-entry" role="listitem">
+Wang, Ting, Donna Surge, and Steven Mithen. 2012. <span>“Seasonal Temperature Variability of the Neoglacial (3300–2500 <span>BP</span>) and Roman Warm Period (2500–1600 <span>BP</span>) Reconstructed from Oxygen Isotope Ratios of Limpet Shells (Patella Vulgata), Northwest Scotland.”</span> <em>Palaeogeogr. Palaeoclimatol. Palaeoecol.</em> 317: 104–13.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>SST only, no other geochemical data available<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>SST only, no geochemical data available<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
