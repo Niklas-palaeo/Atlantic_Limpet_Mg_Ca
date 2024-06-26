@@ -560,8 +560,10 @@ P_all/P_individual+plot_layout(heights = c(0.5,0.5))
 
 ## *Nacella* sp.
 
+The LIBS data for *Nacella* sp. specimens is less straightforward with shells being much thinner and thus patterns being more difficult to make out. Both specimens (ND-1016-3 and NM-1016-3) shown as example in @fig-Nac_LIBS (see additional graphs in supplementaries) also experience increases of Mg/Ca intensity ratio towards the exterior of the shell, similar to the *P. vulgata* specimens from Orkney. This intra-increment heterogeneity combined with the thinness of the shell, further complicates their analysis compared to *P. vulgata* or other *Patella* species [@Hausmann2019-fi]. Nevertheless, repeating patterns were visible in the anterior section of the shell, which were also mirrored in the inner layers (m-2) of specimens NM-1016-3 (@fig-Nac_LIBS c).
+
 ```{r Nacella_LIBS}
-#| fig-cap: Example LIBS maps and line scans of analysed specimens. (*a+b*) ND-1016-3 and (*c*+*d*) NM-1016-3.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range.
+#| fig-cap: Example LIBS maps and line scans of analysed specimens. (*a+b*) ND-1016-3 and (*c*+*d*) NM-1016-3.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range. Note the inset in (*c*) where the shell edge has been resampled using a higher resolution (50 µm instead of 100 µm) to better understand the Mg/Ca ratios at the shell edge.
 #| fig-height: 10
 #| fig-width: 15
 #| label: fig-Nac_LIBS
@@ -584,8 +586,8 @@ ND_1016_plot <-
   geom_tile(show.legend=FALSE) +
   geom_path(data=ND_Line,aes(x,y),col="white",linetype="longdash")+
   theme_cowplot(20)+
-  scale_fill_viridis_c(limits = c(0, 1),
-                       breaks = seq(0.3, 0.7, by = 0.1)) +    
+  scale_fill_viridis_c(limits = c(0, 0.5),
+                       breaks = seq(0, 0.5, by = 0.1)) +    
   theme(
     legend.position = c(0.45, 0.4),
     legend.title = element_text(hjust = 0.5)
@@ -676,9 +678,11 @@ NM_1016_plot <- NM_1016_plot100+inset_element(NM_1016_plot50+theme(plot.tag = el
   (ND_1016_plot+ND_1016_line)/(NM_1016_plot+NM_1016_line)+plot_annotation(tag_levels = "a")
 ```
 
-Both specimens in @fig-Pat_LIBS show increased Mg/Ca intensity ratios towards the outside of the shell and some degree of intra-increment variability. This is particularly visible in @fig-Pat_LIBS c, where Mg/Ca intensity ratios range from \~0.5–0.7 in the first year of growth (9–12 mm on the y-axis). A similar pattern is visible in the interior m-2 layer of ORK-LT5 (@fig-Pat_LIBS a), which increase towards the anterior of the shell (0–10 mm on the x-axis).
+Interestingly, the Mg/Ca intensity ratios in the *Nacella* sp. shells were much lower (0.05–0.30) than those seen in other patelloid species (e.g. 0.3–0.7 in *Patella vulgata* above, or 0.5–1.5 in ) using the same emission lines. This is particularly visible in @fig-Nac_LIBS c, where Mg/Ca intensity ratios range from \~0.5–0.7 in [@Hausmann2023-ih]). While the intensity ratio depends chiefly on the chosen emission lines to calculate the proportion of the chosen Magnesium to the Calcium peak, the low ratios still indicate lower concentrations than seen elsewhere, or seen only in aragonitic parts of e.g. *Patella* shells.
 
-Line scans also indicate well the quasi-sinusoidal change of Mg/Ca intensity ratios expected based on the stable isotope data and elemental-imaging. That said, some of the variability of Mg/Ca intensity ratios within one season such as the summer period of QG1-7188-1 between 0.5 and 2.0 mm distance to the shell edge (\@fig-Pat_LIBS d), is visible in a more dramatic manner than it appears in the 2D-image, showing the downside of line-scanning as opposed to the broader milling approach used for the analysis of carbonate powder [@Ferguson2011-zl].
+Line scans reflect well the changes previously indicated by δ^18^O values and also indicate about two years of recorded growth. That said, the 2D imaging suggests that in both specimens a third summer can be added to the total record, which is not captured by the line scans. The variability seen in the *P. vulgata* specimens above is not as strong, which might also be related to the fast and consistent growth rate of the shells.
+
+\##########
 
 @fig-Pat_Comp shows the line scan of ORK-LT5 in comparison to its δ^18^O-values (similar graphs for other specimen can be found in the supplementaries). The measurements of the distance to the shell edge are not entirely identical, most likely because one growth increment can have several different distances. Depending on where one measures the distance and a line scan towards the interior would be shorter than a line scan towards the exterior. That said, increases and decreases of both proxies seem to mirror each other and to be well aligned.
 
@@ -715,6 +719,7 @@ P2 <-
 P1/P2+plot_annotation(tag_levels = "a")
 
 ```
+
 ```{r Nacella_Correlation_Graphs}
 #| fig-cap: Correlation graphs for *Nacella* sp. specimens
 #| fig-height: 15
