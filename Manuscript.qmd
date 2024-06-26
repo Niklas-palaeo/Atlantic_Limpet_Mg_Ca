@@ -49,14 +49,14 @@ keywords:
   - Mg/Ca
 date: last-modified
 bibliography: bibliography.bib
-format: 
-  elsevier-pdf:
-    keep-tex: true
-    journal:
-      name: Palaeo^3^
-      formatting: preprint
-      model: 3p
-      cite-style: authoryear
+format: docx
+#  elsevier-pdf:
+#    keep-tex: true
+#    journal:
+#      name: Palaeo^3^
+#      formatting: preprint
+#      model: 3p
+#      cite-style: authoryear
 output:
   units: cm
 ---
@@ -553,7 +553,7 @@ P_individual <- P_all+ylim(0,0.8)+
 
 
 
-P_all/P_individual+plot_layout(heights = c(0.5,0.5))
+P_all/P_individual+plot_layout(heights = c(0.5,0.5))+plot_annotation(tag_levels = "a")
 
 
 ```
@@ -682,9 +682,7 @@ Interestingly, the Mg/Ca intensity ratios in the *Nacella* sp. shells were much 
 
 Line scans reflect well the changes previously indicated by δ^18^O values and also indicate about two years of recorded growth. That said, the 2D imaging suggests that in both specimens a third summer can be added to the total record, which is not captured by the line scans. The variability seen in the *P. vulgata* specimens above is not as strong, which might also be related to the fast and consistent growth rate of the shells.
 
-\##########
-
-@fig-Pat_Comp shows the line scan of ORK-LT5 in comparison to its δ^18^O-values (similar graphs for other specimen can be found in the supplementaries). The measurements of the distance to the shell edge are not entirely identical, most likely because one growth increment can have several different distances. Depending on where one measures the distance and a line scan towards the interior would be shorter than a line scan towards the exterior. That said, increases and decreases of both proxies seem to mirror each other and to be well aligned.
+@fig-Nac_Comp shows the line scans of ND-1016-3 and NM-1016-3 in comparison to their δ^18^O-values (similar graphs for the other *Nacella* sp. specimen can be found in the supplementaries). Compared to the *P. vulgata* records, these mirror each other much more clearly, due to the brief period recorded in the shells and its simple make-up.
 
 ```{r Nacella_Compare}
 #| fig-cap: Comparison of LIBS line-scan and sequential δ^18^O-values of specimen ORK-LT5 
@@ -693,10 +691,10 @@ Line scans reflect well the changes previously indicated by δ^18^O values and a
 #| label: fig-Nac_Comp
  
 P1 <-
-  MgCa %>% 
-  filter(sampleID=="ORK_LT5") %>% 
+  ND_Line %>% 
   filter(relstd < 0.1) %>%
-  filter(mg_ca < 0.6 & mg_ca > 0.3) %>%
+  filter(mg_ca < 0.6) %>%
+  filter(dist<10) %>% 
 ggplot()+
   aes(dist,mg_ca)+
   geom_path()+
@@ -707,7 +705,7 @@ ggplot()+
 
 P2 <-
   D18O %>% 
-  filter(sampleID=="ORK_LT5") %>% 
+  filter(sampleID=="ND-1016-3") %>% 
   ggplot()+
   aes(dist,d18O)+
   geom_path()+
@@ -716,14 +714,40 @@ P2 <-
   labs(x = "Distance to edge [mm]", y = expression("‰ δ" ^ "18" * "O [VPDB]"))
 
 
-P1/P2+plot_annotation(tag_levels = "a")
+P3 <-
+  NM_Line %>% 
+  filter(relstd < 0.1) %>%
+  filter(dist<9.5) %>%
+ggplot()+
+  aes(dist,mg_ca)+
+  geom_path()+
+  theme_cowplot(20)+
+  labs(x = "", y = "Mg/Ca intensity ratio")
+
+
+
+P4 <-
+  D18O %>% 
+  filter(sampleID=="NM-1016-3") %>% 
+  ggplot()+
+  aes(dist,d18O)+
+  geom_path()+
+  theme_cowplot(20)+
+  scale_y_reverse()+
+  labs(x = "Distance to edge [mm]", y = expression("‰ δ" ^ "18" * "O [VPDB]"))
+
+
+ ((P1 / P2) | (P3 / P4)) + plot_annotation(tag_levels = 'a')
 
 ```
 
+The *Nacella* sp. specimens showed similarly clustered correlations, which interestingly were not grouped by species. In fact, specimens ND-1016-3 (*Nacella deaureata)* and NM-1016-3 (*Nacella magellanica*) are almost identical in their fitted equations (@fig-Nac_Corr). Both also share a high coefficient of determination (R^2^) of 0.95 and 0.92 respectively, with the remaining specimens being somewhat lower (R^2^ = 0.76 for ND-1016-4 and R^2^=0.84 for NM-1016-3). The mean R^2^ value for each *Nacella* species is 0.86 for *Nacella deaureata* and 0.88 for *Nacella magellanica*. Why two specimens of different species are so well aligned is not entirely certain and randomness cannot for now be ruled out. That said, since they both have a high R^2^ value, it might just be that they were both minimally affected by factors other than SST, including the sampling location of our line scans.
+
 ```{r Nacella_Correlation_Graphs}
 #| fig-cap: Correlation graphs for *Nacella* sp. specimens
-#| fig-height: 15
-#| fig-width: 15
+#| fig-height: 18
+#| fig-width: 10
+#| label: fig-Nac_Corr
 
 
 P_all <- Corr_data %>% 
@@ -735,12 +759,14 @@ P_all <- Corr_data %>%
   geom_point(show.legend = FALSE)+
   labs(x=expression("‰ δ" ^ "18" * "O [VPDB]"),y="Mg/Ca intensity ratio")+
   stat_smooth(aes(fill = sampleID,col=sampleID), method = "lm", formula = y~x,show.legend = FALSE) +
+  theme_cowplot(20)+
   # stat_regline_equation(label.x = 2, #label.y = 32
   #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
   #   formula = y~x
   # ) +
-  scale_colour_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063","pink1")) +
-scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063","pink1"))#+
+ # ylim(0.05,NA)+
+  scale_colour_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12")) +
+scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12"))#+
   # facet_wrap(~region,ncol=2,scales = "free")
 
 
@@ -750,9 +776,9 @@ scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7
 # c("#007f7f", "#d73027", "#ffc100", "black", "#1a9850", "#542788", "#3288bd", "#99d8c9")
 
 
-P_individual <- P_all+ylim(0,0.8)+
-  facet_wrap(~sampleID,ncol=4)+#ylim(0.15,NA)+
-  ggpubr::stat_regline_equation(label.x = 0.2, label.y = 0.65,
+P_individual <- P_all+ylim(0,0.4)+
+  facet_wrap(~sampleID,ncol=2)+#ylim(0.15,NA)+
+  ggpubr::stat_regline_equation(label.x = 0.2, label.y = 0.35,
     aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,size=6,
     formula = y~x
   )+
@@ -764,7 +790,7 @@ P_individual <- P_all+ylim(0,0.8)+
   )
 
 
-P_all/P_individual+plot_layout(heights = c(0.8,0.2))
+P_all/P_individual+plot_layout(heights = c(0.5,0.5))+plot_annotation(tag_levels = "a")
 
 
 ```
