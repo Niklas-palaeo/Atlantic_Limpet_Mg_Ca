@@ -372,14 +372,145 @@ for (sample in Samples) {
 
 ## *Patella vulgata*
 
--   Show one or a few of the LIBS maps as well as the line scans.
--   Show one the line scans together with isotope data.
--   Show correlation graphs.
+The elemental imaging of *P. vulgata* shells consistently showed repeating patterns of Mg/Ca intensity ratio changes with high Mg/Ca intensity ratios indicating and low ratios indicating low temperature periods. As examples, @fig-Pat_LIBS shows the 2D-distribution of elemental ratios across the entire section of ORK-LT5 and the preserved anterior side of QG1-7188-1 (additional maps can be found in the supplementaries). The repeating patterns are found across the calcitic layers that are exterior to the myostracum (layers m+2 and m+3) as well as the layers that are interior (m-2) [@Fenger2007-gf]. The layer m-1, which is also interior, consists of aragonite and is seen in @fig-Pat_LIBS in grey, as its Mg/Ca intensity ratio consistently falls below the range of interest (0.2 and above). Compared to other patelloid shells, whose interior is almost entirely made of aragonite, this layer is very thin.
+
+```{r Patella_LIBS}
+#| fig-cap: Example LIBS maps and line scans of analysed specimens. (*a+b*) ORK-LT and (*c*+*d*) QG1-7188-1.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range.
+#| fig-height: 10
+#| fig-width: 15
+#| label: fig-Pat_LIBS
+
+#ORK_LT5
+ORK_LT5_map <-
+  read_csv(here("data", "map_data", "ORK_LT_5_A100_All_analyzed_data.csv"))
+
+ORK_LT5_plot <- 
+  ORK_LT5_map %>%
+  filter(std < 0.15) %>%
+  filter(mg_ca < 0.7 & mg_ca > 0.3) %>%
+  ggplot() +
+  aes(x, y, fill = mg_ca) +
+  geom_tile(data = ORK_LT5_map, fill = "grey") +
+  geom_tile(show.legend=FALSE) +
+  geom_path(data=MgCa %>% filter(sampleID=="ORK_LT5"),aes(x,y),col="white",linetype="longdash")+
+  theme_cowplot(20)+
+  scale_fill_viridis_c(limits = c(0.3, 0.7),
+                       breaks = seq(0.3, 0.7, by = 0.1)) +    
+  theme(
+    legend.position = c(0.45, 0.4),
+    legend.title = element_text(hjust = 0.5)
+    )+ # Center the legend title) +
+    coord_fixed() +
+    labs(x = "mm", y = "mm", fill = "Mg/Ca ")
+    
+ORK_LT5_line <- 
+  MgCa %>% 
+  filter(sampleID=="ORK_LT5") %>% 
+  filter(relstd < 0.1) %>%
+  filter(mg_ca < 0.6 & mg_ca > 0.3) %>%
+  ggplot()+
+  aes(dist,mg_ca,col=mg_ca)+
+  geom_path(show.legend = FALSE)+
+  scale_colour_viridis_c(limits = c(0.3, 0.6),
+                       breaks = seq(0.3, 0.6, by = 0.1)) +    
+  theme_cowplot(20)+
+  labs(x = "Distance to edge [mm]", y = "Mg/Ca intensity ratio")
+  
+  
+  
+###########   
+#QG1_7188_1
+###########
+QG1_7188_1_map <-
+  read_csv(here("data", "map_data", "QG1-7188-1-AB50_analyzed_data.txt"))
+
+QG1_7188_1_plot <- 
+  QG1_7188_1_map %>%
+  filter(relstd < 0.1) %>%
+  filter(mg_ca < 0.6 & mg_ca > 0.3) %>%
+  ggplot() +
+  aes(x, y, col = mg_ca) +
+  geom_point(data = QG1_7188_1_map, col = "grey") +
+  geom_point(size=1,show.legend=FALSE) +
+  geom_path(data=MgCa %>% filter(sampleID=="QG1-7188-1"),aes(x,y),col="white",linetype="longdash")+
+  scale_colour_viridis_c(limits = c(0.3, 0.6),
+                       breaks = seq(0.3, 0.6, by = 0.1)) +    
+  theme_cowplot(20)+
+  theme(
+    legend.position = c(0.05, 0.78),
+   legend.title = element_text(hjust = 0.5)
+    )+ # Center the legend title) +
+    coord_fixed() +
+    labs(x = "mm", y = "mm", colour = "Mg/Ca")
+
+QG1_7188_1_line <- 
+  MgCa %>% 
+  filter(sampleID=="QG1-7188-1") %>% 
+  filter(relstd < 0.1) %>%
+  filter(mg_ca < 0.6 & mg_ca > 0.3) %>%
+  ggplot()+
+  aes(dist,mg_ca,col=mg_ca)+
+  geom_path(show.legend = FALSE)+
+  scale_colour_viridis_c(limits = c(0.3, 0.6),
+                       breaks = seq(0.3, 0.6, by = 0.1)) +    
+  theme_cowplot(20)+
+  labs(x = "Distance to edge [mm]", y = "Mg/Ca intensity ratio")
+  
+  
+  
+################
+####FIGURE######
+################
+  (ORK_LT5_plot+ORK_LT5_line)/(QG1_7188_1_plot+QG1_7188_1_line)+plot_annotation(tag_levels = "a")
+```
+
+Both specimens in @fig-Pat_LIBS show increased Mg/Ca intensity ratios towards the outside of the shell and some degree of intra-increment variability. This is particularly visible in @fig-Pat_LIBS c, where Mg/Ca intensity ratios range from \~0.5–0.7 in the first year of growth (9–12 mm on the y-axis). A similar pattern is visible in the interior m-2 layer of ORK-LT5 (@fig-Pat_LIBS a), which increase towards the anterior of the shell (0–10 mm on the x-axis).
+
+Line scans also indicate well the quasi-sinusoidal change of Mg/Ca intensity ratios expected based on the stable isotope data and elemental-imaging. That said, some of the variability of Mg/Ca intensity ratios within one season such as the summer period of QG1-7188-1 between 0.5 and 2.0 mm distance to the shell edge (\@fig-Pat_LIBS d), is visible in a more dramatic manner than it appears in the 2D-image, showing the downside of line-scanning as opposed to the broader milling approach used for the analysis of carbonate powder [@Ferguson2011-zl].
+
+@fig-Pat_Comp shows the line scan of ORK-LT5 in comparison to its δ^18^O-values (similar graphs for other specimen can be found in the supplementaries). The measurements of the distance to the shell edge are not entirely identical, most likely because one growth increment can have several different distances. Depending on where one measures the distance and a line scan towards the interior would be shorter than a line scan towards the exterior. That said, increases and decreases of both proxies seem to mirror each other and to be well aligned.
+
+```{r Patella_Compare}
+#| fig-cap: Comparison of LIBS line-scan and sequential δ^18^O-values of specimen ORK-LT5 
+#| fig-height: 10
+#| fig-width: 20
+#| label: fig-Pat_Comp
+ 
+P1 <-
+  MgCa %>% 
+  filter(sampleID=="ORK_LT5") %>% 
+  filter(relstd < 0.1) %>%
+  filter(mg_ca < 0.6 & mg_ca > 0.3) %>%
+ggplot()+
+  aes(dist,mg_ca)+
+  geom_path()+
+  theme_cowplot(20)+
+  labs(x = "", y = "Mg/Ca intensity ratio")
+
+
+
+P2 <-
+  D18O %>% 
+  filter(sampleID=="ORK_LT5") %>% 
+  ggplot()+
+  aes(dist,d18O)+
+  geom_path()+
+  theme_cowplot(20)+
+  scale_y_reverse()+
+  labs(x = "Distance to edge [mm]", y = expression("‰ δ" ^ "18" * "O [VPDB]"))
+
+
+P1/P2+plot_annotation(tag_levels = "a")
+
+```
+
+Aligning the records programmatically using dynamic time warping, allowed us to compare them directly to determine specimen-specific equations and quantify the correlation of both proxies (@fig-Pat_Corr). The equations for all specimens are different but the majority (barring one: QG1-7246-1) do seem to cluster around shared parameters (δ^18^Ο = 0.6 – 0.065 \* Mg/Ca). The various coefficients of determination (R^2^) range between 0.81 (QG1-7246-1) and 0.95 (QG1-7189-2). These specimens are also the oldest and youngest, respectively, specimens, suggesting that lower growth rates and time averaging had a negative effect on the correlation of both proxies. The mean R^2^ value is 0.89, suggesting a generally good fit between the two proxies.
 
 ```{r Patella_Correlation_Graphs }
-#| fig-cap: Correlation graphs for *Patella vulgata* specimens
-#| fig-height: 20
+#| fig-cap: Correlation graphs for *Patella vulgata* specimens.
+#| fig-height: 18
 #| fig-width: 15
+#| label: fig-Pat_Corr
 
 
 P_all <- Corr_data %>% 
@@ -390,6 +521,7 @@ P_all <- Corr_data %>%
   ggplot()+
   aes(d18o,mg_ca,col=sampleID)+
   geom_point(show.legend = FALSE)+
+  theme_cowplot(20)+
   labs(x=expression("‰ δ" ^ "18" * "O [VPDB]"),y="Mg/Ca intensity ratio")+
   stat_smooth(aes(fill = sampleID,col=sampleID), method = "lm", formula = y~x,show.legend = FALSE) +
   # stat_regline_equation(label.x = 2, #label.y = 32
@@ -428,6 +560,161 @@ P_all/P_individual+plot_layout(heights = c(0.5,0.5))
 
 ## *Nacella* sp.
 
+```{r Nacella_LIBS}
+#| fig-cap: Example LIBS maps and line scans of analysed specimens. (*a+b*) ND-1016-3 and (*c*+*d*) NM-1016-3.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range.
+#| fig-height: 10
+#| fig-width: 15
+#| label: fig-Nac_LIBS
+
+#ORK_LT5
+ND_1016_map <-
+  read_csv(here("data", "map_data", "ND-106-3-A100B_analyzed_data.csv"))
+
+ND_Line <- read_csv(here("data", "map_data", "ND-106-3-A10-LineScan_analyzed_data.csv")) %>% 
+  mutate(dist=row_number()*0.01)
+
+
+ND_1016_plot <- 
+  ND_1016_map %>%
+ # filter(std < 0.15) %>%
+  #filter(mg_ca < 0.7 & mg_ca > 0.3) %>%
+  ggplot() +
+  aes(x, y, fill = mg_ca) +
+  geom_tile(data = ND_1016_map, fill = "grey") +
+  geom_tile(show.legend=FALSE) +
+  geom_path(data=ND_Line,aes(x,y),col="white",linetype="longdash")+
+  theme_cowplot(20)+
+  scale_fill_viridis_c(limits = c(0, 1),
+                       breaks = seq(0.3, 0.7, by = 0.1)) +    
+  theme(
+    legend.position = c(0.45, 0.4),
+    legend.title = element_text(hjust = 0.5)
+    )+ # Center the legend title) +
+    coord_fixed() +
+    labs(x = "mm", y = "mm", fill = "Mg/Ca ")
+    
+ND_1016_line <- 
+  ND_Line %>% 
+  ggplot()+
+  aes(dist,mg_ca,col=mg_ca)+
+  geom_path(show.legend = FALSE)+
+  scale_colour_viridis_c() +    
+  theme_cowplot(20)+
+  labs(x = "Distance to edge [mm]", y = "Mg/Ca intensity ratio")
+  
+  
+  
+###########
+#NM-1016-3
+###########
+NM_1016_map100 <-
+  read_csv(here("data", "map_data", "NM-1016-3-A100_analyzed_data.csv"))
+NM_1016_map50 <-
+  read_csv(here("data", "map_data", "NM-1016-3-A50Edge_analyzed_data.csv"))
+
+NM_Line <- read_csv(here("data", "map_data", "NM-1016-3-A10LineScan2_analyzed_data.csv")) %>% 
+  mutate(dist=row_number()*0.01)
+
+NM_1016_plot100 <- 
+  NM_1016_map100 %>%
+  filter(std < 0.15) %>%
+  ggplot() +
+  aes(x, y, fill = mg_ca) +
+  geom_tile(show.legend=FALSE,size=0.5) +
+  geom_path(data=NM_Line,aes(x,y),col="white",linetype="longdash")+
+  theme_cowplot(20)+
+  scale_fill_viridis_c(limits = c(0, 0.5),
+                       breaks = seq(0, 0.4, by = 0.1)) +    
+  theme(
+    legend.position = c(0.45, 0.4),
+    legend.title = element_text(hjust = 0.5)
+    )+ # Center the legend title) +
+    coord_fixed() +
+   annotate("rect", 
+           xmin = min(NM_1016_map50$x)+15, 
+           xmax = max(NM_1016_map50$x)+15, 
+           ymin = min(NM_1016_map50$y)-2.3, 
+           ymax = max(NM_1016_map50$y)-2, 
+           alpha = 0, linetype="longdash",col = "black")+
+    labs(x = "mm", y = "mm", fill = "Mg/Ca ")
+
+NM_1016_plot50 <- 
+  NM_1016_map50 %>%
+ # filter(std < 0.15) %>%
+  #filter(mg_ca < 0.7 & mg_ca > 0.3) %>%
+  ggplot() +
+  aes(x, y, fill = mg_ca) +
+  geom_tile(show.legend=FALSE,size=0.5) +
+  theme_cowplot(20)+
+  scale_fill_viridis_c(limits = c(0, 0.4),
+                       breaks = seq(0, 0.4, by = 0.1)) +    
+theme(
+    axis.title = element_blank(),
+    axis.text = element_blank(),
+    axis.ticks = element_blank()
+  )+ 
+    coord_fixed() +
+    labs(x = "mm", y = "mm", colour = "Mg/Ca ")
+    
+NM_1016_line <- 
+  NM_Line %>% 
+  filter(relstd<0.1) %>% 
+  ggplot()+
+  aes(dist,mg_ca,col=mg_ca)+
+  geom_path(show.legend = FALSE)+
+  scale_colour_viridis_c() +    
+  theme_cowplot(20)+
+  labs(x = "Distance to edge [mm]", y = "Mg/Ca intensity ratio")
+  
+  
+NM_1016_plot <- NM_1016_plot100+inset_element(NM_1016_plot50+theme(plot.tag = element_blank()), 0, 0, 0.7, 0.7)
+  
+  
+################
+####FIGURE######
+################
+  (ND_1016_plot+ND_1016_line)/(NM_1016_plot+NM_1016_line)+plot_annotation(tag_levels = "a")
+```
+
+Both specimens in @fig-Pat_LIBS show increased Mg/Ca intensity ratios towards the outside of the shell and some degree of intra-increment variability. This is particularly visible in @fig-Pat_LIBS c, where Mg/Ca intensity ratios range from \~0.5–0.7 in the first year of growth (9–12 mm on the y-axis). A similar pattern is visible in the interior m-2 layer of ORK-LT5 (@fig-Pat_LIBS a), which increase towards the anterior of the shell (0–10 mm on the x-axis).
+
+Line scans also indicate well the quasi-sinusoidal change of Mg/Ca intensity ratios expected based on the stable isotope data and elemental-imaging. That said, some of the variability of Mg/Ca intensity ratios within one season such as the summer period of QG1-7188-1 between 0.5 and 2.0 mm distance to the shell edge (\@fig-Pat_LIBS d), is visible in a more dramatic manner than it appears in the 2D-image, showing the downside of line-scanning as opposed to the broader milling approach used for the analysis of carbonate powder [@Ferguson2011-zl].
+
+@fig-Pat_Comp shows the line scan of ORK-LT5 in comparison to its δ^18^O-values (similar graphs for other specimen can be found in the supplementaries). The measurements of the distance to the shell edge are not entirely identical, most likely because one growth increment can have several different distances. Depending on where one measures the distance and a line scan towards the interior would be shorter than a line scan towards the exterior. That said, increases and decreases of both proxies seem to mirror each other and to be well aligned.
+
+```{r Nacella_Compare}
+#| fig-cap: Comparison of LIBS line-scan and sequential δ^18^O-values of specimen ORK-LT5 
+#| fig-height: 10
+#| fig-width: 20
+#| label: fig-Nac_Comp
+ 
+P1 <-
+  MgCa %>% 
+  filter(sampleID=="ORK_LT5") %>% 
+  filter(relstd < 0.1) %>%
+  filter(mg_ca < 0.6 & mg_ca > 0.3) %>%
+ggplot()+
+  aes(dist,mg_ca)+
+  geom_path()+
+  theme_cowplot(20)+
+  labs(x = "", y = "Mg/Ca intensity ratio")
+
+
+
+P2 <-
+  D18O %>% 
+  filter(sampleID=="ORK_LT5") %>% 
+  ggplot()+
+  aes(dist,d18O)+
+  geom_path()+
+  theme_cowplot(20)+
+  scale_y_reverse()+
+  labs(x = "Distance to edge [mm]", y = expression("‰ δ" ^ "18" * "O [VPDB]"))
+
+
+P1/P2+plot_annotation(tag_levels = "a")
+
+```
 ```{r Nacella_Correlation_Graphs}
 #| fig-cap: Correlation graphs for *Nacella* sp. specimens
 #| fig-height: 15
