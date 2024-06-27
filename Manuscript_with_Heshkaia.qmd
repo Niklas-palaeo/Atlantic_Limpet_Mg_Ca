@@ -19,20 +19,6 @@ author:
         city: Chapel Hill, NC
         country: US
         postal-code: 27599-3315
-  - name: Francisco Zangrando
-    affiliations:
-      - name: CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas)
-        address: Avenida Maipú 305
-        city: Ushuaia
-        country: Argentina
-        postal-code: V9410BJA
-  - name: Angelica Tivoli
-    affiliations:
-      - name: CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas)
-        address: Avenida Maipú 305
-        city: Ushuaia
-        country: Argentina
-        postal-code: V9410BJA
   - name: Ivan Briz-Godino
     affiliations:
       - name: 
@@ -41,7 +27,7 @@ author:
         country: Spain
         postal-code: 
 abstract: |
-  This study provides a short reassessment of the use of Magnesium to Calcium (Mg/Ca) ratios in Atlantic limpet shells to determine past sea surface temperatures. While *Patella vulgata* along the Spanish shoreline has since then repeatedly produced reliable correlations between sea surface temperature and Mg/Ca ratios, this is not the case for other patelloid species. *Patella vulgata* and *Nacella deaureata* have been studied using Mg/Ca with mixed or contrary results. In this study, we present elemental maps of various such species together with stable oxygen isotope values for some of the specimens. Our dataset also includes specimens that were previously unsuccessful in providing significant correlations between δ^18^O and Mg/Ca ratios. By reassessing these previous specimens and including a wider range of  modern and archaeological samples from three patelloid species (*P. vulgata*, *N. deaureata*, and *N. magellanica*) we further add to the growing set of evidence for the reliable use of Mg/Ca ratios to detect palaeotemperature change and serve as a means to determine ontogenetic age and season of capture as well as to reveal locations of interest within the growth record (i.e. annual temperature minima and maxima) for the targeted analysis using δ^18^O or clumped oxygen isotope analysis.
+  This study provides a short reassessment of the use of Magnesium to Calcium (Mg/Ca) ratios in Atlantic limpet shells to determine past sea surface temperatures. While *Patella vulgata* along the Spanish shoreline has since then repeatedly produced reliable correlations between sea surface temperature and Mg/Ca ratios, this is not the case for other patelloid species. *Patella vulgata* and *Nacella deaureata* have been studied using Mg/Ca with mixed or contrary results. In this study, we present elemental maps of various such species together with stable oxygen isotope values. Our dataset also includes specimens that were previously unsuccessful in providing significant correlations between δ^18^O and Mg/Ca ratios. By reassessing these previous specimens and including a wider range of modern and archaeological samples (n=12) from three patelloid species (*P. vulgata*, *N. deaureata*, and *N. magellanica*) we further add to the growing set of evidence for the reliable use of Mg/Ca ratios to detect palaeotemperature change and serve as a means to determine ontogenetic age and season of capture as well as to reveal locations of interest within the growth record (i.e. annual temperature minima and maxima) for the targeted analysis using δ^18^O or clumped oxygen isotope analysis.
 keywords: 
   - Sclerochronology
   - Limpets
@@ -130,37 +116,7 @@ By relying and adding onto published datasets, we were able to simultaneously av
 
 ## Limpet specimens
 
-### Modern specimens
-
-The analysed specimens, their origin and respective studies with research background information can be found in [Table 1](#Table_1). Here we will briefly summarise their contextual information, which can be accessed in more detail at the respective studies [@Nicastro2020-ih; @Surge2012-ba; @Graniero2017-io]. While those studies also included other specimens, their accessibility or state of preservation did not all lend them to be re-analysed.
-
-::: {#Table_1}
-| Context        | Study              | Species          | Location                                        | Sample ID     | Previous analyses                                           |
-|------------|------------|------------|------------|------------|------------|
-| Modern         | [@Nicastro2020-ih] | *N. deaureata*   | Cambaceres Bay - Tierra del Fuego (AR)          | ND-1016-3     | Stable oxygen and carbon isotope analysis                   |
-|                |                    |                  |                                                 | ND-1016-4     |                                                             |
-|                |                    | *N. magellanica* |                                                 | NM-1016-1     |                                                             |
-|                |                    |                  |                                                 | NM-1016-3     |                                                             |
-|                | [@Graniero2017-io] | *P. vulgata*     | Rack Wick Bay - Westray (UK)                    | ORK-LT5       | Stable oxygen and carbon isotope analysis; Mg, Li, Sr, Ca,. |
-| Archaeological | [@Surge2012-ba]    | *P. vulgata*     | Rack Wick Bay - Westray (UK)                    | QG1-7188-1    | Stable oxygen and carbon isotope analysis                   |
-|                |                    |                  |                                                 | QG1-7189-2    |                                                             |
-|                |                    |                  |                                                 | QG2-1061-1    |                                                             |
-|                |                    |                  |                                                 | QG2-1064-1    |                                                             |
-|                |                    |                  |                                                 | QG2-7180-1    |                                                             |
-|                |                    |                  |                                                 | QG2-7180-2    |                                                             |
-|                |                    |                  |                                                 | QG1-7246-1    |                                                             |
-|                | This study         | *N. magellanica* | Heshkaia 35 in Moat Bay - Tierra del Fuego (AR) | Heshkaia_35-1 | *none*                                                      |
-|                |                    | *N. deaureata*   |                                                 | Heshkaia_35-2 |                                                             |
-|                |                    | *N. deaureata*   |                                                 | Heshkaia_35-3 |                                                             |
-|                |                    | *N. magellanica* |                                                 | Heshkaia_35-4 |                                                             |
-|                |                    | *N. magellanica* |                                                 | Heshkaia_35-5 |                                                             |
-|                |                    | *N. magellanica* |                                                 | Heshkaia_35-6 |                                                             |
-|                |                    | *N. magellanica* |                                                 | Heshkaia_35-7 |                                                             |
-|                |                    | *N. deaureata*   |                                                 | Heshkaia_35-8 |                                                             |
-|                |                    | *N. magellanica* |                                                 | Heshkaia_35-9 |                                                             |
-
-: Overview of the modern and archaeological limpet specimens analysed in this study.
-:::
+The analysed specimens, their origin and respective studies with research background information can be found in Table[1](#Table_1). Here we will briefly summarise their contextual information, which can be accessed in more detail at the respective studies [@Nicastro2020-ih; @Surge2012-ba; @Graniero2017-io]. While those studies also included other specimens, their accessibility or state of preservation did not all lend them to be re-analysed.
 
 ```{r SST_Data}
 
@@ -195,9 +151,28 @@ There are two main locations that we sourced specimens from: the Beagle Channel 
 
 On Westray one modern shell (ORK-LT5) was collected in Rack Wick Bay in August 2009. Westray lies about 70 km north of the Scottish mainland and experiences virtually no freshwater input with salinity values of 34.0 – 34.5 psu [@Inall2009-ho]. The annual SST ranges from `r WestrayMin`ºC in March to `r WestrayMax`ºC in August (@fig-SSTs).
 
-```{r SST_plot}
-#| fig-cap: SST values averaged from  years. SST values were sourced from @Good2020-nl
-#| fig-height: 5
+::: {#Table_1}
+| Context        | Study              | Species          | Location                               | Sample ID  | Previous analyses                                           |
+|------------|------------|------------|------------|------------|------------|
+| Modern         | [@Nicastro2020-ih] | *N. deaureata*   | Cambaceres Bay - Tierra del Fuego (AR) | ND-1016-3  | Stable oxygen and carbon isotope analysis                   |
+|                |                    |                  |                                        | ND-1016-4  |                                                             |
+|                |                    | *N. magellanica* |                                        | NM-1016-1  |                                                             |
+|                |                    |                  |                                        | NM-1016-3  |                                                             |
+|                | [@Graniero2017-io] | *P. vulgata*     | Rack Wick Bay - Westray (UK)           | ORK-LT5    | Stable oxygen and carbon isotope analysis; Mg, Li, Sr, Ca,. |
+| Archaeological | [@Surge2012-ba]    | *P. vulgata*     | Rack Wick Bay - Westray (UK)           | QG1-7188-1 | Stable oxygen and carbon isotope analysis                   |
+|                |                    |                  |                                        | QG1-7189-2 |                                                             |
+|                |                    |                  |                                        | QG2-1061-1 |                                                             |
+|                |                    |                  |                                        | QG2-1064-1 |                                                             |
+|                |                    |                  |                                        | QG2-7180-1 |                                                             |
+|                |                    |                  |                                        | QG2-7180-2 |                                                             |
+|                |                    |                  |                                        | QG1-7246-1 |                                                             |
+
+: Overview of the modern and archaeological limpet specimens analysed in this study.
+:::
+
+```{r SST_plot,fig.pos='H'}
+#| fig-cap: Monthly Sea Surface Temperature values averaged from  years. SST values were sourced from @Good2020-nl .
+#| fig-height: 3
 #| fig-width: 5
 #| label: fig-SSTs
 
@@ -213,22 +188,16 @@ ggplot(aes(x = month, y = mean_sst, colour = dataset,group=dataset)) +
   geom_path() +
   scale_colour_manual(values = c( "#007f7f", "#EC7063")) +
 scale_fill_manual(values = c( "#007f7f", "#EC7063"))+
-  labs(title = "Monthly Sea Surface Temperature",
+  labs(title = "",
        x = "Month",
-       y = "Mean Analysed SST (°C)") +
+       y = "Mean Analysed SST (°C)",colour="",fill="") +
     theme(axis.text.x = element_text(angle = 90, hjust = 1),
     legend.position = c(0.1, 0.9))+  
-  scale_y_continuous(breaks = c(5, 10, 15),limits = c(3,15)) +
-  labs(colour="",fill="")
-
+  scale_y_continuous(breaks = c(5, 10, 15),limits = c(3,15)) 
 
 ```
 
-### Archaeological specimens
-
-In total, we studied 16 archaeological specimens. Of those, seven *P. vulgata* come from Quoygrew on Westray dating to 900 – 1200 CE. These shells have previously been studied to characterise seasonal temperature change during the Medieval Climate Anomaly and the Little Ice Age [@Surge2012-ba]. Together they show a range of lifespans, with some comparatively long for their size (QG1-7246-1, 12 years within 16 mm of growth) making them particularly susceptible to time-averaging. That said, the majority are under 5 years old. These shells are an ideal comparative dataset from an archaeological assemblage to compare to the modern shell ORK_LT5 [@Graniero2017-io].
-
-Nine additional shells of *N. magellanica* (n=6) and *N*. *deaureata* (n=3) have been selected for LIBS analysis only, to provide a comparative dataset to the modern *Nacella* sp. shells. These have not been analysed for δ^18^O-values, but rather as a test to see whether patterns visible in the modern Mg/Ca ratio distributions are also preserved and apparent in the archaeological shells. They derive from the site of Heshkaia 35 situated within Moat Bay, around 30 km east of where the modern specimens in our study were collected [@Zangrando2014-qi; @Zangrando2021-qg]. With radiocarbon dates putting the shells into the Late Holocene (1300 – 1450 CE) they are of similar age — if somewhat younger — as the assemblage from Quoygrew.
+In total, we studied 7 archaeological specimens of *P. vulgata* coming from Quoygrew on Westray dating to 900 – 1200 CE. These shells have previously been studied to characterise seasonal temperature change during the Medieval Climate Anomaly and the Little Ice Age [@Surge2012-ba]. Together they show a range of lifespans, with some comparatively long for their size (QG1-7246-1, 12 years within 16 mm of growth) making them particularly susceptible to time-averaging. That said, the majority are under 5 years old. These shells are an ideal comparative dataset from an archaeological assemblage to compare to the modern shell ORK_LT5 [@Graniero2017-io].
 
 ## Methods {#methods}
 
@@ -246,8 +215,8 @@ High-quality oxygen isotope values (δ^18^O) were acquired from previous publica
 
 ```{r Nacella_Isotope_plot}
 #| fig-cap: Isotope values of *Nacella* sp. limpet shells from Cambaceres Bay (*a-f*).
-#| fig-height: 10
-#| fig-width: 10
+#| fig-height: 7
+#| fig-width: 8
 #| label: fig-Nac_iso
 # Filter data for Modern period
 Nacella_iso <- D18O %>% filter(grepl("Nacella", species))
@@ -797,17 +766,13 @@ P_all/P_individual+plot_layout(heights = c(0.5,0.5))+plot_annotation(tag_levels 
 
 # Discussion {#Discussion}
 
-The Mg/Ca ratios from the 2D elemental imaging present positive results on SST being the main factor behind Mg/Ca concentration in three Atlantic limpet species. Annually repeating patterns of increasing (spring/summer) and decreasing (autum/winter) SST were also visible in the line scans, albeit less straightforward than in the 2D-data. Nevertheless, the resulting R^2^-values for each species were high (*P. vulgata mean R^2^*=0.89, *N. deaureata mean R^2^*=0.86*, N. magellanica mean R^2^*=0.88). These results are similar to previously published data on *Patella* sp. shells (@tbl-other_corrs). R^2^ values of *P. depressa* lie between 0.78 and 0.87 [@Garcia-Escarzaga2021-ij], for *P. caerulea* from the Mediterranean between 0.78 and 0.96 — although with one outlier of 0.33, which had increased Mg/Ca ratios in increments with rich organic contents [@Hausmann2019-fi].
+The Mg/Ca ratios from the 2D elemental imaging present positive results on SST being the main factor behind Mg/Ca concentration in three Atlantic limpet species. Annually repeating patterns of increasing (spring/summer) and decreasing (autum/winter) SST were also visible in the line scans, albeit less straightforward than in the 2D-data. Nevertheless, the resulting R^2^-values for each species were high (*P. vulgata mean R^2^*=0.89, *N. deaureata mean R^2^*=0.86*, N. magellanica mean R^2^*=0.88). These results are similar to previously published data on *Patella* sp. shells (Table [2](#Table_2)). R^2^ values of *P. depressa* lie between 0.78 and 0.87 [@Garcia-Escarzaga2021-ij], for *P. caerulea* from the Mediterranean between 0.78 and 0.96 — although with one outlier of 0.33, which had increased Mg/Ca ratios in increments with rich organic contents [@Hausmann2019-fi].
 
-*P. rustica* has two studied specimens (JL1 and JL2) with R^2^-values of 0.02 and 0.8, respectively [@Ferguson2011-zl] @fig-Ferg. Together with the data from two *P. caerulea* shells (JM00 and JM30 with R^2^-values of 0.69 and 0.83), the data from JL2 was used determine a general Mg/Ca-SST relationship with an R^2^-value of 0.79. JL1 was disregarded in that calculation, as well as the second year of growth in JM00, which produced anomalous data. While no additional information about those specimens is available, it seems likely that the Mg/Ca ratios from JM00, which were interpreted as an ontogenetic trend, were potentially influenced by the same intra-increment heterogeneity we see in some of our shell specimens as well. Since these shells were analysed by homogenising the carbonate powder of the m+2 layer and the more exterior m+3 layer, these heterogeneities could potentially increased the Mg/Ca ratio unpredictably, leading to what might look like an ontogenetic trend in a linear dataset. Whether these anomalies affected JL1 in the same way, albeit stronger, is not clear but it might well be possible.
+*P. rustica* has two studied specimens (JL1 and JL2) with R^2^-values of 0.02 and 0.8, respectively [@Ferguson2011-zl] (@fig-Ferg). Together with the data from two *P. caerulea* shells (JM00 and JM30 with R^2^-values of 0.69 and 0.83), the data from JL2 was used determine a general Mg/Ca-SST relationship with an R^2^-value of 0.79. JL1 was disregarded in that calculation, as well as the second year of growth in JM00, which produced anomalous data. While no additional information about those specimens is available, it seems likely that the Mg/Ca ratios from JM00, which were interpreted as an ontogenetic trend, were potentially influenced by the same intra-increment heterogeneity we see in some of our shell specimens as well. Since these shells were analysed by homogenising the carbonate powder of the m+2 layer and the more exterior m+3 layer, these heterogeneities could potentially increased the Mg/Ca ratio unpredictably, leading to what might look like an ontogenetic trend in a linear dataset. Whether these anomalies affected JL1 in the same way, albeit stronger, is not clear but it might well be possible.
 
-```{r Other_Correlations}
-#| tbl-cap: Table showing correlations of Mg/Ca and δ^18^O found in other studies. * indicates that only SST data and no other geochemical data was used. ** these samples were used to determine a shared R^2^-value of 0.79.
-#| label: tbl-other_corrs
-```
-
+::: {#Table_2}
 | Species       | Locality       | Specimen | R^2^                    | Study                             |
-|-------------|-------------|-------------|-------------|----------------------|
+|--------------|--------------|--------------|--------------|-----------------|
 | *P. depressa* | Northern Spain | LAN541   | 0.87                    | [@Garcia-Escarzaga2021-ij]        |
 |               |                | LAN545   | 0.86                    |                                   |
 |               |                | LAN554   | 0.78                    |                                   |
@@ -836,6 +801,9 @@ The Mg/Ca ratios from the 2D elemental imaging present positive results on SST b
 | *P. caerulea* | Gibraltar      | JM00     | 0.69\*\*                |                                   |
 |               |                | JM30     | 0.83\*\*                |                                   |
 | *P. vulgata*  | Orkney         | ORK-LT5  | not reported, here 0.88 | [@Graniero2017-io] and this study |
+
+: Table showing correlations of Mg/Ca and δ^18^O found in other studies. \* indicates that only SST data and no other geochemical data was used. \*\* these samples were used to determine a shared R^2^-value of 0.79.
+:::
 
 ```{r Ferguson Data}
 #| fig-cap: Correlation graphs for Ferguson et al., 2011 specimens.
@@ -1010,67 +978,3 @@ LIBS elemental imaging provided some insight into elemental anomalies found part
 These results are particularly promising for future analyses of patelloid shells for the study of season of collection in archaeological sites as well as the reconstruction of sub-annual climatic conditions in the past. Shells of the species studied here are widely available along the European Atlantic façade and the Argentinian coastline and make up a large part of marine mollusc remains in archaeological sites of those regions. Improving their analysis in terms of cost and time efficiency through the benefits of LIBS, which can be used in this context as a screening tool for targeted δ^18^O analysis focusing on annual minima and maxima revealed in the Mg/Ca record, allows researchers to increase sample numbers and produce larger and more in-depth climatic studies than previously possible.
 
 # References
-
-```{r Modern iso ranges, eval=FALSE}
-# Ranges <- D18O %>%
-#   filter(!(sampleID == "ORK_LT5" & d18O < 0.2)) %>% #excluding outlier
-# group_by(sampleID,period) %>%
-#   mutate(max=max(d18O),
-#          min=min(d18O)) %>%
-#   select(min, sampleID,max) %>% unique()
-# 
-# Modern_Ranges <- Ranges %>%
-#   filter(period=="Modern") %>%
-#   arrange(range)
-
-
-# Interestingly, the overall annual range in δ^18^O-values on Orkney (\~`r Modern_Ranges$range[3]`‰, excluding the anomalous value of 3.38‰) is comparable to the range in the Nacella sp. shells (`r min(Modern_Ranges$range)`‰ to `r max(Modern_Ranges$range)`‰) despite the different SST ranges.
-
-```
-
-```{r Correlation Graphs, eval=FALSE }
-#| fig-cap: Correlation graphs for all specimens
-#| fig-height: 20
-#| fig-width: 10
-
-
-P_all <- Corr_data %>% 
-  pivot_wider(values_from = "value",names_from = "proxy") %>% 
-  mutate(region = substr(sampleID, 1, 1)) %>% 
-  ggplot()+
-  aes(d18o,mg_ca,col=sampleID)+
-  geom_point(show.legend = FALSE)+
-  labs(x=expression("‰ δ" ^ "18" * "O [VPDB]"),y="Mg/Ca intensity ratio")+
-  stat_smooth(aes(fill = sampleID,col=sampleID), method = "lm", formula = y~x,show.legend = FALSE) +
-  # stat_regline_equation(label.x = 2, #label.y = 32
-  #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
-  #   formula = y~x
-  # ) +
-  scale_colour_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063","pink1")) +
-scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12", "#007f7f", "#1f78b4", "#99d8c9", "#542788","black", "#d73027", "#EC7063","pink1"))#+
-  # facet_wrap(~region,ncol=2,scales = "free")
-
-
-# Expanded colour palette with 6 additional colours
-# Updated colour palette with 4 new replacements for the last colours
-# Refined colour palette with 3 additional colours
-# c("#007f7f", "#d73027", "#ffc100", "black", "#1a9850", "#542788", "#3288bd", "#99d8c9")
-
-
-P_individual <- P_all+ylim(0,0.8)+
-  facet_wrap(~sampleID,ncol=3)+#ylim(0.15,NA)+
-  ggpubr::stat_regline_equation(label.x = 0.5, label.y = 0.65,
-    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,
-    formula = y~x
-  )+
-  theme(
-    strip.background = element_rect(fill = "white", colour = NA),
-    strip.text = element_text(colour = "black"),
-    panel.border = element_rect(colour="black")
-  )
-
-
-P_all/P_individual+plot_layout(heights = c(0.5,0.5))
-
-
-```
