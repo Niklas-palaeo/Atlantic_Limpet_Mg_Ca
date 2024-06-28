@@ -1,0 +1,47 @@
+---
+title: "Template Title"
+author: "Niklas Hausmann"
+date: "Today"
+output: pdf_document
+---
+
+# Libraries 
+```{r Libraries,echo=FALSE,message = FALSE,warning = FALSE}
+knitr::opts_chunk$set(echo=FALSE,message = FALSE,warning = FALSE)
+
+{
+  pacman::p_load(
+    here,
+    janitor,
+    tidyverse,
+    cowplot,ggx,
+    patchwork,
+    RColorBrewer) 
+  
+  theme_set(theme_cowplot())
+}
+```
+
+# Data
+
+```{r}
+MgCa <- read_csv(here("data","MgCa.csv"))
+
+NM_1016_1 <- MgCa %>% 
+  filter(sampleID=="NM-1016-1") #%>% 
+  # select(-sampleID,-dist)
+
+NM_1016_1 %>% 
+  filter(std<0.01) %>% 
+  ggplot()+
+  aes(x=dist,y=mg_ca)+
+  geom_path()
+
+
+# write_csv(QG1_7246,file = here("data","export","QG1_7246.csv"))
+
+
+```
+
+
+

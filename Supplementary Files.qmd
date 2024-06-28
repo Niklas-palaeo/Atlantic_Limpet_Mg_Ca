@@ -1,0 +1,99 @@
+---
+title: "Supplementary Files for “*Confirmation of Mg/Ca ratios as palaeothermometers in Atlantic limpet shells*”"
+format: docx
+---
+
+**Authors: Niklas Hausmann, Donna Surge, Ivan Briz-Godino**
+
+```{r Settings}
+#| echo: FALSE
+#| message: FALSE
+#| warning: FALSE
+knitr::opts_chunk$set(echo=FALSE,message = FALSE,warning = FALSE)
+```
+
+# Overview
+
+The supplementary files for this study include a comprehensive set of elemental maps and linescans of various [*Patella vulgata*](#Patella) and [*Nacella* sp.](#Nacella) species, which were analysed to reassess the use of Magnesium to Calcium (Mg/Ca) ratios as palaeothermometers in Atlantic limpet shells. These supplementary files are organised by species and specimen identifiers, with both maps and linescans included for each sample.
+
+For each species, the images are grouped to provide a clear comparison between different specimens and sampling techniques. This dataset supports the main findings of the study by offering additional evidence for the reliable use of Mg/Ca ratios in detecting palaeotemperature changes.
+
+# *Nacella* sp. {#Nacella}
+
+### ND-1016-3
+
+```{r, fig.align= 'center', out.width = "49%"}
+knitr::include_graphics("Supplementary Files/Nacella/Map/ND-1016-3.png")
+knitr::include_graphics("Supplementary Files/Nacella/Linescan/ND-1016-3.png")
+```
+
+### ND-1016-4
+
+```{r, fig.align= 'center', out.width = "49%"}
+knitr::include_graphics("Supplementary Files/Nacella/Map/ND-1016-4.png")
+knitr::include_graphics("Supplementary Files/Nacella/Linescan/ND-1016-4.png")
+```
+
+### NM-1016-1
+
+```{r, fig.align= 'center', out.width = "49%"}
+knitr::include_graphics("Supplementary Files/Nacella/Map/NM-1016-1.png")
+knitr::include_graphics("Supplementary Files/Nacella/Linescan/NM-1016-1.png")
+```
+
+### NM-1016-3
+
+```{r, fig.align= 'center', out.width = "49%"}
+knitr::include_graphics("Supplementary Files/Nacella/Map/NM-1016-3-Edge.png")
+knitr::include_graphics("Supplementary Files/Nacella/Map/NM-1016-3.png")
+knitr::include_graphics("Supplementary Files/Nacella/Linescan/NM-1016-3.png")
+```
+
+# *Patella vulgata* {#Patella}
+
+### ORK-LT5
+
+```{r, fig.align= 'center', out.width = "49%"}
+knitr::include_graphics("Supplementary Files/Patella/Map/ORK-LT5.png")
+knitr::include_graphics("Supplementary Files/Patella/Linescan/ORK-LT5.png")
+```
+
+### QG1-7189-2
+
+```{r, fig.align= 'center', out.width = "49%"}
+knitr::include_graphics("Supplementary Files/Patella/Map/QG1-7189-2.png")
+knitr::include_graphics("Supplementary Files/Patella/Linescan/QG1-7189-2.png")
+```
+
+### QG1-7246-1
+
+This shell had a very long lifetime, which made the analysis not as clear as in other shells due to increased time-averaging. Interestingly, the record was also visible in the centre part of the shell, which is shown here.
+
+```{r, fig.align= 'center', out.width = "49%"}
+knitr::include_graphics("Supplementary Files/Patella/Map/QG1-7246-1-centre30.png")
+knitr::include_graphics("Supplementary Files/Patella/Map/QG1-7246-1-centre200.png")
+knitr::include_graphics("Supplementary Files/Patella/Map/QG1-7246-1.png")
+knitr::include_graphics("Supplementary Files/Patella/Linescan/QG1-7246-1-centre.png")
+knitr::include_graphics("Supplementary Files/Patella/Linescan/QG1-7246-1.png")
+```
+
+### QG2-1061-1
+
+```{r, fig.align= 'center', out.width = "49%"}
+knitr::include_graphics("Supplementary Files/Patella/Map/QG2-1061-1.png")
+knitr::include_graphics("Supplementary Files/Patella/Linescan/QG2-1061-1.png")
+```
+
+### QG2-7180-1
+
+```{r, fig.align= 'center', out.width = "49%"}
+knitr::include_graphics("Supplementary Files/Patella/Map/QG2-7180-1.png")
+knitr::include_graphics("Supplementary Files/Patella/Linescan/QG2-7180-1.png")
+```
+
+### QG2-7188-1
+
+```{r, fig.align= 'center', out.width = "49%"}
+knitr::include_graphics("Supplementary Files/Patella/Map/QG2-7188-1.png")
+knitr::include_graphics("Supplementary Files/Patella/Linescan/QG2-7188-1.png")
+```
