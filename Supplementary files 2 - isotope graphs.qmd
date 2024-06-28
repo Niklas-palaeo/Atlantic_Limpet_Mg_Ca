@@ -1,0 +1,115 @@
+---
+title: "Comparison of geochemical datasets for “*Confirmation of Mg/Ca ratios as palaeothermometers in Atlantic limpet shells*”"
+format: docx
+---
+
+
+# Overview
+These supplementary files include the linescan information for Mg/Ca and $\delta$^18^O records of all analysed [*Patella vulgata*](#Patella) and [*Nacella* sp.](#Nacella) shells, which were analysed to reassess the use of Magnesium to Calcium (Mg/Ca) ratios as palaeothermometers in Atlantic limpet shells. These supplementary files are organised by species and specimen identifiers.
+
+
+```{r Library and datasets}
+#| echo: FALSE
+#| message: FALSE
+#| warning: FALSE
+ 
+knitr::opts_chunk$set(echo=FALSE,message = FALSE,warning = FALSE)
+# Packages
+  pacman::p_load(
+    here,
+    janitor,
+    tidyverse,
+    cowplot,ggx,ggpubr,
+    patchwork,
+    RColorBrewer) 
+  
+  theme_set(theme_cowplot(10))
+
+# Scripts
+# source("DTW_Script.R")
+source("DTW_Script-update.R")
+
+  
+# Files  
+
+
+D18O <- read_csv(here("data","D18O.csv")) %>% 
+  mutate(period=case_when(startsWith(sampleID,"Q") ~ "Archaeological",TRUE ~ "Modern")) %>% 
+  mutate(species = case_when(
+      startsWith(sampleID, "ND") ~ "Nacella deaureata",
+      startsWith(sampleID, "NM") ~ "Nacella magellanica",
+      TRUE ~ "Patella vulgata"
+    ))
+
+  
+MgCa <- read_csv(here("data","MgCa.csv"))
+
+Ferguson_data <- read_csv(here("data","Ferguson-data.csv")) %>% 
+  na.omit()
+
+# # Check overlaps
+# # Find common sample IDs
+# intersect(MgCa$sampleID, D18O$sampleID)
+# 
+# # Find sample IDs only in MgCa
+# setdiff(MgCa$sampleID, D18O$sampleID)
+# 
+# # Find sample IDs only in D18O
+# setdiff(D18O$sampleID, MgCa$sampleID)
+
+D18O <-   D18O %>% filter(sampleID %in% MgCa$sampleID)
+
+```
+
+
+```{r}
+#| fig-height: 7
+#| fig-width: 16
+
+# Calculate the 2.5th and 97.5th percentiles for mg_ca within each sampleID
+percentiles <- MgCa %>%
+  group_by(sampleID) %>%
+  summarise(lower = quantile(mg_ca, 0.025, na.rm = TRUE),
+            upper = quantile(mg_ca, 0.975, na.rm = TRUE))
+
+# Function to create the plots
+create_plots <- function(sample) {
+  lower <- percentiles %>% filter(sampleID == sample) %>% pull(lower)
+  upper <- percentiles %>% filter(sampleID == sample) %>% pull(upper)
+  
+  P1 <-
+    MgCa %>%
+    filter(sampleID == sample) %>%
+    filter(relstd < 0.1) %>%
+    filter(mg_ca >= lower & mg_ca <= upper) %>%
+    ggplot() +
+    aes(dist, mg_ca) +
+    geom_path() +
+    theme_cowplot(17) +
+    labs(x = "", y = "Mg/Ca intensity ratio", title = sample)
+  
+  P2 <-
+    D18O %>%
+    filter(sampleID == sample) %>%
+    ggplot() +
+    aes(dist, d18O) +
+    geom_path() +
+    theme_cowplot(18) +
+    scale_y_reverse() +
+    labs(x = "Distance to edge (mm)", y = expression(paste(delta^{18}, "O (\u2030)")))
+  
+  P1 / P2 + plot_annotation(tag_levels = "a")
+}
+
+# Loop through each sampleID and create the plots
+unique_sampleIDs <- unique(MgCa$sampleID)
+
+for(sample in unique_sampleIDs) {
+  plot_combined <- create_plots(sample)
+  print(plot_combined)
+}
+
+
+
+```
+

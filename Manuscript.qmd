@@ -379,7 +379,7 @@ ORK_LT5_plot <-
     legend.title = element_text(hjust = 0.5)
     )+ # Center the legend title) +
     coord_fixed() +
-    labs(x = "mm", y = "mm", fill = "Mg/Ca ")
+    labs(x = "mm", y = "mm", fill = "Mg/Ca ", subtitle="ORK-LT5")
     
 ORK_LT5_line <- 
   MgCa %>% 
@@ -392,7 +392,7 @@ ORK_LT5_line <-
   scale_colour_viridis_c(limits = c(0.3, 0.6),
                        breaks = seq(0.3, 0.6, by = 0.1)) +    
   theme_cowplot(8)+
-  labs(x = "Distance to edge [mm]", y = "Mg/Ca intensity ratio")
+  labs(x = "Distance to edge (mm)", y = "Mg/Ca intensity ratio")
   
   
   
@@ -419,7 +419,7 @@ QG1_7188_1_plot <-
    legend.title = element_text(hjust = 0.5)
     )+ # Center the legend title) +
     coord_fixed() +
-    labs(x = "mm", y = "mm", colour = "Mg/Ca")
+    labs(x = "mm", y = "mm", colour = "Mg/Ca", subtitle="QG1-7188-1")
 
 QG1_7188_1_line <- 
   MgCa %>% 
@@ -432,7 +432,7 @@ QG1_7188_1_line <-
   scale_colour_viridis_c(limits = c(0.3, 0.6),
                        breaks = seq(0.3, 0.6, by = 0.1)) +    
   theme_cowplot(8)+
-  labs(x = "Distance to edge [mm]", y = "Mg/Ca intensity ratio")
+  labs(x = "Distance to edge (mm)", y = "Mg/Ca intensity ratio")
   
   
   
@@ -463,7 +463,7 @@ ggplot()+
   aes(dist,mg_ca)+
   geom_path()+
   theme_cowplot(17)+
-  labs(x = "", y = "Mg/Ca intensity ratio")
+  labs(x = "", y = "Mg/Ca intensity ratio",subtitle="ORK-LT5 ")
 
 
 
@@ -475,7 +475,7 @@ P2 <-
   geom_path()+
   theme_cowplot(18)+
   scale_y_reverse()+
-  labs(x = "Distance to edge [mm]", y = expression(paste(delta^{18},"O (\u2030)")))
+  labs(x = "Distance to edge (mm)", y = expression(paste(delta^{18},"O (\u2030)")))
 
 
 P1/P2+plot_annotation(tag_levels = "a")
@@ -564,14 +564,14 @@ ND_1016_plot <-
   geom_tile(show.legend=FALSE) +
   geom_path(data=ND_Line,aes(x,y),col="white",linetype="longdash")+
   theme_cowplot(20)+
-  scale_fill_viridis_c(limits = c(0, 0.5),
+  scale_fill_viridis_c(limits = c(0.05, 0.45),
                        breaks = seq(0, 0.5, by = 0.1)) +    
   theme(
     legend.position = c(0.45, 0.4),
     legend.title = element_text(hjust = 0.5)
     )+ # Center the legend title) +
     coord_fixed() +
-    labs(x = "mm", y = "mm", fill = "Mg/Ca ")
+    labs(x = "mm", y = "mm", fill = "Mg/Ca ",subtitle="ND-1016-3")
     
 ND_1016_line <- 
   ND_Line %>% 
@@ -580,7 +580,7 @@ ND_1016_line <-
   geom_path(show.legend = FALSE)+
   scale_colour_viridis_c() +    
   theme_cowplot(15)+
-  labs(x = "Distance to edge [mm]", y = "Mg/Ca intensity ratio")
+  labs(x = "Distance to edge (mm)", y = "Mg/Ca intensity ratio",subtitle="ND-1016-3")
   
   
   
@@ -603,7 +603,7 @@ NM_1016_plot100 <-
   geom_tile(show.legend=FALSE,size=0.5) +
   geom_path(data=NM_Line,aes(x,y),col="white",linetype="longdash")+
   theme_cowplot(20)+
-  scale_fill_viridis_c(limits = c(0, 0.5),
+  scale_fill_viridis_c(limits = c(0.1, 0.4),
                        breaks = seq(0, 0.4, by = 0.1)) +    
   theme(
     legend.position = c(0.45, 0.4),
@@ -616,7 +616,7 @@ NM_1016_plot100 <-
            ymin = min(NM_1016_map50$y)-2.3, 
            ymax = max(NM_1016_map50$y)-2, 
            alpha = 0, linetype="longdash",col = "black")+
-    labs(x = "mm", y = "mm", fill = "Mg/Ca ")
+    labs(x = "mm", y = "mm", fill = "Mg/Ca ",subtitle="NM-1016-3")
 
 NM_1016_plot50 <- 
   NM_1016_map50 %>%
@@ -626,7 +626,7 @@ NM_1016_plot50 <-
   aes(x, y, fill = mg_ca) +
   geom_tile(show.legend=FALSE,size=0.5) +
   theme_cowplot(20)+
-  scale_fill_viridis_c(limits = c(0, 0.4),
+  scale_fill_viridis_c(limits = c(0.05, 0.4),
                        breaks = seq(0, 0.4, by = 0.1)) +    
 theme(
     axis.title = element_blank(),
@@ -644,7 +644,7 @@ NM_1016_line <-
   geom_path(show.legend = FALSE)+
   scale_colour_viridis_c() +    
   theme_cowplot(15)+
-  labs(x = "Distance to edge [mm]", y = "Mg/Ca intensity ratio")
+  labs(x = "Distance to edge (mm)", y = "Mg/Ca intensity ratio",subtitle="NM-1016-3")
   
   
 NM_1016_plot <- NM_1016_plot100+inset_element(NM_1016_plot50+theme(plot.tag = element_blank()), 0, 0, 0.7, 0.7)
@@ -663,15 +663,16 @@ Maps+Lines+ plot_annotation(tag_levels = list(c("a", "b", "","c","d")))
 ```
 
 Interestingly, the Mg/Ca intensity ratios in the *Nacella* sp. shells were much lower (0.05–0.30) than those seen in other patelloid species (e.g. 0.3–0.7 in *Patella vulgata* above, or 0.5–1.5 in Hausmann *et al*. [-@Hausmann2023-ih]) using the same emission lines. While the intensity ratio depends chiefly on the chosen emission lines to calculate the proportion of the chosen Magnesium to the chosen Calcium peak, the low ratios still indicate lower concentrations than seen elsewhere, or seen only in aragonitic parts of e.g. *Patella* shells. Similar observations have been made before [@Graniero2017-io].
+Strong intra-increment heterogeneities are visible along the exterior of the shells (m+3 layer), where Mg/Ca intensity ratios are higher, particularly in specimen ND-1016-3 (@fig-Nac_LIBS). The step from lower to higher along the increment is not gradual, as is the case in NM-1016-3 (see inset of @fig-Nac_LIBS b), but rather step-wise. Sampling across this boundary in a linear scan would most likely lead to erroneous results. Also sampling across gradual changes as in NM-1016-3 can influence the overall correlation graph for a specimen. 
 
-Line scans reflect well the changes previously indicated by $\delta$^18^O values and also indicate about two years of recorded growth. That said, the 2D imaging suggests that in both specimens a third summer can be added to the total record, which is not captured by the line scans. The variability seen in the *P. vulgata* specimens above is not as strong, which might also be related to the fast and consistent growth rate of the shells.
+Line scans reflect well the changes previously indicated by $\delta$^18^O values and also indicate about two years of recorded growth. That said, the 2D imaging suggests that in both specimens a third summer can be added to the total record, which is not captured by the line scans.
 
 @fig-Nac_Comp shows the line scans of ND-1016-3 and NM-1016-3 in comparison to their $\delta$^18^O-values (similar graphs for the other *Nacella* sp. specimen can be found in the supplementaries). Compared to the *P. vulgata* records, these mirror each other much more clearly, due to the brief period recorded in the shells and its simple make-up.
 
 ```{r Nacella_Compare,dev='png',dpi=300}
-#| fig-cap: Comparison of LIBS line-scan and sequential $\delta$^18^O-values of specimen ORK-LT5 
-#| fig-height: 10
-#| fig-width: 20
+#| fig-cap: Comparison of LIBS line-scan and sequential $\delta$^18^O-values of *Nacella* sp. specimens. 
+#| fig-height: 7
+#| fig-width: 16
 #| label: fig-Nac_Comp
  
 P1 <-
@@ -682,8 +683,8 @@ P1 <-
 ggplot()+
   aes(dist,mg_ca)+
   geom_path()+
-  theme_cowplot(20)+
-  labs(x = "", y = "Mg/Ca intensity ratio")
+  theme_cowplot(15)+
+  labs(x = "", y = "Mg/Ca intensity ratio", subtitle="ND-1016-3")
 
 
 
@@ -693,9 +694,9 @@ P2 <-
   ggplot()+
   aes(dist,d18O)+
   geom_path()+
-  theme_cowplot(20)+
+  theme_cowplot(15)+
   scale_y_reverse()+
-  labs(x = "Distance to edge [mm]", y = expression(paste(delta^{18},"O (\u2030)")))
+  labs(x = "Distance to edge (mm)", y = expression(paste(delta^{18},"O (\u2030)")))
 
 
 P3 <-
@@ -705,8 +706,8 @@ P3 <-
 ggplot()+
   aes(dist,mg_ca)+
   geom_path()+
-  theme_cowplot(20)+
-  labs(x = "", y = "Mg/Ca intensity ratio")
+  theme_cowplot(15)+
+  labs(x = "", y = "Mg/Ca intensity ratio", subtitle="NM-1016-3")
 
 
 
@@ -716,9 +717,9 @@ P4 <-
   ggplot()+
   aes(dist,d18O)+
   geom_path()+
-  theme_cowplot(20)+
+  theme_cowplot(15)+
   scale_y_reverse()+
-  labs(x = "Distance to edge [mm]", y = expression(paste(delta^{18},"O (\u2030)")))
+  labs(x = "Distance to edge (mm)", y = expression(paste(delta^{18},"O (\u2030)")))
 
 
  ((P1 / P2) | (P3 / P4)) + plot_annotation(tag_levels = 'a')
@@ -786,51 +787,51 @@ P_individual
 
 # Discussion {#Discussion}
 
-The Mg/Ca ratios from the 2D elemental imaging present positive results on SST being the main factor behind Mg/Ca concentration in three Atlantic limpet species. Annually repeating patterns of increasing (spring/summer) and decreasing (autum/winter) SST were also visible in the line scans, albeit less straightforward than in the 2D-data. Nevertheless, the resulting R^2^-values for each species were high (*P. vulgata mean R^2^*=0.89, *N. deaureata mean R^2^*=0.86*, N. magellanica mean R^2^*=0.88). These results are similar to previously published data on *Patella* sp. shells (Table [2](#Table_2)). R^2^ values of *P. depressa* lie between 0.78 and 0.87 [@Garcia-Escarzaga2021-ij], for *P. caerulea* from the Mediterranean between 0.78 and 0.96 — although with one outlier of 0.33 (specimen MP64A), which had increased Mg/Ca ratios in increments with rich organic contents [@Hausmann2019-fi].
+The Mg/Ca ratios from the 2D elemental imaging present positive results on SST being the main factor behind Mg/Ca concentration in three Atlantic limpet species. Annually repeating patterns of increasing (spring/summer) and decreasing (autum/winter) SST were also visible in the line scans, albeit less straightforward than in the 2D-data. Nevertheless, the resulting R^2^-values for each species were high (*P. vulgata mean R^2^*=0.89, *N. deaureata mean R^2^*=0.86*, N. magellanica mean R^2^*=0.88). These results are similar to previously published data on *Patella* sp. shells (Table [2](#Table_2)): R^2^ values of *P. depressa* lie between 0.78 and 0.87 [@Garcia-Escarzaga2021-ij], for *P. caerulea* from the Mediterranean between 0.78 and 0.96 — barring one outlier of 0.33 (specimen MP64A), which had increased Mg/Ca ratios in increments with rich organic contents [@Hausmann2019-fi].
 
 ::: {#Table_2}
 \fontsize{8pt}{8pt}\selectfont
 
-| Species       | Locality       | Specimen | R^2^                    | Study                             |
-|-------------|-------------|-------------|-------------|--------------------|
-| *P. depressa* | Northern Spain | LAN541   | 0.87                    | [@Garcia-Escarzaga2021-ij]        |
-|               |                | LAN545   | 0.86                    |                                   |
-|               |                | LAN554   | 0.78                    |                                   |
-|               |                | LAN559   | 0.82                    |                                   |
-| *P. caerulea* | Croatia        | ISTPC1   | 0.9                     | [@Hausmann2019-fi]                |
-|               |                | ISTPC2   | 0.84                    |                                   |
-|               | Crete          | AF1911A  | 0.91                    |                                   |
-|               |                | AF3003A  | 0.92                    |                                   |
-|               | Israel         | AKKPC2   | 0.96                    |                                   |
-|               |                | AKKPC3   | 0.89                    |                                   |
-|               |                | FRMPC1   | 0.84                    |                                   |
-|               |                | FRMPC2   | 0.96                    |                                   |
-|               | Libya          | MO31A    | 0.83                    |                                   |
-|               |                | **MP64A**    | 0.33                    |                                   |
-|               |                | MP67A    | 0.96                    |                                   |
-|               |                | MP68A    | 0.81                    |                                   |
-|               | Malta          | MA10     | 0.82                    |                                   |
-|               | Tunisia        | TUNPC1   | 0.81                    |                                   |
-|               |                | TUNPC2   | 0.78                    |                                   |
-|               | Turkey         | ANTPC1   | 0.95                    |                                   |
-|               |                | ANTPC2   | 0.93                    |                                   |
-|               |                | KIZPC1   | 0.94                    |                                   |
-|               |                | KIZPC2   | 0.86                    |                                   |
-| *P. rustica*  | Gibraltar      | **JL1**      | 0.02                    | [@Ferguson2011-zl]                |
-|               |                | JL2      | 0.8\*\*                 |                                   |
-| *P. caerulea* | Gibraltar      | JM00     | 0.69\*\*                |                                   |
-|               |                | JM30     | 0.83\*\*                |                                   |
-| *P. vulgata*  | Orkney         | ORK-LT5  | not reported, here 0.88 | [@Graniero2017-io] and this study |
+| Species       | Locality       | Specimen  | R^2^                    | Study                             |
+|--------|----------|-------|-------------|--------------------------|
+| *P. depressa* | Northern Spain | LAN541    | 0.87                    | [@Garcia-Escarzaga2021-ij]        |
+|               |                | LAN545    | 0.86                    |                                   |
+|               |                | LAN554    | 0.78                    |                                   |
+|               |                | LAN559    | 0.82                    |                                   |
+| *P. caerulea* | Croatia        | ISTPC1    | 0.9                     | [@Hausmann2019-fi]                |
+|               |                | ISTPC2    | 0.84                    |                                   |
+|               | Crete          | AF1911A   | 0.91                    |                                   |
+|               |                | AF3003A   | 0.92                    |                                   |
+|               | Israel         | AKKPC2    | 0.96                    |                                   |
+|               |                | AKKPC3    | 0.89                    |                                   |
+|               |                | FRMPC1    | 0.84                    |                                   |
+|               |                | FRMPC2    | 0.96                    |                                   |
+|               | Libya          | MO31A     | 0.83                    |                                   |
+|               |                | **MP64A** | **0.33**                |                                   |
+|               |                | MP67A     | 0.96                    |                                   |
+|               |                | MP68A     | 0.81                    |                                   |
+|               | Malta          | MA10      | 0.82                    |                                   |
+|               | Tunisia        | TUNPC1    | 0.81                    |                                   |
+|               |                | TUNPC2    | 0.78                    |                                   |
+|               | Turkey         | ANTPC1    | 0.95                    |                                   |
+|               |                | ANTPC2    | 0.93                    |                                   |
+|               |                | KIZPC1    | 0.94                    |                                   |
+|               |                | KIZPC2    | 0.86                    |                                   |
+| *P. rustica*  | Gibraltar      | **JL1**   | **0.02**                | [@Ferguson2011-zl]                |
+|               |                | JL2       | 0.8\*\*                 |                                   |
+| *P. caerulea* | Gibraltar      | JM00      | 0.69\*\*                |                                   |
+|               |                | JM30      | 0.83\*\*                |                                   |
+| *P. vulgata*  | Orkney         | ORK-LT5   | not reported, here 0.88 | [@Graniero2017-io] and this study |
 
-: Table showing correlations of Mg/Ca and $\delta$^18^O found in other studies. \* indicates that only SST data and no other geochemical data was used. \*\* these samples were used to determine a shared R^2^-value of 0.79.
+: Correlations of Mg/Ca with $\delta$^18^O and SST found in other studies. Bold R^2^ values are interpreted as outliers. \* indicates that only SST data and no other geochemical data was used. \*\* these samples were used to determine a shared R^2^-value of 0.79.
 :::
 
 \normalsize
 
-*P. rustica* has two studied specimens (JL1 and JL2) with R^2^-values of 0.02 and 0.8, respectively [@Ferguson2011-zl] (@fig-Ferg). Together with the data from two *P. caerulea* shells (JM00 and JM30 with R^2^-values of 0.69 and 0.83), the data from JL2 was used determine a general Mg/Ca-SST relationship with an R^2^-value of 0.79. JL1 was disregarded in that calculation, as well as the second year of growth in JM00, which produced anomalous data. While no additional information about those specimens is available, it seems likely that the Mg/Ca ratios from JM00, which were interpreted as an ontogenetic trend, were potentially influenced by the same intra-increment heterogeneity we see in some of our shell specimens as well. Since these shells were analysed by homogenising the carbonate powder of the m+2 layer and the more exterior m+3 layer, these heterogeneities could potentially increased the Mg/Ca ratio unpredictably, leading to what might look like an ontogenetic trend in a linear dataset. Whether these anomalies affected JL1 in the same way, albeit stronger, is not clear but it might well be possible.
+*P. rustica* has two studied specimens (JL1 and JL2) with R^2^-values of 0.02 and 0.8, respectively [@Ferguson2011-zl] (@fig-Ferg). Together with the data from two *P. caerulea* shells (JM00 and JM30 with R^2^-values of 0.69 and 0.83), the data from JL2 was used determine a general Mg/Ca-SST relationship with an R^2^-value of 0.79. JL1 was disregarded in that calculation, as well as the second year of growth in JM00, which produced anomalous data. While no additional information about those specimens is available, it seems likely that discarded the Mg/Ca ratios from JM00, which were interpreted as an ontogenetic trend, were potentially influenced by the same intra-increment heterogeneity we see in some of our shell specimens as well. Since these shells were analysed by homogenising the carbonate powder of the m+2 layer and the more exterior m+3 layer, these heterogeneities could potentially increased the Mg/Ca ratio unpredictably, leading to what might look like an ontogenetic trend in a linear dataset. Whether these anomalies affected JL1 in the same way, albeit stronger, is not clear but it might well be possible.
 
 ```{r Ferguson Data, dev='png'}
-#| fig-cap: Correlation graphs for Ferguson et al., 2011 specimens.
+#| fig-cap: Correlation graphs for Ferguson et al., (2011) specimens.
 #| fig-height: 5
 #| fig-width: 16
 #| label: fig-Ferg
@@ -851,7 +852,7 @@ scale_fill_manual(values = c(  "#EC7063", "#007f7f", "#1f78b4", "#542788","black
 
 Ferg_individual <- Ferg_all+
   facet_wrap(~shell,ncol=4)+#ylim(0.15,NA)+
-  ggpubr::stat_regline_equation(label.x = 0.5, label.y = 26,
+  ggpubr::stat_regline_equation(label.x = 0.3, label.y = 26,
     aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,size=6,
     formula = y~x
   )+  
@@ -866,40 +867,14 @@ Ferg_individual
 #Ferg_all/Ferg_individual+plot_layout(heights = c(0.5,0.5))
 ```
 
-Another shell whose previous results we aim to explain further is ORK-LT5, which has previously been shown to have no substantial correlation with $\delta$^18^O or SST in implication [@Graniero2017-io]. Different to other specimens of this study, we were able to resample this specimen and getting Mg/Ca data on a slightly higher resolution (20–30 µm spots in a 100 µm raster compared to 50 µm spots spaced at 150–300 µm) and using 2 dimensions, as well as using a continuous high-resolution line-scan at (20–30 µm spots spaced at 10 µm) (@fig-ORK_sub). These additional data revealed previously missed summer peaks at around 2--3 mm distance to the shell edge (grey box in @fig-ORK_sub) and revealed additional growth at the very edge (dashed box in @fig-ORK_sub) mirroring the change towards warmer temperatures at the time of collection (August). Including these missing parts lead to a better alignment of both records and a resulting R^2^-value of 0.88.
+Another shell whose results we aim to explain further is ORK-LT5, which has previously been shown to have no substantial correlation with $\delta$^18^O or SST in implication [@Graniero2017-io]. Different to other specimens of this study, we were able to resample this specimen and to acquire Mg/Ca data on a slightly higher resolution (20–30 µm spots in a 100 µm raster compared to 50 µm spots spaced at 150–300 µm) and using 2 dimensions, as well as using a continuous high-resolution line-scan at (20–30 µm spots spaced at 10 µm) (@fig-ORK_sub). These additional data revealed previously missed summer peaks at around 2--3 mm distance to the shell edge (grey box in @fig-ORK_sub) and revealed additional growth at the very edge (dashed box in @fig-ORK_sub) mirroring the change towards warmer temperatures at the time of collection (August). Including these missing parts lead to a better alignment of both records and a resulting R^2^-value of 0.88 (@fig-ORK_sub).
 
-```{r ORK_LT5_Subsample}
+```{r ORK_LT5}
 #| fig-cap: Comparison of previous and new Mg/Ca data for ORK-LT5 explaining the previously unsuccessful correlation of Mg/Ca and $\delta$^18^O-values
 #| fig-height: 4.5
 #| fig-width: 15
 #| label: fig-ORK_sub
 
-# Function to create the desired subsampled tibble
-subsample_data <- function(data, window_size = 0.05, step_size = 0.15) {
-  max_dist <- max(data$dist)
-  subsample_intervals <- seq(0, max_dist, by = step_size)
-  
-  subsampled_data <- subsample_intervals %>%
-    purrr::map_df(~ {
-      window_start <- .x
-      window_end <- .x + window_size
-      
-      data_in_window <- data %>%
-        filter(dist >= window_start & dist < window_end)
-      
-      if (nrow(data_in_window) > 0) {
-        summarised_data <- data_in_window %>%
-          summarise(across(c(x, y, z, mg_ca, std, relstd, dist), mean, .names = "mean_{.col}"))
-        summarised_data <- summarised_data %>%
-          mutate(window_start = window_start, window_end = window_end)
-        return(summarised_data)
-      } else {
-        return(tibble())
-      }
-    })
-  
-  return(subsampled_data)
-}
 
 #
 # This is data extracted from Fig. 6E of Graniero et al. 2016
@@ -946,15 +921,6 @@ GranieroDF <- tibble::tribble(
                  11.8,   22.1
                 )
 
-
-# Apply the function to your data
-MgCa_filtered <- MgCa %>%
-  filter(sampleID == "ORK_LT5")
-
-MgCa_subsampled_150 <- subsample_data(MgCa_filtered,step_size = 0.15)
-
-MgCa_subsampled_300 <-  subsample_data(MgCa_filtered,step_size = 0.30)
-
 P3.1 <-  MgCa %>% 
   filter(sampleID=="ORK_LT5") %>% 
   filter(relstd < 0.1) %>%
@@ -967,14 +933,8 @@ P3.1 <-  MgCa %>%
   theme_cowplot(12)+
     annotate("rect", xmin = 1.5, xmax = 4, ymin = 0.3, ymax = 0.55, alpha = 0.2, fill = "grey50") +
   annotate("rect", xmin = 0, xmax = 0.5, ymin = 0.3, ymax = 0.55, alpha = 0, col="grey60", linetype="longdash", linewidth=1) +
-  labs(x = "Distance to edge [mm]", y = "Mg/Ca intensity ratio")
+  labs(x = "Distance to edge (mm)", y = "Mg/Ca intensity ratio")
   
-
-# P3.2 <-
-#   MgCa_subsampled_300 %>% 
-# ggplot()+
-#   aes(mean_dist,mean_mg_ca)+
-#   geom_path(col="firebrick4")
 
 P3.3 <-
   GranieroDF %>% 
@@ -986,22 +946,22 @@ ggplot()+
                      labels = seq(0,12,by=2))+
   annotate("rect", xmin = 1.5, xmax = 3, ymin = 10, ymax = 25, alpha = 0.2, fill = "grey50") +
   annotate("rect", xmin = 0, xmax = 0.08, ymin = 10, ymax = 25, alpha = 0, col="grey60", linetype="longdash", linewidth=1) +
-  labs(x = "Distance to edge [mm]", y = "Mg/Ca (mmol/mol)")
+  labs(x = "Distance to edge (mm)", y = "Mg/Ca (mmol/mol)")
   
 
 P3.1/P3.3
 
 ```
 
-While we were not able to resample the *Nacella* sp. specimens in Graniero *et al.* [-@Graniero2017-io], we were able to source other modern and archaeological specimens of the same species from Tierra del Fuego, which can serve as an indicator. Similar to other patelloid shells, the results of the *Nacella* specimens in our study were successful with high R^2^-values (0.76--0.95) and suggest Mg/Ca as a reliable proxy for SST (@fig-Nac_Comp and supplementaries). Why these results are different from the studied *Nacella* sp. specimens in Graniero et al. [-@Graniero2017-io] is not obvious, but the occasional alignment of the Mg/Ca and $\delta$^18^O records of their shells (Figure 6 in [@Graniero2017-io] ) indicate that there is some relationship that — potentially due to the low sampling resolution or intra-increment heterogeneity — fell apart and lead to an overall result of an uncorrelated relationship between Mg/Ca and SST.
+We were not able to resample the *Nacella* sp. specimens in Graniero *et al.* [-@Graniero2017-io], which had similarly unrelated records of $\delta$^18^O and Mg/Ca and pointed to no relationship between elemental ratios and SST at all. However, we were able to source other modern specimens of the same species from Tierra del Fuego, which shall serve here as an indicator. Similar to other patelloid shells, the results of the *Nacella* specimens in our study were successful with high R^2^-values (0.76--0.95) and suggest Mg/Ca as a reliable proxy for SST (@fig-Nac_Comp and supplementaries). Why these results are different from the studied *Nacella* sp. specimens in Graniero *et al*. [-@Graniero2017-io] is not obvious, but the occasional alignment of the Mg/Ca and $\delta$^18^O records of their shells (Figure 6 in Graniero *et al*. [-@Graniero2017-io]) indicate that there is some relationship that — potentially due to the low sampling resolution or intra-increment heterogeneity — is not perfectly visible, leading to an overall result of an uncorrelated relationship between Mg/Ca and SST.
 
 # Conclusion
 
-This study presents high-resolution and 2D information on Mg/Ca concentrations in modern and archaeological patelloid shells and their relation to sea surface temperature. The results for *Patella vulgata*, *Nacella deaureata*, and *Nacella magellanica* were consistently promising with mean R^2^-values of 0.89, 0.86, and 0.88 respectively.
+This study presents high-resolution and 2D information on Mg/Ca concentrations in modern and archaeological patelloid shells and their relationship to sea surface temperature. The results for *Patella vulgata*, *Nacella deaureata*, and *Nacella magellanica* were consistently promising with mean R^2^-values of 0.89, 0.86, and 0.88 respectively.
 
 LIBS elemental imaging provided some insight into elemental anomalies found particulary in the external parts (m+3 layer) of the shell, which introduce intra-incremental heterogeneity and which cannot be reconciled with modern SST changes or SST changes recorded in the $\delta$^18^O of the same shells. Our 2D approach allowed us to avoid these areas of intra-increment heterogeneity and focus on areas that are predominantly controlled by changes in SST.
 
-These results are particularly promising for future analyses of patelloid shells for the study of season of collection in archaeological sites as well as the reconstruction of sub-annual climatic conditions in the past. Shells of the species studied here are widely available along the European Atlantic façade and the Argentinian coastline and make up a large part of marine mollusc remains in archaeological sites of those regions. Improving their analysis in terms of cost and time efficiency through the benefits of LIBS, which can be used in this context as a screening tool for targeted $\delta$^18^O analysis focusing on annual minima and maxima revealed in the Mg/Ca record, allows researchers to increase sample numbers and produce larger and more in-depth climatic studies than previously possible.
+These results are particularly promising for future analyses of patelloid shells for the study of season of collection in archaeological sites as well as the reconstruction of sub-annual climatic conditions in the past. Shells of the species studied here are widely available along the European Atlantic façade and the Argentinian coastline and make up a significant part of marine mollusc remains in archaeological sites of those regions [@Colonese2011-ab; @Villagran2011-ld; @Zangrando2016-yl]. Improving their analysis in terms of cost and time efficiency through the benefits of LIBS, which can be used in this context as a screening tool for targeted $\delta$^18^O analysis focusing on annual minima and maxima revealed in the Mg/Ca record, will allow researchers to increase sample numbers and produce larger and more in-depth climatic studies than previously possible.
 
 # References
 
