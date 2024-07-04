@@ -150,25 +150,25 @@ CamBayMax <- SST_df %>% filter(dataset=="Cambaceres Bay - Tierra del Fuego") %>%
 ::: {#Table_1}
 \fontsize{8pt}{8pt}\selectfont
 
-| Context        | Study              | Species          | Location        | Sample ID  | Previous analyses |
-|------|------------|-------|--------|------|----------|
-| Modern         | [@Nicastro2020-ih] | *N. deaureata*   | Cambaceres Bay  | ND-1016-3  | $\delta$^18^O and $\delta$^13^C     |
-|                |                    |                  | \- Tierra del   | ND-1016-4  | analysis          |
-|                |                    | *N. magellanica* | Fuego (AR)      | NM-1016-1  |                   |
-|                |                    |                  |                 | NM-1016-3  |                   |
-|                |                    |                  |                 |            |                   |
-|                | [@Graniero2017-io] | *P. vulgata*     | Rack Wick Bay - | ORK-LT5    | $\delta$^18^O and $\delta$^13^C     |
-|                |                    |                  | Westray (UK)    |            | analysis;         |
-|                |                    |                  |                 |            | Mg, Li, Sr, Ca.   |
-|                |                    |                  |                 |            |                   |
-|                |                    |                  |                 |            |                   |
-| Archaeological | [@Surge2012-ba]    | *P. vulgata*     | Rack Wick Bay - | QG1-7188-1 | Stable oxygen     |
-|                |                    |                  | Westray (UK)    | QG1-7189-2 | and carbon        |
-|                |                    |                  |                 | QG2-1061-1 | isotope analysis  |
-|                |                    |                  |                 | QG2-1064-1 |                   |
-|                |                    |                  |                 | QG2-7180-1 |                   |
-|                |                    |                  |                 | QG2-7180-2 |                   |
-|                |                    |                  |                 | QG1-7246-1 |                   |
+| Context        | Study              | Species          | Location        | Sample ID  | Previous analyses                     |
+|------------|------------|------------|------------|------------|------------|
+| Modern         | [@Nicastro2020-ih] | *N. deaureata*   | Cambaceres Bay  | ND-1016-3  | $\delta$^18^O and $\delta$^13^C |
+|                |                    |                  | \- Tierra del   | ND-1016-4  | analysis                              |
+|                |                    | *N. magellanica* | Fuego (AR)      | NM-1016-1  |                                       |
+|                |                    |                  |                 | NM-1016-3  |                                       |
+|                |                    |                  |                 |            |                                       |
+|                | [@Graniero2017-io] | *P. vulgata*     | Rack Wick Bay - | ORK-LT5    | $\delta$^18^O and $\delta$^13^C |
+|                |                    |                  | Westray (UK)    |            | analysis;                             |
+|                |                    |                  |                 |            | Mg, Li, Sr, Ca.                       |
+|                |                    |                  |                 |            |                                       |
+|                |                    |                  |                 |            |                                       |
+| Archaeological | [@Surge2012-ba]    | *P. vulgata*     | Rack Wick Bay - | QG1-7188-1 | $\delta$^18^O                         |
+|                |                    |                  | Westray (UK)    | QG1-7189-2 | and $\delta$^13^C                            |
+|                |                    |                  |                 | QG2-1061-1 | analysis                      |
+|                |                    |                  |                 | QG2-1064-1 |                                       |
+|                |                    |                  |                 | QG2-7180-1 |                                       |
+|                |                    |                  |                 | QG2-7180-2 |                                       |
+|                |                    |                  |                 | QG1-7246-1 |                                       |
 
 : Overview of the modern and archaeological limpet specimens analysed in this study.
 :::
@@ -221,7 +221,7 @@ Using this system we carried out elemental imaging of the shell specimens at a r
 High-quality $\delta$^18^O values were acquired from previous publications on *P. vulgata* [@Surge2012-ba; @Graniero2017-io], *N. deaureata* and *N. magellanica* [@Nicastro2020-ih], in which detailed descriptions of the methodology for the stable isotope analyses can be found. In short, all shells were sectioned along the maximum growth axis to expose the internal growth structure. From the exposed section carbonate powder samples were acquired using a micromill with resolutions of 100–200 µm and by targeting the calcitic M+2 layer of the shells. Analytical precision of the isotope ratios was consistently at 0.05–0.10‰ and values are reported in per mil units (‰) relative to the VPDB (Vienna Pee Dee Belemnite) standard.
 
 ```{r Nacella_Isotope_plot,dev='png',dpi=300}
-#| fig-cap: Isotope values of *Nacella* sp. limpet shells from Cambaceres Bay.
+#| fig-cap: Isotope values of *Nacella* spp. limpet shells from Cambaceres Bay.
 #| fig-height: 5
 #| fig-width: 10
 #| label: fig-Nac_iso
@@ -259,7 +259,7 @@ wrap_plots(plots,nrow=2) + plot_annotation(tag_levels = 'a')
 
 ```
 
-@fig-Nac_iso and @fig-Pat_iso show the previously acquired sequential $\delta$^18^O-values of limpet shells by species (*Nacella* sp., and *Patella vulgata*, respectively). Due to the high-resolution sampling, all shells show seasonally resolved and multi-year quasi-sinusoidal records of SST change, with *Nacella* sp. shells living 2–3 years and *P. vulgata* living regularly over 3 years. In those instances where longer lifespans resulted in slow growth rates below 1 mm/yr (i.e. specimen QG1-7246-1, @fig-Pat_iso b), the temporal-resolution is reduced from more than a dozen of samples per year, to only around 7.
+@fig-Nac_iso and @fig-Pat_iso show the previously acquired sequential $\delta$^18^O-values of limpet shells by species (*Nacella* spp., and *Patella vulgata*, respectively). Due to the high-resolution sampling, all shells show seasonally resolved and multi-year quasi-sinusoidal records of SST change, with *Nacella* spp. shells living 2–3 years and *P. vulgata* living regularly over 3 years. In those instances where longer lifespans resulted in slow growth rates below 1 mm/yr (i.e. specimen QG1-7246-1, @fig-Pat_iso b), the temporal-resolution is reduced from more than a dozen of samples per year, to only around 7.
 
 ```{r Patella_Isotope_plot,dev='png',dpi=300,fig.pos='H'}
 #| fig-cap: Isotope values of *Patella vulgata* limpet shells from Quoygrew (QG, *a-g*) and Rack Wick Bay (ORK, *h*) on Westray, Orkney.
@@ -304,7 +304,7 @@ wrap_plots(plots,nrow=4) + plot_annotation(tag_levels = 'a')
 
 ## Dynamic Time Warping
 
-Because it is not possible to directly associate the exact sample locations used in the analysis of oxygen isotope ratios with the LIBS data, we used dynamic time warping (DTW) to align the time series of $\delta$^18^O values and Mg/Ca ratios. DTW is an algorithm that measures similarity between two proxy sequences, which may vary in sampling resolution or interval. By stretching or compressing sections of the series, DTW finds the probable alignment between the two sequences. This allows us to compare the proxy datasets more effectively, ensuring that the temporal dynamics of each shell are accurately matched despite possible discrepancies in sampling intervals or rates. We applied the DTW algorithm using the `dtw` package in R [@Giorgino2009-sj; @R_Core_Team2020-mk], which provides a robust framework for aligning time series data. This involved selecting appropriate distance measures and constraints to ensure meaningful alignment (see code in OSF Repository). The process involved iterative adjustments to minimise the overall distance between corresponding points in the two data sets.
+Because it is not possible to directly associate the exact sample locations used in the analysis of oxygen isotope ratios with the LIBS data, we used dynamic time warping (DTW) to align the time series of $\delta$^18^O values and Mg/Ca ratios. DTW is an algorithm that measures similarity between two proxy sequences, which may vary in sampling resolution or interval. By stretching or compressing sections of the series, DTW finds the probable alignment between the two sequences. This allows us to compare the proxy datasets more effectively, ensuring that the temporal dynamics of each shell are accurately matched despite possible discrepancies in sampling intervals or rates. We applied the DTW algorithm using the `dtw` package in R [@Giorgino2009-sj; @R_Core_Team2020-mk], which provides a robust framework for aligning time series data. This involved selecting appropriate distance measures and constraints to ensure meaningful alignment (see code in [@Hausmann_2024OSF]). The process involved iterative adjustments to minimise the overall distance between corresponding points in the two data sets.
 
 ```{r DTW Analysis}
 
@@ -350,8 +350,8 @@ for (sample in Samples) {
 
 ## *Patella vulgata*
 
-The elemental imaging of *P. vulgata* shells consistently showed repeating patterns of Mg/Ca intensity ratio changes with high Mg/Ca intensity ratios indicating and low ratios indicating low temperature periods. As examples, @fig-Pat_LIBS shows the 2D-distribution of elemental ratios across the entire section of ORK-LT5 and the preserved anterior side of QG1-7188-1 (additional maps can be found in the supplementaries). The repeating patterns are found across the calcitic layers that are exterior to the myostracum (layers m+2 and m+3) as well as the layers that are interior (m-2) [@Fenger2007-gf]. The layer m-1, which is also interior, consists of aragonite and is seen in @fig-Pat_LIBS in grey, as its Mg/Ca intensity ratio consistently falls below the range of interest (0.2 and above). Compared to other patelloid shells, some of whose interior is almost entirely made of aragonite, this layer is very thin.
-\newline
+The elemental imaging of *P. vulgata* shells consistently showed repeating patterns of Mg/Ca intensity ratio changes with high Mg/Ca intensity ratios indicating high temperature periods and low ratios indicating low temperature periods. As examples, @fig-Pat_LIBS shows the 2D-distribution of elemental ratios across the entire section of ORK-LT5 and the preserved anterior side of QG1-7188-1 (additional maps can be found in the supplementaries). The repeating patterns are found across the calcitic layers that are exterior to the myostracum (layers m+2 and m+3) as well as the layers that are interior (m-2)(see Fenger et al. [-@Fenger2007-gf] for a detailed explanations of microstructural layers in *P. vulgaata*). The layer m-1, which is also interior, consists of aragonite and is seen in @fig-Pat_LIBS in grey, as its Mg/Ca intensity ratio consistently falls below the range of interest (0.2 and above). Compared to other patelloid shells, some of whose interior is almost entirely made of aragonite, this layer is very thin. \newline
+
 ```{r Patella_LIBS,fig.pos='H'}
 #| fig-cap: Example LIBS maps and line scans of analysed specimens. (*a+c*) ORK-LT and (*b*+*d*) QG1-7188-1.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range.
 #| fig-height: 6
@@ -455,9 +455,9 @@ maps/lines+plot_layout(heights=c(0.6,0.5))
 
 Both specimens in @fig-Pat_LIBS show increased Mg/Ca intensity ratios towards the outside of the shell and some degree of intra-increment variability. This is particularly visible in @fig-Pat_LIBS c, where Mg/Ca intensity ratios range from \~0.5–0.7 in the first year of growth (9–12 mm on the y-axis). A similar pattern is visible in the interior m-2 layer of ORK-LT5 (@fig-Pat_LIBS a), which increase towards the anterior of the shell (0–10 mm on the x-axis).
 
-Line scans also indicate well the quasi-sinusoidal change of Mg/Ca intensity ratios expected based on the stable isotope data and elemental-imaging. That said, some of the variability of Mg/Ca intensity ratios within one season such as the summer period of QG1-7188-1 between 0.5 and 2.0 mm distance to the shell edge (@fig-Pat_LIBS d), is visible in a more dramatic manner than it appears in the 2D-image, showing the downside of line-scanning as opposed to the broader milling approach used for the analysis of carbonate powder [@Ferguson2011-zl].
+Line scans also indicate well the quasi-sinusoidal change of Mg/Ca intensity ratios expected based on the stable isotope data and elemental imaging. That said, some of the variability of Mg/Ca intensity ratios within one season such as the summer period of QG1-7188-1 between 0.5 and 2.0 mm distance to the shell edge (@fig-Pat_LIBS d), is visible in a more dramatic manner than it appears in the 2D image. This shows the downside of line-scanning as opposed to the broader milling approach used for the analysis of carbonate powder [@Ferguson2011-zl].
 
-@fig-Pat_Comp shows the line scan of ORK-LT5 in comparison to its $\delta$^18^O-values (similar graphs for other specimen can be found in the supplementaries). The measurements of the distance to the shell edge are not entirely identical, most likely because one growth increment can have a range of distances to the edge, depending on where one measures, and a line scan along the interior would be shorter than a line scan along the exterior. That said, increases and decreases of both proxies seem to mirror each other and to be well aligned.
+@fig-Pat_Comp shows the line scan of ORK-LT5 in comparison to its $\delta$^18^O values (similar graphs for other specimen can be found in the supplementaries). The measurements of the distance to the shell edge are not entirely identical, most likely because one growth increment can have a range of distances to the edge, depending on where one measures, and a line scan along the interior would be shorter than a line scan along the exterior. That said, increases and decreases of both proxies seem to mirror each other and to be well aligned.
 
 ```{r Patella_Compare,dev='png',dpi=300}
 #| fig-cap: Comparison of LIBS line-scan and sequential $\delta$^18^O-values of specimen ORK-LT5 
@@ -493,7 +493,7 @@ P1/P2+plot_annotation(tag_levels = "a")
 
 ```
 
-Aligning the records programmatically using dynamic time warping, allowed us to compare them directly to determine specimen-specific equations and quantify the correlation of both proxies (@fig-Pat_Corr). The equations for all specimens are different but the majority (barring one: QG1-7246-1) do seem to cluster around shared parameters ($\delta$^18^Ο = 0.6 – 0.065 \* Mg/Ca). The various coefficients of determination (R^2^) range between 0.81 (QG1-7246-1) and 0.95 (QG1-7189-2). These specimens are also the oldest and youngest specimens, respectively, suggesting that lower growth rates and time averaging had a negative effect on the correlation of both proxies. The mean R^2^ value of the individual *P. vulgata* specimens is 0.89, suggesting a generally good fit between the two proxies.
+Aligning the records programmatically using dynamic time warping, allowed us to compare both proxies for each specimen directly to determine specimen-specific equations and quantify the correlation of both proxies (@fig-Pat_Corr). The equations for all specimens are different but the majority (barring one: QG1-7246-1) do seem to cluster around shared parameters ($\delta$^18^Ο = 0.6 – 0.065 \* Mg/Ca). The various coefficients of determination (R^2^) range between 0.81 (QG1-7246-1) and 0.95 (QG1-7189-2). These specimens are also the oldest and youngest specimens, respectively, suggesting that lower growth rates and time averaging had a negative effect on the correlation of both proxies. The mean R^2^ value of the individual *P. vulgata* specimens is 0.89, suggesting a generally good fit between the two proxies.
 
 ```{r Patella_Correlation_Graphs,dev='png',dpi=300}
 #| fig-cap: Correlation graphs for *Patella vulgata* specimens.
@@ -547,12 +547,12 @@ P_individual
 
 ```
 
-## *Nacella* sp.
+## *Nacella* spp.
 
-The LIBS data for *Nacella* sp. specimens is less straightforward with shells being much thinner and thus patterns being more difficult to make out. Both specimens (ND-1016-3 and NM-1016-3) shown as example in @fig-Nac_LIBS (see additional graphs in supplementaries) also experience increases of Mg/Ca intensity ratio towards the exterior of the shell, similar to the *P. vulgata* specimens from Orkney. This intra-increment heterogeneity combined with the thinness of the shell, further complicates their analysis compared to *P. vulgata* or other *Patella* species [@Hausmann2019-fi]. Nevertheless, repeating patterns were visible in the anterior section of the shell, which were also mirrored in the inner layers (m-2) of specimens NM-1016-3 (@fig-Nac_LIBS b).
+The LIBS data for *Nacella* spp. specimens is less straightforward with shells being much thinner than *P. vulgata* and thus patterns being more difficult to discern. Both specimens (ND-1016-3 and NM-1016-3) shown as examples in @fig-Nac_LIBS (see additional graphs in supplementaries) also experience increases of Mg/Ca intensity ratio towards the exterior of the shell, similar to the *P. vulgata* specimens from Orkney. This intra-increment heterogeneity combined with the thinness of the shell, further complicates their analysis compared to *P. vulgata* or other *Patella* species [@Hausmann2019-fi]. Nevertheless, repeating patterns were visible in the anterior section of the shell, which were also mirrored in the inner layers (m-2) of specimens NM-1016-3 (@fig-Nac_LIBS b).
 
 ```{r Nacella_LIBS,fig.pos='H'}
-#| fig-cap: Example LIBS maps and line scans of analysed *Nacella* sp. specimens. (*a+c*) ND-1016-3 and (*b*+*d*) NM-1016-3.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range. Note the inset in (*c*) where the shell edge has been resampled using a higher resolution (50 µm instead of 100 µm) to better understand the Mg/Ca ratios at the shell edge.
+#| fig-cap: Example LIBS maps and line scans of analysed *Nacella* spp. specimens. (*a+c*) ND-1016-3 and (*b*+*d*) NM-1016-3.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range. Note the inset in (*c*) where the shell edge has been resampled using a higher resolution (50 µm instead of 100 µm) to better understand the Mg/Ca ratios at the shell edge.
 #| fig-height: 7
 #| fig-width: 16
 #| label: fig-Nac_LIBS
@@ -673,15 +673,14 @@ Maps+Lines+ plot_annotation(tag_levels = list(c("a", "b", "","c","d")))
 
 ```
 
-Interestingly, the Mg/Ca intensity ratios in the *Nacella* sp. shells were much lower (0.05–0.30) than those seen in other patelloid species (e.g. 0.3–0.7 in *Patella vulgata* above, or 0.5–1.5 in Hausmann *et al*. [-@Hausmann2023-ih]) using the same emission lines. While the intensity ratio depends chiefly on the chosen emission lines to calculate the proportion of the chosen Magnesium to the chosen Calcium peak, the low ratios still indicate lower concentrations than seen elsewhere, or seen only in aragonitic parts of e.g. *Patella* shells. Similar observations have been made before [@Graniero2017-io].
-Strong intra-increment heterogeneities are visible along the exterior of the shells (m+3 layer), where Mg/Ca intensity ratios are higher, particularly in specimen ND-1016-3 (@fig-Nac_LIBS). The step from lower to higher along the increment is not gradual, as is the case in NM-1016-3 (see inset of @fig-Nac_LIBS b), but rather step-wise. Sampling across this boundary in a linear scan would most likely lead to erroneous results. Also sampling across gradual changes as in NM-1016-3 can influence the overall correlation graph for a specimen. 
+Interestingly, the Mg/Ca intensity ratios in the *Nacella* spp. shells were much lower (0.05–0.30) than those seen in other patelloid species (e.g. 0.3–0.7 in *P. vulgata* above, or 0.5–1.5 in Hausmann *et al*. [-@Hausmann2023-ih]) using the same emission lines. While the intensity ratio depends chiefly on the chosen emission lines to calculate the proportion of the chosen Magnesium to the chosen Calcium peak, the low ratios still indicate lower concentrations than seen elsewhere or seen only in aragonitic parts of e.g. *Patella* shells. Similar observations have been made before [@Graniero2017-io]. Strong intra-increment heterogeneities are visible along the exterior of the shells (m+3 layer), where Mg/Ca intensity ratios are higher, particularly in specimen ND-1016-3 (@fig-Nac_LIBS). The step from lower to higher along the increment is not gradual, as is the case in NM-1016-3 (see inset of @fig-Nac_LIBS b), but rather stepwise. Sampling across this boundary in a linear scan would most likely lead to erroneous results. Also sampling across gradual changes as in NM-1016-3 can influence the overall correlation graph for a specimen.
 
 Line scans reflect well the changes previously indicated by $\delta$^18^O values and also indicate about two years of recorded growth. That said, the 2D imaging suggests that in both specimens a third summer can be added to the total record, which is not captured by the line scans.
 
-@fig-Nac_Comp shows the line scans of ND-1016-3 and NM-1016-3 in comparison to their $\delta$^18^O-values (similar graphs for the other *Nacella* sp. specimen can be found in the supplementaries). Compared to the *P. vulgata* records, these mirror each other much more clearly, due to the brief period recorded in the shells and its simple make-up.
+@fig-Nac_Comp shows the line scans of ND-1016-3 and NM-1016-3 in comparison to their $\delta$^18^O values (similar graphs for the other *Nacella* spp. specimens can be found in the supplementaries). Compared to the *P. vulgata* records, these mirror each other much more clearly, due to the brief period recorded in the shells and thus a lower chance of misaligning annual extremes.
 
 ```{r Nacella_Compare,dev='png',dpi=300}
-#| fig-cap: Comparison of LIBS line-scan and sequential $\delta$^18^O-values of *Nacella* sp. specimens. 
+#| fig-cap: Comparison of LIBS line-scan and sequential $\delta$^18^O-values of *Nacella* spp. specimens. 
 #| fig-height: 7
 #| fig-width: 16
 #| label: fig-Nac_Comp
@@ -737,10 +736,10 @@ P4 <-
 
 ```
 
-The *Nacella* sp. specimens showed similarly clustered correlations, which interestingly were not grouped by species. In fact, specimens ND-1016-3 (*Nacella deaureata)* and NM-1016-3 (*Nacella magellanica*) are almost identical in their fitted equations (@fig-Nac_Corr). Both also share a high coefficient of determination (R^2^) of 0.95 and 0.92 respectively, with the remaining specimens being somewhat lower (R^2^ = 0.76 for ND-1016-4 and R^2^=0.84 for NM-1016-3). The mean R^2^ value for each *Nacella* species is 0.86 for *Nacella deaureata* and 0.88 for *Nacella magellanica*. Why two specimens of different species are so well aligned is not entirely certain and randomness cannot for now be ruled out. That said, since they both have a high R^2^ value, it might just be that they were both minimally affected by factors other than SST, including the sampling location of our line scans.
+The *Nacella* spp. specimens showed similarly clustered correlations, which interestingly were not grouped by species. In fact, specimens ND-1016-3 (*Nacella deaureata)* and NM-1016-3 (*N. magellanica*) are almost identical in their fitted equations (@fig-Nac_Corr). Both also share a high coefficient of determination (R^2^) of 0.95 and 0.92 respectively, with the remaining specimens being somewhat lower (R^2^ = 0.76 for ND-1016-4 and R^2^=0.84 for NM-1016-3). The mean R^2^ value for each *N.* species is 0.86 for *N. deaureata* and 0.88 for *N. magellanica*. Why two specimens of different species are so well aligned is not entirely certain and randomness cannot for now be ruled out. That said, since they both have a high R^2^ value, it might just be that they were both minimally affected by factors other than SST, including the sampling location of our line scans.
 
 ```{r Nacella_Correlation_Graphs,dev='png',dpi=300}
-#| fig-cap: Correlation graphs for *Nacella* sp. specimens
+#| fig-cap: Correlation graphs for *Nacella* spp. specimens
 #| fig-height: 5
 #| fig-width: 16
 #| label: fig-Nac_Corr
@@ -798,13 +797,13 @@ P_individual
 
 # Discussion {#Discussion}
 
-The Mg/Ca ratios from the 2D elemental imaging present positive results on SST being the main factor behind Mg/Ca concentration in three Atlantic limpet species. Annually repeating patterns of increasing (spring/summer) and decreasing (autum/winter) SST were also visible in the line scans, albeit less straightforward than in the 2D-data. Nevertheless, the resulting R^2^-values for each species were high (*P. vulgata mean R^2^*=0.89, *N. deaureata mean R^2^*=0.86*, N. magellanica mean R^2^*=0.88). These results are similar to previously published data on *Patella* sp. shells (Table [2](#Table_2)): R^2^ values of *P. depressa* lie between 0.78 and 0.87 [@Garcia-Escarzaga2021-ij], for *P. caerulea* from the Mediterranean between 0.78 and 0.96 — barring one outlier of 0.33 (specimen MP64A), which had increased Mg/Ca ratios in increments with rich organic contents [@Hausmann2019-fi].
+The Mg/Ca ratios from the 2D elemental imaging present positive results suggesting that SST is the main factor influencing variations in Mg/Ca ratios in three Atlantic limpet species. Annually repeating patterns of increasing (spring/summer) and decreasing (autum/winter) SST were also visible in the line scans, albeit less straightforward than in the 2D-data. Nevertheless, the resulting R^2^-values for each species were high (*P. vulgata mean R^2^*=0.89, *N. deaureata mean R^2^*=0.86*, N. magellanica mean R^2^*=0.88). These results are similar to previously published data on other *Patella* species shells (Table [2](#Table_2)): R^2^ values of *P. depressa* lie between 0.78 and 0.87 [@Garcia-Escarzaga2021-ij], for *P. caerulea* from the Mediterranean between 0.78 and 0.96 — barring one outlier of 0.33 (specimen MP64A), which had increased Mg/Ca ratios in increments with rich organic contents [@Hausmann2019-fi].
 
 ::: {#Table_2}
 \fontsize{8pt}{8pt}\selectfont
 
 | Species       | Locality       | Specimen  | R^2^                    | Study                             |
-|--------|----------|-------|-------------|--------------------------|
+|------|------------|-------|--------|------|----------|
 | *P. depressa* | Northern Spain | LAN541    | 0.87                    | [@Garcia-Escarzaga2021-ij]        |
 |               |                | LAN545    | 0.86                    |                                   |
 |               |                | LAN554    | 0.78                    |                                   |
@@ -834,12 +833,12 @@ The Mg/Ca ratios from the 2D elemental imaging present positive results on SST b
 |               |                | JM30      | 0.83\*\*                |                                   |
 | *P. vulgata*  | Orkney         | ORK-LT5   | not reported, here 0.88 | [@Graniero2017-io] and this study |
 
-: Correlations of Mg/Ca with $\delta$^18^O and SST found in other studies. Bold R^2^ values are interpreted as outliers. \* indicates that only SST data and no other geochemical data was used. \*\* these samples were used to determine a shared R^2^-value of 0.79.
+: Correlations of Mg/Ca ratios with $\delta$^18^O values and SST found in other studies. Bold R^2^ values are interpreted as outliers. \* indicates that only SST data and no other geochemical data was used. \*\* these samples were used to determine a shared R^2^-value of 0.79.
 :::
 
 \normalsize
 
-*P. rustica* has two studied specimens (JL1 and JL2) with R^2^-values of 0.02 and 0.8, respectively [@Ferguson2011-zl] (@fig-Ferg). Together with the data from two *P. caerulea* shells (JM00 and JM30 with R^2^-values of 0.69 and 0.83), the data from JL2 was used determine a general Mg/Ca-SST relationship with an R^2^-value of 0.79. JL1 was disregarded in that calculation, as well as the second year of growth in JM00, which produced anomalous data. While no additional information about those specimens is available, it seems likely that discarded the Mg/Ca ratios from JM00, which were interpreted as an ontogenetic trend, were potentially influenced by the same intra-increment heterogeneity we see in some of our shell specimens as well. Since these shells were analysed by homogenising the carbonate powder of the m+2 layer and the more exterior m+3 layer, these heterogeneities could potentially increased the Mg/Ca ratio unpredictably, leading to what might look like an ontogenetic trend in a linear dataset. Whether these anomalies affected JL1 in the same way, albeit stronger, is not clear but it might well be possible.
+*P. rustica* has two studied specimens (JL1 and JL2) with R^2^-values of 0.02 and 0.80, respectively [@Ferguson2011-zl] (@fig-Ferg). Together with the data from two *P. caerulea* shells (JM00 and JM30 with R^2^-values of 0.69 and 0.83), the data from JL2 was used to determine a general Mg/Ca-SST relationship with an R^2^ value of 0.79. JL1 was disregarded in that calculation, as well as the second year of growth in JM00, which produced anomalous data. While no additional information about those specimens is available, it seems likely that the discarded Mg/Ca ratios from JM00, which were interpreted as an ontogenetic trend, were potentially influenced by the same intra-increment heterogeneity we see in some of our shell specimens as well. Since these shells were analysed by homogenising the carbonate powder of the m+2 layer and the more exterior m+3 layer, these heterogeneities could have potentially increased the Mg/Ca ratio unpredictably, leading to what might look like an ontogenetic trend in a linear dataset. Whether these anomalies affected JL1 in the same way, albeit stronger, is not clear but it might well be possible.
 
 ```{r Ferguson Data, dev='png'}
 #| fig-cap: Correlation graphs for Ferguson et al., (2011) specimens.
@@ -878,7 +877,7 @@ Ferg_individual
 #Ferg_all/Ferg_individual+plot_layout(heights = c(0.5,0.5))
 ```
 
-Another shell whose results we aim to explain further is ORK-LT5, which has previously been shown to have no substantial correlation with $\delta$^18^O or SST in implication [@Graniero2017-io]. Different to other specimens of this study, we were able to resample this specimen and to acquire Mg/Ca data on a slightly higher resolution (20–30 µm spots in a 100 µm raster compared to 50 µm spots spaced at 150–300 µm) and using 2 dimensions, as well as using a continuous high-resolution line-scan at (20–30 µm spots spaced at 10 µm) (@fig-ORK_sub). These additional data revealed previously missed summer peaks at around 2--3 mm distance to the shell edge (grey box in @fig-ORK_sub) and revealed additional growth at the very edge (dashed box in @fig-ORK_sub) mirroring the change towards warmer temperatures at the time of collection (August). Including these missing parts lead to a better alignment of both records and a resulting R^2^-value of 0.88 (@fig-ORK_sub).
+Another shell whose results we aim to explain further is ORK-LT5, which has previously been shown to have no substantial correlation with $\delta$^18^O values or SST by implication [@Graniero2017-io]. In contrast to other specimens in this study, we were able to resample this specimen and acquire Mg/Ca data on a slightly higher resolution (20–30 µm spots in a 100 µm raster compared to 50 µm spots spaced at 150–300 µm) and using 2 dimensions, as well as using a continuous high-resolution line-scan at (20–30 µm spots spaced at 10 µm) (@fig-ORK_sub). These additional data revealed previously missed summer peaks at around 2--3 mm distance to the shell edge (grey box in @fig-ORK_sub) and revealed additional growth at the very edge (dashed box in @fig-ORK_sub) mirroring the change towards warmer temperatures at the time of collection (August). Including these missing parts lead to a better alignment of both records and a resulting R^2^-value of 0.88 (@fig-ORK_sub).
 
 ```{r ORK_LT5}
 #| fig-cap: Comparison of previous and new Mg/Ca data for ORK-LT5 explaining the previously unsuccessful correlation of Mg/Ca and $\delta$^18^O-values
@@ -964,15 +963,15 @@ P3.1/P3.3
 
 ```
 
-We were not able to resample the *Nacella* sp. specimens in Graniero *et al.* [-@Graniero2017-io], which had similarly unrelated records of $\delta$^18^O and Mg/Ca and pointed to no relationship between elemental ratios and SST at all. However, we were able to source other modern specimens of the same species from Tierra del Fuego, which shall serve here as an indicator. Similar to other patelloid shells, the results of the *Nacella* specimens in our study were successful with high R^2^-values (0.76--0.95) and suggest Mg/Ca as a reliable proxy for SST (@fig-Nac_Comp and supplementaries). Why these results are different from the studied *Nacella* sp. specimens in Graniero *et al*. [-@Graniero2017-io] is not obvious, but the occasional alignment of the Mg/Ca and $\delta$^18^O records of their shells (Figure 6 in Graniero *et al*. [-@Graniero2017-io]) indicate that there is some relationship that — potentially due to the low sampling resolution or intra-increment heterogeneity — is not perfectly visible, leading to an overall result of an uncorrelated relationship between Mg/Ca and SST.
+We were not able to resample the *Nacella* spp. specimens in Graniero *et al.* [-@Graniero2017-io], which had similarly unrelated records of $\delta$^18^O values and Mg/Ca ratios and pointed to no relationship between elemental ratios and SST at all. However, we were able to source other modern specimens of the same species from Tierra del Fuego, which shall serve here as an indicator. Similar to other patelloid shells, the results of the *Nacella* specimens in our study were successful with high R^2^ values (0.76--0.95) and suggest Mg/Ca as a reliable proxy for SST (@fig-Nac_Comp and supplementaries). Why these results are different from the studied *Nacella* spp. specimens in Graniero *et al*. [-@Graniero2017-io] is not obvious, but the occasional alignment of the Mg/Ca and $\delta$^18^O records of their shells (Figure 6 in Graniero *et al*. [-@Graniero2017-io]) indicate that there is some relationship that — potentially due to the low sampling resolution or intra-increment heterogeneity — is not perfectly visible, leading to an overall result of an uncorrelated relationship between Mg/Ca ratios and SST.
 
 # Conclusion
 
-This study presents high-resolution and 2D information on Mg/Ca concentrations in modern and archaeological patelloid shells and their relationship to sea surface temperature. The results for *Patella vulgata*, *Nacella deaureata*, and *Nacella magellanica* were consistently promising with mean R^2^-values of 0.89, 0.86, and 0.88 respectively.
+This study uses LIBS as a novel analytical tool to present high-resolution and 2D information on Mg/Ca concentrations in modern and archaeological patelloid shells and their relationship to sea surface temperature. The results for *P. vulgata*, *N. deaureata*, and *N. magellanica* were consistently promising with mean R^2^ values of 0.89, 0.86, and 0.88 respectively.
 
-LIBS elemental imaging provided some insight into elemental anomalies found particulary in the external parts (m+3 layer) of the shell, which introduce intra-incremental heterogeneity and which cannot be reconciled with modern SST changes or SST changes recorded in the $\delta$^18^O of the same shells. Our 2D approach allowed us to avoid these areas of intra-increment heterogeneity and focus on areas that are predominantly controlled by changes in SST.
+LIBS elemental imaging provided insight into elemental anomalies found particulary in the external parts (m+3 layer) of the shell, which introduce intra-incremental heterogeneity and which cannot be reconciled with modern SST changes or SST changes recorded in the $\delta$^18^O values of the same shells. Our 2D approach allowed us to avoid these areas of intra-increment heterogeneity and focus on areas that are predominantly controlled by changes in SST.
 
-These results are particularly promising for future analyses of patelloid shells for the study of season of collection in archaeological sites as well as the reconstruction of sub-annual climatic conditions in the past. Shells of the species studied here are widely available along the European Atlantic façade and the Argentinian coastline and make up a significant part of marine mollusc remains in archaeological sites of those regions [@Colonese2011-ab; @Villagran2011-ld; @Zangrando2016-yl]. Improving their analysis in terms of cost and time efficiency through the benefits of LIBS, which can be used in this context as a screening tool for targeted $\delta$^18^O analysis focusing on annual minima and maxima revealed in the Mg/Ca record, will allow researchers to increase sample numbers and produce larger and more in-depth climatic studies than previously possible.
+These results are particularly promising for future analyses of patelloid shells for the study of season of collection in archaeological sites as well as the reconstruction of sub-annual climatic conditions in the past. Shells of the species studied here are widely available along the European Atlantic façade and the Argentinian coastline and make up a significant part of marine mollusc remains in archaeological sites of those regions [@Colonese2011-ab; @Villagran2011-ld; @Zangrando2016-yl]. By using LIBS as a screening tool for targeted \delta^{18}O analysis, focusing on annual minima and maxima revealed in the Mg/Ca record, researchers can improve cost and time efficiency. This novel method will enable them to increase sample numbers and produce larger, more in-depth climatic studies than previously possible.
 
 # References
 
