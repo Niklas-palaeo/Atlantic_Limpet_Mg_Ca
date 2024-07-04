@@ -27,7 +27,7 @@ author:
         country: Spain
         postal-code: 08028 
 abstract: |
-  This study provides a reassessment of the use of Magnesium to Calcium (Mg/Ca) ratios in Atlantic limpet shells to determine past sea surface temperatures (SST). While *Patella depressa* along the Spanish shoreline has repeatedly produced reliable correlations between SST and Mg/Ca ratios, this is not the case for other patelloid species. *Patella vulgata*, *Nacella deaureata*, and *Nacella magellanica* have been studied using Mg/Ca with mixed or contrary results. In this study, we present elemental maps of various such species together with stable oxygen isotope values that confirm a good relationship with SST. Our dataset also reassesses a specimen which was previously unsuccessful in providing significant correlations between $\delta$^18^O and Mg/Ca ratios. By reassessing these species and including modern and archaeological samples (n=12) from three patelloid species (*P. vulgata*, *N. deaureata*, and *N. magellanica*) we further add to the growing set of evidence for the reliable use of Mg/Ca ratios to detect palaeotemperature change. As a result, these species can in the future serve as a means to determine ontogenetic age and season of capture as well as to reveal locations of interest within the growth record (i.e. annual temperature minima and maxima) for the targeted analysis using $\delta$^18^O or clumped oxygen isotope analysis.
+  This study provides a reassessment of Magnesium to Calcium (Mg/Ca) ratios in Atlantic limpet shells to determine past sea surface temperatures (SST). While *Patella depressa* along the Spanish shoreline has repeatedly produced reliable correlations between SST and Mg/Ca ratios, this relationship is not the case for other patelloid species. *Patella vulgata*, *Nacella deaureata*, and *N. magellanica* have been studied using Mg/Ca ratios with mixed or contrary results. In this study, we present elemental maps of these three species together with oxygen isotope ratios ($\delta&^18^O) that confirm a good relationship with SST. Our dataset also reassesses a specimen which was previously unsuccessful in providing significant correlations between $\delta$^18^O values and Mg/Ca ratios. By reassessing these species and including modern and archaeological specimens (n=12) from three patelloid species (*P. vulgata*, *N. deaureata*, and *N. magellanica*) we further add to the growing set of evidence for the reliable use of Mg/Ca ratios to detect palaeotemperature change. As a result, these species can in the future serve to determine ontogenetic age and season of capture as well as to reveal locations of interest within the growth record (i.e. annual temperature minima and maxima) for the targeted analysis using $\delta$^18^O and clumped isotope analysis.
 keywords: 
   - Sclerochronology
   - Patella
@@ -104,13 +104,13 @@ D18O <-   D18O %>% filter(sampleID %in% MgCa$sampleID)
 
 # Introduction {#Introduction}
 
-Limpet shells are commonly found within archaeological sites and and past shorelines due to their robust carbonate structure and the long-term use of limpets as a marine food source [@Robson2023-oz]. They have successfully been studied in the past in the context of coastal subsistence economies, site occupation on seasonal [@Shackleton1973-ij; @Parker2018-wf; @Bosch2018-ud] or long-term scale [@Ortiz2015-mr], as well as palaeotemperature [@Fenger2007-gf; @Surge2012-ba; @Wang2012-ee; @Colonese2012-ct; @Ferguson2011-zl]. Determining past sea surface temperature (SST) change largely relies on the measurement of $\delta$^18^O-values within the calcitic parts of the shell, but attempts have been made to also use elemental ratios, such as magnesium to calcium (Mg/Ca) [@Graniero2017-io; @Ferguson2011-zl], to have an alternative measure, that potentially provides a more accurate SST estimate than $\delta$^18^O-values, which are also affected by changes in salinity. In addition, the data acquisition of elemental ratios — either through laser-ablation-isotope-ratio-mass-spectrometry (LA-ICP-MS) or laser induced breakdown spectroscopy (LIBS), can be much faster and cost-effective, increasing the number of specimens that can be studied overall [@Durham2017-fh; @Hausmann2023-ih].
+Limpet shells are commonly found within archaeological sites and past shorelines due to their robust carbonate structure and the long-term use of limpets as a marine food source [@Robson2023-oz]. They have been successfully studied in the context of coastal subsistence economies and site occupation on seasonal [@Shackleton1973-ij; @Parker2018-wf; @Bosch2018-ud] or long-term scales [@Ortiz2015-mr], as well as archives of palaeotemperature [@Fenger2007-gf; @Surge2012-ba; @Wang2012-ee; @Colonese2012-ct; @Ferguson2011-zl]. Determining past sea surface temperature (SST) change recorded in patelloid limpet shells largely relies on the measurement of $\delta$^18^O values within the calcitic parts of the shell, but attempts have been made to also use elemental ratios, such as magnesium to calcium (Mg/Ca) ratios [@Graniero2017-io; @Ferguson2011-zl], to have an alternative measure that potentially provides a more accurate SST estimate than $\delta$^18^O-values,as the latter proxy is affected by changes in the mixing of fresh- and saltwater. In addition, the data acquisition of elemental ratios — either through laser-ablation-isotope-ratio-mass-spectrometry (LA-ICP-MS) or laser induced breakdown spectroscopy (LIBS), can be much faster and cost-effective, increasing the number of specimens that can be studied overall [@Durham2017-fh; @Hausmann2023-ih].
 
-Problematically, links between Mg/Ca ratios and SST changes in many marine mollusc shells, including limpets, have shown to be unreliable [@Surge2008-ri; @Wanamaker2008-zl; @Schone2010-yl; @Freitas2012-tx; @Graniero2017-io; @Poulain2015-dg; @Vihtakari2017-wd]. This is particularly the case where there is little available additional information on metabolic processes, organic components of the shell matrix, intra-increment and intra-shell variability, and growth rates, which can independently and unpredictably affect Mg/Ca ratios and confound their interpretation as temperature proxy. Confusingly, in some cases multiple different temperature equations have been found for the same species (see Freitas *et al*. [-@Freitas2012-tx] and Vihtakari *et al*. [-@Vihtakari2017-wd] and references therein). Coeval specimens sharing one locality can also show differences in their relation to SST [@Hausmann2019-fi]. Where the use of Mg/Ca as a palaeotemperature proxy was successful, anomalous patterns in some specimens had still to be filtered out by hand, reducing the overall robustness of the results of those successful studies [@Ferguson2011-zl].
+Problematically, links between Mg/Ca ratios and SST changes in many marine mollusc shells, including limpets, have shown to be unreliable [@Surge2008-ri; @Wanamaker2008-zl; @Schone2010-yl; @Freitas2012-tx; @Graniero2017-io; @Poulain2015-dg; @Vihtakari2017-wd]. This is particularly the case where there is little available additional information on metabolic processes, organic components of the shell matrix, intra-increment and intra-shell variability, and growth rates, which can independently and unpredictably affect Mg/Ca ratios and confound their interpretation as a temperature proxy. Confusingly, in some cases multiple different temperature equations have been found for the same species (see Freitas *et al*. [-@Freitas2012-tx] and Vihtakari *et al*. [-@Vihtakari2017-wd] and references therein). Coeval specimens sharing one locality can also show differences in their relation to SST [@Hausmann2019-fi]. Where the use of Mg/Ca ratios as a palaeotemperature proxy was successful, anomalous patterns in some specimens had to be filtered out by hand, reducing the overall robustness of the results of those successful studies [@Ferguson2011-zl].
 
-While recent research particularly of *Patella* sp. in the Mediterranean and Southwest Europe have provided promising results [@Hausmann2019-fi; @Garcia-Escarzaga2015-jc; @Garcia-Escarzaga2018-nf]. There remains a lack of clarity for Atlantic limpet species, particularly since it was last shown here, that they are not reliable recorders of palaeotemperature [@Graniero2017-io].
+Recent research particularly of *Patella* spp. in the Mediterranean and southwest Europe have provided promising results [@Hausmann2019-fi; @Garcia-Escarzaga2015-jc; @Garcia-Escarzaga2018-nf]. However, there remains a lack of clarity for Atlantic limpet species, particularly since it was shown, that the Mg/Ca ratio in their shells are not reliable recorders of palaeotemperature [@Graniero2017-io].
 
-In this study we will repeat and expand the analysis of Atlantic limpets to determine the reliability of Mg/Ca ratios as palaeotemperature proxies. To do this, we sampled a set of previously published and unpublished limpet specimens dating to modern and archaeological contexts using LIBS. LIBS allows us to carry out 2D imaging of entire shell sections, which helps us to navigate the complex elemental structure of the shell and better separate the external, temperature-related changes from the internal and less understood factors that influence the Mg/Ca ratio. By working with already published datasets, we were able to simultaneously avoid costs for new high-resolution $\delta$^18^O-data, to use real-world examples, and to also provide pilot-data for areas of existing research interest. Generally establishing the usefulness and reliability of Mg/Ca as SST proxy in limpets should help to provide a platform for such future research and an important stepping stone to a better understanding of elemental ratios in other marine mollusc shells.
+In this study we will repeat and expand the analysis of Atlantic limpets to determine the reliability of Mg/Ca ratios as palaeotemperature proxies. To do this, we sampled a set of previously published and unpublished limpet specimens dating to modern and archaeological contexts using LIBS. LIBS allows us to carry out 2D imaging of entire shell sections, which allows navigation of the complex elemental structure of the shell and better separate the external, temperature-related changes from the internal and less understood factors that influence the Mg/Ca ratio. By working with already published datasets, we were able to simultaneously avoid costs for new high-resolution $\delta$^18^O-data, to use real-world examples, and to also provide pilot-data for areas of existing research interest. Generally establishing the usefulness and reliability of Mg/Ca ratios as SST proxy in limpets provides a platform for future research and an important steppingstone to a better understanding of elemental ratios in other marine mollusc shells.
 
 # Materials and Methods {#Methods}
 
@@ -152,15 +152,15 @@ CamBayMax <- SST_df %>% filter(dataset=="Cambaceres Bay - Tierra del Fuego") %>%
 
 | Context        | Study              | Species          | Location        | Sample ID  | Previous analyses |
 |------|------------|-------|--------|------|----------|
-| Modern         | [@Nicastro2020-ih] | *N. deaureata*   | Cambaceres Bay  | ND-1016-3  | Stable oxygen     |
-|                |                    |                  | \- Tierra del   | ND-1016-4  | and carbon        |
-|                |                    | *N. magellanica* | Fuego (AR)      | NM-1016-1  | isotope analysis  |
+| Modern         | [@Nicastro2020-ih] | *N. deaureata*   | Cambaceres Bay  | ND-1016-3  | $\delta$^18^O and $\delta$^13^C     |
+|                |                    |                  | \- Tierra del   | ND-1016-4  | analysis          |
+|                |                    | *N. magellanica* | Fuego (AR)      | NM-1016-1  |                   |
 |                |                    |                  |                 | NM-1016-3  |                   |
 |                |                    |                  |                 |            |                   |
-|                | [@Graniero2017-io] | *P. vulgata*     | Rack Wick Bay - | ORK-LT5    | Stable oxygen     |
-|                |                    |                  | Westray (UK)    |            | and carbon        |
-|                |                    |                  |                 |            | isotope analysis; |
+|                | [@Graniero2017-io] | *P. vulgata*     | Rack Wick Bay - | ORK-LT5    | $\delta$^18^O and $\delta$^13^C     |
+|                |                    |                  | Westray (UK)    |            | analysis;         |
 |                |                    |                  |                 |            | Mg, Li, Sr, Ca.   |
+|                |                    |                  |                 |            |                   |
 |                |                    |                  |                 |            |                   |
 | Archaeological | [@Surge2012-ba]    | *P. vulgata*     | Rack Wick Bay - | QG1-7188-1 | Stable oxygen     |
 |                |                    |                  | Westray (UK)    | QG1-7189-2 | and carbon        |
@@ -175,9 +175,9 @@ CamBayMax <- SST_df %>% filter(dataset=="Cambaceres Bay - Tierra del Fuego") %>%
 
 \normalsize
 
-There are two main locations that we sourced specimens from: the Beagle Channel in Tierra del Fuego (Argentina) and the island of West Ray in Orkney (UK). Four modern specimens were collected from the Beagle Channel in Cambaceres Bay in October 2016. The area receives around 570 mm precipitation but the channel waters are predominantly influenced by marine currents and in the period of October 2015 to October 2016 stayed around 30.7 ± 0.7 psu [@Nicastro2020-ih]. SSTs range from `r CamBayMin`ºC in August to `r CamBayMax`ºC in February (@fig-SSTs - red).
+Specimens were sourced from two main locations: the Beagle Channel in Tierra del Fuego (Argentina) and the island of West Ray in the Orkney archipelago of Scotland (UK). Four modern specimens were collected from the Beagle Channel in Cambaceres Bay in October 2016. The area receives around 570 mm of precipitation, but the channel waters are predominantly influenced by marine currents and in the period of October 2015 to October 2016 stayed around 30.7 ± 0.7 psu (practical salinity units) [@Nicastro2020-ih]. SSTs range from `r CamBayMin`ºC in August to `r CamBayMax`ºC in February (@fig-SSTs -- red line).
 
-On Westray one modern shell (ORK-LT5) was collected in Rack Wick Bay in August 2009 and has previously been analysed using stable carbon and oxygen isotopes, as well as LA-ICP-MS [@Graniero2017-io]. Westray lies about 70 km north of the Scottish mainland and experiences virtually no freshwater input with salinity values of 34.0 – 34.5 psu [@Inall2009-ho]. The annual SST ranges from `r WestrayMin`ºC in March to `r WestrayMax`ºC in August (@fig-SSTs - blue).
+On Westray one modern shell (ORK-LT5) was collected in Rack Wick Bay in August 2009 and has been previously analysed for $\delta$^18^O and $\delta$^13^C values, as well as LA-ICP-MS [@Graniero2017-io]. Westray lies about 70 km north of the Scottish mainland and experiences virtually no freshwater input with salinity values of 34.0 – 34.5 psu [@Inall2009-ho]. The annual SST ranges from `r WestrayMin`ºC in March to `r WestrayMax`ºC in August (@fig-SSTs -- blue line).
 
 ```{r SST_plot,fig.pos='H'}
 #| fig-cap: Monthly Sea Surface Temperature values averaged from  years. SST values were sourced from @Good2020-nl.
@@ -206,19 +206,19 @@ scale_fill_manual(values = c( "#007f7f", "#EC7063"))+
 
 ```
 
-We also studied 7 archaeological specimens of *P. vulgata* coming from Quoygrew on Westray dating to 900 – 1200 CE. These shells have previously been studied to characterise seasonal temperature change during the Medieval Climate Anomaly and the Little Ice Age [@Surge2012-ba]. Together they show a range of lifespans, with some comparatively long for their size (QG1-7246-1, 12 years within 16 mm of growth) making them particularly susceptible to time-averaging. That said, the majority are under 5 years old.
+We also studied 7 archaeological specimens of *P. vulgata* from the Quoygrew site on Westray dating to 900 – 1200 CE. These shells have previously been studied to characterise seasonal temperature change during the Medieval Climate Anomaly (810 -- 1229 CE) [@Surge2012-ba]. Together they show a range of lifespans, with some comparatively long lived for their size (QG1-7246-1, 12 years within 16 mm of growth) making them particularly susceptible to within-shell time-averaging because of slow growth rates. That said, the majority are under 5 years old yielding sufficiently fast growth to nearly capture seasonal amplitudes of SST.
 
 ## Methods {#methods}
 
 ### Mg/Ca ratios
 
-Mg/Ca elemental imaging was carried out using Laser Induced Breakdown Spectroscopy at the Leibniz Zentrum für Archäologie (Mainz-Germany) using previously published methods [@Hausmann2023-ih]. These involve the ablation of the shell section using an infrared (1064 nm) laser (1–2 mJ, 100 Hz) onto a surface area of 20–30 µm to generate a plasma plume. This plume emits light, which is measured using a synchronised spectrometer (delay time = 0.5 µs, integration time = 1 µs). The resulting light spectrum quantifies the emission lines of Magnesium (MgII; 279.553 nm) and Calcium (CaII; 315.887 nm) to determine their intensity ratio. While these two peaks alone do not represent the molar concentrations of both elements (as opposed to calibration free LIBS; e.g. [@Martinez-Minchero2022-jz]), the intensity ratio is linearly correlated to the molar concentration [@Hausmann2017-oa] and can be used as a reliable indicator of Mg/Ca changes within the shell carbonate. All values reported here at in arbitrary units based on the ratio of intensities of the peaks above.
+Mg/Ca elemental imaging was carried out using LIBS at the Leibniz Zentrum für Archäologie (Mainz-Germany) following previously published methods [@Hausmann2023-ih]. The imaging involves the ablation of the shell section using an infrared (1064 nm) laser (1–2 mJ, 100 Hz) onto a surface area of 20–30 µm to generate a plasma plume. This plume emits light, which is measured using a synchronised spectrometer (delay time = 0.5 µs, integration time = 1 µs). The resulting light spectrum quantifies the emission lines of Magnesium (MgII; 279.553 nm) and Calcium (CaII; 315.887 nm) to determine their intensity ratio. While these two peaks alone do not represent the molar concentrations of both elements (as opposed to calibration free LIBS; e.g. [@Martinez-Minchero2022-jz]), the intensity ratio is linearly correlated to the molar concentration [@Hausmann2017-oa] and can be used as a reliable indicator of Mg/Ca variation within the shell carbonate. All values reported here are in arbitrary units based on the ratio of intensities of the peaks above.
 
-Using this system we carried out elemental imaging of the shell specimens at a resolution of 50--100 µm distance between sampling spots. Each spot was irradiated 10 times with the 3 first spectra discarded as a cleaning step and the remaining spectra summed to get an average Mg/Ca intensity ratio for each sample spot. Subsequently, we re-sampled the section using a line scan at 10 µm resolution. This leads to an overlap between sample spots, but also allows for a continuous record without gaps. Intensity ratios were filtered for cases with high relative standard deviation (i.e. more than 10%). These occurred in places where the previous sampling procedures for carbonate powder as part of the oxygen isotope analysis left an uneven sample surface introducing variability in the plasma generation and thus uncertainty in the data of these locations.
+Using this system we carried out elemental imaging of the shell specimens at a resolution of 50--100 µm distance between sampling spots. Each spot was irradiated 10 times with the first 3 spectra discarded as a cleaning step and the remaining spectra summed to get an average Mg/Ca intensity ratio for each sample spot. Subsequently, we re-sampled the section using a line scan at 10 µm resolution. This leads to an overlap between sample spots, but also allows for a continuous record without gaps. Intensity ratios were filtered for cases with high relative standard deviation (i.e., more than 10%). These occurred in places where the previous sampling procedures for carbonate powder as part of the oxygen isotope analysis left an uneven sample surface introducing variability in the plasma generation and thus uncertainty in the data of these locations.
 
-### Oxygen isotopes
+### Oxygen isotope ratios
 
-High-quality oxygen isotope values ($\delta$^18^O) were acquired from previous publications on *P. vulgata* [@Surge2012-ba; @Graniero2017-io], *N. deaureata* and *N. magellanica* [@Nicastro2020-ih], in which detailed descriptions of the stable isotope analysis methodology can be found. In short, all shells were sectioned along the main growth axis to expose the internal growth structure. From the exposed section carbonate powder samples were acquired using a micromill with resolutions of 100–200 µm and by targeting the calcitic M+2 layer of the shells. Analytical precision of the isotope values was consistently at 0.05–0.10‰ and values are reported in per mil units (‰) relative to the VPDB (Vienna Pee Dee Belemnite) standard.
+High-quality $\delta$^18^O values were acquired from previous publications on *P. vulgata* [@Surge2012-ba; @Graniero2017-io], *N. deaureata* and *N. magellanica* [@Nicastro2020-ih], in which detailed descriptions of the methodology for the stable isotope analyses can be found. In short, all shells were sectioned along the maximum growth axis to expose the internal growth structure. From the exposed section carbonate powder samples were acquired using a micromill with resolutions of 100–200 µm and by targeting the calcitic M+2 layer of the shells. Analytical precision of the isotope ratios was consistently at 0.05–0.10‰ and values are reported in per mil units (‰) relative to the VPDB (Vienna Pee Dee Belemnite) standard.
 
 ```{r Nacella_Isotope_plot,dev='png',dpi=300}
 #| fig-cap: Isotope values of *Nacella* sp. limpet shells from Cambaceres Bay.
@@ -259,7 +259,7 @@ wrap_plots(plots,nrow=2) + plot_annotation(tag_levels = 'a')
 
 ```
 
-@fig-Nac_iso and @fig-Pat_iso show the previously acquired sequential $\delta$^18^O-values of limpet shells by species (*Nacella* sp., and *Patella vulgata*, respectively. Due to the high sampling resolution, all shells show seasonally resolved and multi-year quasi-sinusoidal records of SST change, with *Nacella* sp. shells living 2–3 years and *P. vulgata* living regularly over 3 years. In those instances where longer lifetimes are encountered (i.e. specimen QG1-7246-1, @fig-Pat_iso b) the temporal-resolution is reduced from more than a dozen of samples per year, to only around 7.
+@fig-Nac_iso and @fig-Pat_iso show the previously acquired sequential $\delta$^18^O-values of limpet shells by species (*Nacella* sp., and *Patella vulgata*, respectively). Due to the high-resolution sampling, all shells show seasonally resolved and multi-year quasi-sinusoidal records of SST change, with *Nacella* sp. shells living 2–3 years and *P. vulgata* living regularly over 3 years. In those instances where longer lifespans resulted in slow growth rates below 1 mm/yr (i.e. specimen QG1-7246-1, @fig-Pat_iso b), the temporal-resolution is reduced from more than a dozen of samples per year, to only around 7.
 
 ```{r Patella_Isotope_plot,dev='png',dpi=300,fig.pos='H'}
 #| fig-cap: Isotope values of *Patella vulgata* limpet shells from Quoygrew (QG, *a-g*) and Rack Wick Bay (ORK, *h*) on Westray, Orkney.
@@ -304,7 +304,7 @@ wrap_plots(plots,nrow=4) + plot_annotation(tag_levels = 'a')
 
 ## Dynamic Time Warping
 
-Because it is not possible to directly associate the exact sample locations used in the analysis of stable oxygen isotopes with the LIBS data, we used dynamic time warping (DTW) to align the time series of $\delta$^18^O-values and Mg/Ca ratios. DTW is an algorithm that measures similarity between two proxy-sequences, which may vary in sampling resolution or interval. By stretching or compressing sections of the series, DTW finds the probable alignment between the two sequences. This allows us to compare the proxy data sets more effectively, ensuring that the temporal dynamics of each shell are accurately matched despite possible discrepancies in sampling intervals or rates. We applied the DTW algorithm using the `dtw` package in R [@Giorgino2009-sj; @R_Core_Team2020-mk], which provides a robust framework for aligning time series data. This involved selecting appropriate distance measures and constraints to ensure meaningful alignment. The process involved iterative adjustments to minimise the overall distance between corresponding points in the two data sets.
+Because it is not possible to directly associate the exact sample locations used in the analysis of oxygen isotope ratios with the LIBS data, we used dynamic time warping (DTW) to align the time series of $\delta$^18^O values and Mg/Ca ratios. DTW is an algorithm that measures similarity between two proxy sequences, which may vary in sampling resolution or interval. By stretching or compressing sections of the series, DTW finds the probable alignment between the two sequences. This allows us to compare the proxy datasets more effectively, ensuring that the temporal dynamics of each shell are accurately matched despite possible discrepancies in sampling intervals or rates. We applied the DTW algorithm using the `dtw` package in R [@Giorgino2009-sj; @R_Core_Team2020-mk], which provides a robust framework for aligning time series data. This involved selecting appropriate distance measures and constraints to ensure meaningful alignment (see code in OSF Repository). The process involved iterative adjustments to minimise the overall distance between corresponding points in the two data sets.
 
 ```{r DTW Analysis}
 
@@ -351,11 +351,11 @@ for (sample in Samples) {
 ## *Patella vulgata*
 
 The elemental imaging of *P. vulgata* shells consistently showed repeating patterns of Mg/Ca intensity ratio changes with high Mg/Ca intensity ratios indicating and low ratios indicating low temperature periods. As examples, @fig-Pat_LIBS shows the 2D-distribution of elemental ratios across the entire section of ORK-LT5 and the preserved anterior side of QG1-7188-1 (additional maps can be found in the supplementaries). The repeating patterns are found across the calcitic layers that are exterior to the myostracum (layers m+2 and m+3) as well as the layers that are interior (m-2) [@Fenger2007-gf]. The layer m-1, which is also interior, consists of aragonite and is seen in @fig-Pat_LIBS in grey, as its Mg/Ca intensity ratio consistently falls below the range of interest (0.2 and above). Compared to other patelloid shells, some of whose interior is almost entirely made of aragonite, this layer is very thin.
-
+\newline
 ```{r Patella_LIBS,fig.pos='H'}
-#| fig-cap: Example LIBS maps and line scans of analysed specimens. (*a+b*) ORK-LT and (*c*+*d*) QG1-7188-1.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range.
-#| fig-height: 5
-#| fig-width: 10
+#| fig-cap: Example LIBS maps and line scans of analysed specimens. (*a+c*) ORK-LT and (*b*+*d*) QG1-7188-1.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range.
+#| fig-height: 6
+#| fig-width: 6
 #| label: fig-Pat_LIBS
 
 #ORK_LT5
@@ -365,6 +365,7 @@ ORK_LT5_map <-
 ORK_LT5_plot <- 
   ORK_LT5_map %>%
   filter(std < 0.15) %>%
+ #filter(x>0) %>% 
   filter(mg_ca < 0.7 & mg_ca > 0.3) %>%
   ggplot() +
   aes(x, y, fill = mg_ca) +
@@ -392,6 +393,7 @@ ORK_LT5_line <-
   scale_colour_viridis_c(limits = c(0.3, 0.6),
                        breaks = seq(0.3, 0.6, by = 0.1)) +    
   theme_cowplot(8)+
+    theme(plot.tag.position = c(-0.01, 1))+ # Adjust horizontal and vertical position
   labs(x = "Distance to edge (mm)", y = "Mg/Ca intensity ratio")
   
   
@@ -432,6 +434,7 @@ QG1_7188_1_line <-
   scale_colour_viridis_c(limits = c(0.3, 0.6),
                        breaks = seq(0.3, 0.6, by = 0.1)) +    
   theme_cowplot(8)+
+  theme(plot.tag.position = c(-0.01, 1))+ # Adjust horizontal and vertical position
   labs(x = "Distance to edge (mm)", y = "Mg/Ca intensity ratio")
   
   
@@ -439,7 +442,15 @@ QG1_7188_1_line <-
 ################
 ####FIGURE######
 ################
-  (ORK_LT5_plot+ORK_LT5_line)/(QG1_7188_1_plot+QG1_7188_1_line)+plot_annotation(tag_levels = "a")
+#(ORK_LT5_plot+ORK_LT5_line)/(QG1_7188_1_plot+QG1_7188_1_line)+plot_annotation(tag_levels = "a")
+
+#QG1_7188_1_line/ORK_LT5_line/
+maps <-     (ORK_LT5_plot+labs(tag="a"))+(QG1_7188_1_plot+labs(tag = "b"))+plot_layout(widths = c(0.4,0.2))#heights=c(0.55,1.2))
+
+lines <-   (ORK_LT5_line+labs(tag="c"))/(QG1_7188_1_line+labs(tag = "d"))+plot_layout(heights=c(0.5,0.5))
+
+maps/lines+plot_layout(heights=c(0.6,0.5))
+
 ```
 
 Both specimens in @fig-Pat_LIBS show increased Mg/Ca intensity ratios towards the outside of the shell and some degree of intra-increment variability. This is particularly visible in @fig-Pat_LIBS c, where Mg/Ca intensity ratios range from \~0.5–0.7 in the first year of growth (9–12 mm on the y-axis). A similar pattern is visible in the interior m-2 layer of ORK-LT5 (@fig-Pat_LIBS a), which increase towards the anterior of the shell (0–10 mm on the x-axis).
