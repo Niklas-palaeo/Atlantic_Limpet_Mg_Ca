@@ -38,7 +38,7 @@ date: last-modified
 bibliography: bibliography.bib
 format:
   elsevier-pdf:
-    keep-tex: true
+    keep-tex: FALSE
     latex_engine: xelatex
     journal:
       name: Palaeo^3^
@@ -304,7 +304,7 @@ wrap_plots(plots,nrow=4) + plot_annotation(tag_levels = 'a')
 
 ## Dynamic Time Warping
 
-Because it is not possible to directly associate the exact sample locations used in the analysis of oxygen isotope ratios with the LIBS data, we used dynamic time warping (DTW) to align the time series of $\delta$^18^O values and Mg/Ca ratios. DTW is an algorithm that measures similarity between two proxy sequences, which may vary in sampling resolution or interval. By stretching or compressing sections of the series, DTW finds the probable alignment between the two sequences. This allows us to compare the proxy datasets more effectively, ensuring that the temporal dynamics of each shell are accurately matched despite possible discrepancies in sampling intervals or rates. We applied the DTW algorithm using the `dtw` package in R [@Giorgino2009-sj; @R_Core_Team2020-mk], which provides a robust framework for aligning time series data. This involved selecting appropriate distance measures and constraints to ensure meaningful alignment (see code in [@Hausmann_2024OSF]). The process involved iterative adjustments to minimise the overall distance between corresponding points in the two data sets.
+Because it is not possible to directly associate the exact sample locations used in the analysis of oxygen isotope ratios with the LIBS data, we used dynamic time warping (DTW) to align the time series of $\delta$^18^O values and Mg/Ca ratios. DTW is an algorithm that measures similarity between two proxy sequences, which may vary in sampling resolution or interval. By stretching or compressing sections of the series, DTW finds the probable alignment between the two sequences. This allows us to compare the proxy datasets more effectively, ensuring that the temporal dynamics of each shell are accurately matched despite possible discrepancies in sampling intervals or rates. We applied the DTW algorithm using the `dtw` package in R [@Giorgino2009-sj; @R_Core_Team2020-mk], which provides a robust framework for aligning time series data. This involved selecting appropriate distance measures and constraints to ensure meaningful alignment (see code in [@Hausmann_Surge_Godino_2024]). The process involved iterative adjustments to minimise the overall distance between corresponding points in the two data sets.
 
 ```{r DTW Analysis}
 
@@ -877,7 +877,7 @@ Ferg_individual
 #Ferg_all/Ferg_individual+plot_layout(heights = c(0.5,0.5))
 ```
 
-Another shell whose results we aim to explain further is ORK-LT5, which has previously been shown to have no substantial correlation with $\delta$^18^O values or SST by implication [@Graniero2017-io]. In contrast to other specimens in this study, we were able to resample this specimen and acquire Mg/Ca data on a slightly higher resolution (20–30 µm spots in a 100 µm raster compared to 50 µm spots spaced at 150–300 µm) and using 2 dimensions, as well as using a continuous high-resolution line-scan at (20–30 µm spots spaced at 10 µm) (@fig-ORK_sub). These additional data revealed previously missed summer peaks at around 2--3 mm distance to the shell edge (grey box in @fig-ORK_sub) and revealed additional growth at the very edge (dashed box in @fig-ORK_sub) mirroring the change towards warmer temperatures at the time of collection (August). Including these missing parts lead to a better alignment of both records and a resulting R^2^-value of 0.88 (@fig-ORK_sub).
+Another shell whose results we aim to explain further is ORK-LT5 (@fig-Pat_LIBS), which has previously been shown to have no substantial correlation with $\delta$^18^O values or SST by implication [@Graniero2017-io]. In contrast to other specimens in this study, we were able to resample this specimen and acquire Mg/Ca data on a slightly higher resolution (20–30 µm spots in a 100 µm raster compared to 50 µm spots spaced at 150–300 µm) and using 2 dimensions, as well as using a continuous high-resolution line-scan at (20–30 µm spots spaced at 10 µm) (@fig-ORK_sub). These additional data revealed previously missed summer peaks at around 2--3 mm distance to the shell edge (grey box in @fig-ORK_sub) and revealed additional growth at the very edge (dashed box in @fig-ORK_sub) mirroring the change towards warmer temperatures at the time of collection (August). Including these missing parts lead to a better alignment of both records and a resulting R^2^-value of 0.88 (@fig-ORK_sub).
 
 ```{r ORK_LT5}
 #| fig-cap: Comparison of previous and new Mg/Ca data for ORK-LT5 explaining the previously unsuccessful correlation of Mg/Ca and $\delta$^18^O-values
@@ -971,7 +971,7 @@ This study uses LIBS as a novel analytical tool to present high-resolution and 2
 
 LIBS elemental imaging provided insight into elemental anomalies found particulary in the external parts (m+3 layer) of the shell, which introduce intra-incremental heterogeneity and which cannot be reconciled with modern SST changes or SST changes recorded in the $\delta$^18^O values of the same shells. Our 2D approach allowed us to avoid these areas of intra-increment heterogeneity and focus on areas that are predominantly controlled by changes in SST.
 
-These results are particularly promising for future analyses of patelloid shells for the study of season of collection in archaeological sites as well as the reconstruction of sub-annual climatic conditions in the past. Shells of the species studied here are widely available along the European Atlantic façade and the Argentinian coastline and make up a significant part of marine mollusc remains in archaeological sites of those regions [@Colonese2011-ab; @Villagran2011-ld; @Zangrando2016-yl]. By using LIBS as a screening tool for targeted \delta^{18}O analysis, focusing on annual minima and maxima revealed in the Mg/Ca record, researchers can improve cost and time efficiency. This novel method will enable them to increase sample numbers and produce larger, more in-depth climatic studies than previously possible.
+These results are particularly promising for future analyses of patelloid shells for the study of season of collection in archaeological sites as well as the reconstruction of sub-annual climatic conditions in the past. Shells of the species studied here are widely available along the European Atlantic façade and the Argentinian coastline and make up a significant part of marine mollusc remains in archaeological sites of those regions [@Colonese2011-ab; @Villagran2011-ld; @Zangrando2016-yl]. By using LIBS as a screening tool for targeted $\delta$^18^O analysis, focusing on annual minima and maxima revealed in the Mg/Ca record, researchers can improve cost and time efficiency. This novel method will enable them to increase sample numbers and produce larger, more in-depth climatic studies than previously possible.
 
 
 # Acknowledgements
