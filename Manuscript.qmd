@@ -47,6 +47,9 @@ format:
       cite-style: authoryear
 output:
   units: cm
+header-includes:
+  - \usepackage{lineno}
+  - \linenumbers
 ---
 
 ```{r Library and datasets}
@@ -152,19 +155,19 @@ CamBayMax <- SST_df %>% filter(dataset=="Cambaceres Bay - Tierra del Fuego") %>%
 
 | Context        | Study              | Species          | Location        | Sample ID  | Previous analyses                     |
 |------|------------|-------|--------|------|----------|
-| Modern         | [@Nicastro2020-ih] | *N. deaurata*   | Cambaceres Bay  | ND-1016-3  | $\delta$^18^O and $\delta$^13^C |
+| Modern         | [@Nicastro2020-ih] | *N. deaurata*   | Cambaceres Bay  | ND-1016-3  | $\delta$^18^O and $\delta$^13^C        |
 |                |                    |                  | \- Tierra del   | ND-1016-4  | analysis                              |
 |                |                    | *N. magellanica* | Fuego (AR)      | NM-1016-1  |                                       |
 |                |                    |                  |                 | NM-1016-3  |                                       |
 |                |                    |                  |                 |            |                                       |
-|                | [@Graniero2017-io] | *P. vulgata*     | Rack Wick Bay - | ORK-LT5    | $\delta$^18^O and $\delta$^13^C |
+|                | [@Graniero2017-io] | *P. vulgata*     | Rack Wick Bay - | ORK-LT5    | $\delta$^18^O and $\delta$^13^C       |
 |                |                    |                  | Westray (UK)    |            | analysis;                             |
 |                |                    |                  |                 |            | Mg, Li, Sr, Ca.                       |
 |                |                    |                  |                 |            |                                       |
 |                |                    |                  |                 |            |                                       |
-| Archaeological | [@Surge2012-ba]    | *P. vulgata*     | Rack Wick Bay - | QG1-7188-1 | $\delta$^18^O                         |
-|                |                    |                  | Westray (UK)    | QG1-7189-2 | and $\delta$^13^C                            |
-|                |                    |                  |                 | QG2-1061-1 | analysis                      |
+| Archaeological | [@Surge2012-ba]    | *P. vulgata*     | Rack Wick Bay - | QG1-7188-1 | $\delta$^18^O and $\delta$^13^C       |
+|                |                    |                  | Westray (UK)    | QG1-7189-2 |       analysis                        |
+|                |                    |                  |                 | QG2-1061-1 |                                       |
 |                |                    |                  |                 | QG2-1064-1 |                                       |
 |                |                    |                  |                 | QG2-7180-1 |                                       |
 |                |                    |                  |                 | QG2-7180-2 |                                       |
