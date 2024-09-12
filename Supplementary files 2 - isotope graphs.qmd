@@ -47,6 +47,17 @@ MgCa <- read_csv(here("data","MgCa.csv"))
 Ferguson_data <- read_csv(here("data","Ferguson-data.csv")) %>% 
   na.omit()
 
+
+Corr_data <- read.csv(here("data","Corr_data.csv")) 
+
+#This below caused problems
+#%>% 
+  #   pivot_wider(values_from = "value",names_from = "proxy") %>%
+  # left_join(D18O %>% select(sampleID) %>% unique(),by="sampleID") %>%
+  # pivot_longer(cols=c(d18o,mg_ca),values_to = "value",names_to = "proxy") %>% 
+  # arrange(x)
+
+
 # # Check overlaps
 # # Find common sample IDs
 # intersect(MgCa$sampleID, D18O$sampleID)
@@ -77,7 +88,7 @@ create_plots <- function(sample) {
   lower <- percentiles %>% filter(sampleID == sample) %>% pull(lower)
   upper <- percentiles %>% filter(sampleID == sample) %>% pull(upper)
   
-  P1 <-
+  P1.1 <-
     MgCa %>%
     filter(sampleID == sample) %>%
     filter(relstd < 0.1) %>%
@@ -88,7 +99,7 @@ create_plots <- function(sample) {
     theme_cowplot(17) +
     labs(x = "", y = "Mg/Ca intensity ratio", title = sample)
   
-  P2 <-
+  P1.2 <-
     D18O %>%
     filter(sampleID == sample) %>%
     ggplot() +
@@ -98,7 +109,40 @@ create_plots <- function(sample) {
     scale_y_reverse() +
     labs(x = "Distance to edge (mm)", y = expression(paste(delta^{18}, "O (\u2030)")))
   
-  P1 / P2 + plot_annotation(tag_levels = "a")
+  
+  
+   P2.1 <-
+    Corr_data %>%
+    filter(sampleID == sample) %>%
+    filter(proxy == "mg_ca") %>%
+    ggplot() +
+    aes(x, value) +
+    # geom_errorbar(aes(ymin = value - sd, ymax = value + sd, width = 1)) +
+    geom_ribbon(aes(ymin = value - sd, ymax = value + sd), alpha = 0.5) +
+    geom_path() +
+    theme_cowplot(17) +
+    labs(x = "", y = "")
+  
+  P2.2 <-
+    Corr_data %>%
+    filter(sampleID == sample) %>%
+    filter(proxy == "d18o") %>%
+          group_by(x) %>% 
+      mutate(sd=sd(value)) %>% 
+      ungroup() %>% 
+    ggplot() +
+    aes(x, value) +
+    # geom_errorbar(aes(ymin = value - sd, ymax = value + sd, width = 0.2)) +
+    geom_ribbon(aes(ymin = value - sd, ymax = value + sd), alpha = 0.5) +
+    geom_path() +
+    theme_cowplot(18) +
+    scale_y_reverse() +
+    labs(x = "Warped time index", y = "")
+  
+    P1.1 / P1.2 |  P2.1 / P2.2 + plot_annotation(tag_levels = "a")
+  
+  
+  
 }
 
 # Loop through each sampleID and create the plots
@@ -112,4 +156,3 @@ for(sample in unique_sampleIDs) {
 
 
 ```
-

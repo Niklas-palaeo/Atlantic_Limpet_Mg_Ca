@@ -19,13 +19,22 @@ shell_dtw_data <- function(D18o, MgCa, show.dtw.plot = FALSE, plot_alignment = F
                        MgCa_warp,
                        keep = TRUE,
                        step.pattern = symmetric2)
+      
       Aligned_d18o <- D18o %>% mutate(x = 1:length(D18o$d18o),
                                       proxy = "d18o") %>% rename(value = d18o) %>%
-        select(x, value, proxy)
+        select(x, value, proxy) %>% 
+        group_by(x) %>% 
+        mutate(sd=sd(value,na.rm=TRUE)) %>% 
+        ungroup()
+      
+      
       Aligned_mg_ca <-
         MgCa %>% pull(mg_ca) %>% .[alignment$index2] %>%
         as.data.frame() %>% clean_names() %>% rename(value = x) %>%
-        cbind(x = alignment$index1) %>% mutate(proxy = "mg_ca")
+        cbind(x = alignment$index1) %>% mutate(proxy = "mg_ca") %>% 
+        group_by(x) %>% 
+        mutate(sd=sd(value,na.rm=TRUE)) %>% 
+        ungroup()
       
       # Code for plotting alignment data
       if (plot_alignment) {
@@ -35,9 +44,9 @@ shell_dtw_data <- function(D18o, MgCa, show.dtw.plot = FALSE, plot_alignment = F
       }
       
       Data_aligned <- rbind(Aligned_d18o, Aligned_mg_ca) %>%
-        group_by(x, proxy) %>% summarise(value = mean(value)) %>%
+        group_by(x, proxy,sd) %>% summarise(value = mean(value)) %>%
         ungroup() %>% mutate(value = round(value + 1e-05 *
-                                             row_number(), 5)) %>% group_by(proxy, value) %>%
+                                             row_number(), 5)) %>% group_by(proxy, value,sd) %>%
         summarise(x = mean(x))
       lmp <- function(modelobject) {
         if (class(modelobject) != "lm")
