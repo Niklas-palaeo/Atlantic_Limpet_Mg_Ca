@@ -417,7 +417,7 @@ write_csv(Corr_data,here("data","Corr_data.csv"))
 The elemental imaging of *P. vulgata* shells consistently showed repeating patterns of Mg/Ca intensity ratio changes with high Mg/Ca intensity ratios indicating high temperature periods and low ratios indicating low temperature periods. As examples, @fig-Pat_LIBS shows the 2D-distribution of elemental ratios across the entire section of ORK-LT5 and the preserved anterior side of QG1-7188-1 (additional maps can be found in the supplementaries). The repeating patterns are found across the calcitic layers that are exterior to the myostracum (layers m+2 and m+3) as well as the layers that are interior (m-2)(see Fenger et al. [-@Fenger2007-gf] for a detailed explanations of microstructural layers in *P. vulgata*). The layer m-1, which is also interior, consists of aragonite and is seen in @fig-Pat_LIBS in grey, as its Mg/Ca intensity ratio consistently falls below the range of interest (0.2 and above). Compared to other patelloid shells, some of whose interior is almost entirely made of aragonite, this layer is very thin. \newline
 
 ```{r Patella_LIBS,fig.pos='H'}
-#| fig-cap: Example LIBS maps and line scans of analysed specimens. (*a+c*) ORK-LT and (*b*+*d*) QG1-7188-1.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range.
+#| fig-cap: Example LIBS maps and line scans of analysed specimens. (*a+c*) ORK-LT and (*b*+*d*) QG1-7188-1.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range. White dashed lines indicate location of line scans.
 #| fig-height: 6
 #| fig-width: 6
 #| label: fig-Pat_LIBS
@@ -557,7 +557,7 @@ P1/P2+plot_annotation(tag_levels = "a")
 
 ```
 
-Aligning the records programmatically using dynamic time warping, allowed us to compare both proxies for each specimen directly to determine specimen-specific equations and quantify the correlation of both proxies (@fig-Pat_Corr). The equations for all specimens are different but the majority (barring one: QG1-7246-1) do seem to cluster around shared parameters (\$\\delta\$^18^Ο = 0.6 – 0.065 \* Mg/Ca). The various coefficients of determination (R^2^) range between 0.81 (QG1-7246-1) and 0.95 (QG1-7189-2). These specimens are also the oldest and youngest specimens, respectively, suggesting that lower growth rates and time averaging had a negative effect on the correlation of both proxies. The mean R^2^ value of the individual *P. vulgata* specimens is 0.89, suggesting a generally good fit between the two proxies.
+Aligning the records programmatically using dynamic time warping, allowed us to compare both proxies for each specimen directly to determine specimen-specific equations and quantify the correlation of both proxies (@fig-Pat_Corr). The equations for all specimens are different but the majority (barring one: QG1-7246-1) do seem to cluster around shared parameters (\$\\delta\$^18^Ο = 0.6 – 0.065 \* Mg/Ca). The various coefficients of determination (R^2^) range between 0.81 (QG1-7246-1) and 0.95 (QG1-7189-2). These specimens are also the oldest and youngest specimens, respectively, suggesting that lower growth rates and time averaging had a negative effect on the correlation of both proxies. The mean R^2^ value of the individual *P. vulgata* specimens is 0.89, suggesting a generally good fit between the two proxies. P-values are overwhelmingly significant with the highest being p=1e^-23^.
 
 ```{r Patella_Correlation_Graphs,dev='png',dpi=300}
 #| fig-cap: Correlation graphs for *Patella vulgata* specimens.
@@ -600,13 +600,14 @@ P_individual <- P_all+ylim(0.2,0.8)+
   stat_cor(
     aes(label = paste("P-value: ", ..p..)),
     label.x = 0.2, label.y = 0.6, 
-    size = 6
+    size = 6,show.legend = FALSE
   )+
   theme_cowplot(20)+
   theme(
     strip.background = element_rect(fill = "white", colour = NA),
     strip.text = element_text(colour = "black"),
-    panel.border = element_rect(colour="black")
+    panel.border = element_rect(colour="black"),
+    legend.position = "none"
   )
 
 
@@ -621,7 +622,7 @@ P_individual
 The LIBS data for *Nacella* spp. specimens is less straightforward with shells being much thinner than *P. vulgata* and thus patterns being more difficult to discern. Both specimens (ND-1016-3 and NM-1016-3) shown as examples in @fig-Nac_LIBS (see additional graphs in supplementaries) also experience increases of Mg/Ca intensity ratio towards the exterior of the shell, similar to the *P. vulgata* specimens from Orkney. This intra-increment heterogeneity combined with the thinness of the shell, further complicates their analysis compared to *P. vulgata* or other *Patella* species [@Hausmann2019-fi]. Nevertheless, repeating patterns were visible in the anterior section of the shell, which were also mirrored in the inner layers (m-2) of specimens NM-1016-3 (@fig-Nac_LIBS b).
 
 ```{r Nacella_LIBS,fig.pos='H'}
-#| fig-cap: Example LIBS maps and line scans of analysed *Nacella* spp. specimens. (*a+c*) ND-1016-3 and (*b*+*d*) NM-1016-3.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range. Note the inset in (*c*) where the shell edge has been resampled using a higher resolution (50 µm instead of 100 µm) to better understand the Mg/Ca ratios at the shell edge.
+#| fig-cap: Example LIBS maps and line scans of analysed *Nacella* spp. specimens. (*a+c*) ND-1016-3 and (*b*+*d*) NM-1016-3.  Note that the ranges of Mg/Ca intensity ratios are not identical but are chosen arbitrarily to increase contrast. Areas in grey consist of low-Mg aragonite and fall outside the chosen colour-range. Note the inset in (*c*) where the shell edge has been resampled using a higher resolution (50 µm instead of 100 µm) to better understand the Mg/Ca ratios at the shell edge. White dashed lines indicate location of line scans.
 #| fig-height: 7
 #| fig-width: 16
 #| label: fig-Nac_LIBS
@@ -805,7 +806,7 @@ P4 <-
 
 ```
 
-The *Nacella* spp. specimens showed similarly clustered correlations, which interestingly were not grouped by species. In fact, specimens ND-1016-3 (*Nacella deaurata)* and NM-1016-3 (*N. magellanica*) are almost identical in their fitted equations (@fig-Nac_Corr). Both also share a high coefficient of determination (R^2^) of 0.95 and 0.92 respectively, with the remaining specimens being somewhat lower (R^2^ = 0.76 for ND-1016-4 and R^2^=0.84 for NM-1016-3). The mean R^2^ value for each *N.* species is 0.86 for *N. deaurata* and 0.88 for *N. magellanica*. Why two specimens of different species are so well aligned is not entirely certain and randomness cannot for now be ruled out. That said, since they both have a high R^2^ value, it might just be that they were both minimally affected by factors other than SST, including the sampling location of our line scans.
+The *Nacella* spp. specimens showed similarly clustered correlations, which interestingly were not grouped by species. In fact, specimens ND-1016-3 (*Nacella deaurata)* and NM-1016-3 (*N. magellanica*) are almost identical in their fitted equations (@fig-Nac_Corr). Both also share a high coefficient of determination (R^2^) of 0.95 and 0.92 respectively, with the remaining specimens being somewhat lower (R^2^ = 0.76 for ND-1016-4 and R^2^=0.84 for NM-1016-3). The mean R^2^ value for each *N.* species is 0.86 for *N. deaurata* and 0.88 for *N. magellanica* with p-values for all speciemns being far below 0.0001. Why two specimens of different species are so well aligned is not entirely certain and randomness cannot for now be ruled out. That said, since they both have a high R^2^ value, it might just be that they were both minimally affected by factors other than SST, including the sampling location of our line scans.
 
 ```{r Nacella_Correlation_Graphs,dev='png',dpi=300}
 #| fig-cap: Correlation graphs for *Nacella* spp. specimens
@@ -852,6 +853,11 @@ P_individual <- P_all+ylim(0,0.4)+
   )+
   theme_cowplot(20)+
     coord_fixed(ratio = 6) +
+  stat_cor(
+  aes(label = paste("P-value: ", round(..p.., 10))),
+    label.x = 0.2, label.y = 0.3, 
+    size = 6,show.legend = FALSE
+  )+
   theme(
     strip.background = element_rect(fill = "white", colour = NA),
     strip.text = element_text(colour = "black"),
@@ -866,7 +872,7 @@ P_individual
 
 # Discussion {#Discussion}
 
-The Mg/Ca ratios from the 2D elemental imaging present positive results suggesting that SST is the main factor influencing variations in Mg/Ca ratios in three Atlantic limpet species. Annually repeating patterns of increasing (spring/summer) and decreasing (autum/winter) SST were also visible in the line scans, albeit less straightforward than in the 2D-data. Nevertheless, the resulting R^2^-values for each species were high (*P. vulgata mean R^2^*=0.89, *N. deaurata mean R^2^*=0.86*, N. magellanica mean R^2^*=0.88). These results are similar to previously published data on other *Patella* species shells (Table [2](#Table_2)): R^2^ values of *P. depressa* lie between 0.78 and 0.87 [@Garcia-Escarzaga2021-ij], for *P. caerulea* from the Mediterranean between 0.78 and 0.96 — barring one outlier of 0.33 (specimen MP64A), which had increased Mg/Ca ratios in increments with rich organic contents [@Hausmann2019-fi].
+The Mg/Ca ratios from the 2D elemental imaging present results suggesting that SST is the main factor influencing variations in Mg/Ca ratios in three Atlantic limpet species. Annually repeating patterns of increasing (spring/summer) and decreasing (autum/winter) SST were also visible in the line scans, albeit less straightforward than in the 2D-data. Nevertheless, the resulting mean R^2^-values comparin Mg/Ca and δ^18^O values for each species were high (*P. vulgata R^2^*=0.89, *N. deaurata R^2^*=0.86*, N. magellanica R^2^*=0.88). These results are similar to previously published data on other *Patella* species shells (Table [2](#Table_2)): R^2^ values of *P. depressa* lie between 0.78 and 0.87 [@Garcia-Escarzaga2021-ij], for *P. caerulea* from the Mediterranean between 0.78 and 0.96 — barring one outlier of 0.33 (specimen MP64A), which had increased Mg/Ca ratios in increments with rich organic contents [@Hausmann2019-fi].
 
 ::: {#Table_2}
 \fontsize{8pt}{8pt}\selectfont
@@ -897,9 +903,9 @@ The Mg/Ca ratios from the 2D elemental imaging present positive results suggesti
 |                  |                  | KIZPC1     | 0.94                    |                                   |     |
 |                  |                  | KIZPC2     | 0.86                    |                                   |     |
 | *P. rustica*     | Gibraltar        | **JL1**    | **0.02**                | [@Ferguson2011-zl]                |     |
-|                  |                  | JL2        | 0.8\*\*                 |                                   |     |
-| *P. caerulea*    | Gibraltar        | JM00       | 0.69\*\*                |                                   |     |
-|                  |                  | JM30       | 0.83\*\*                |                                   |     |
+|                  |                  | JL2        | 0.8\*                   |                                   |     |
+| *P. caerulea*    | Gibraltar        | JM00       | 0.69\*                  |                                   |     |
+|                  |                  | JM30       | 0.83\*                  |                                   |     |
 | *P. vulgata*     | Orkney           | ORK-LT5    | not reported, here 0.88 | [@Graniero2017-io] and this study |     |
 |                  |                  | QG1-7188-1 | 0.88                    | this study                        |     |
 |                  |                  | QG1-7189-2 | 0.95                    |                                   |     |
@@ -913,51 +919,14 @@ The Mg/Ca ratios from the 2D elemental imaging present positive results suggesti
 | *N. magellanica* | Tierra del Fuego | NM-1016-1  | 0.92                    |                                   |     |
 |                  |                  | NM-1016-3  | 0.84                    |                                   |     |
 
-: Correlations of Mg/Ca ratios with \$\\delta\$^18^O values and SST found in other studies. Bold R^2^ values are interpreted as outliers. \* indicates that only SST data and no other geochemical data was used. \*\* these samples were used to determine a shared R^2^-value of 0.79.
+: Correlations of Mg/Ca ratios with \$\\delta\$^18^O values found in other studies. Bold R^2^ values are interpreted as outliers. \* indicates samples that were used to determine a shared R^2^-value of 0.79.
 :::
 
 \normalsize
 
-*P. rustica* has two studied specimens (JL1 and JL2) with R^2^-values of 0.02 and 0.80, respectively [@Ferguson2011-zl] (@fig-Ferg). Together with the data from two *P. caerulea* shells (JM00 and JM30 with R^2^-values of 0.69 and 0.83), the data from JL2 was used to determine a general Mg/Ca-SST relationship with an R^2^ value of 0.79. JL1 was disregarded in that calculation, as well as the second year of growth in JM00, which produced anomalous data. While no additional information about those specimens is available, it seems likely that the discarded Mg/Ca ratios from JM00, which were interpreted as an ontogenetic trend, were potentially influenced by the same intra-increment heterogeneity we see in some of our shell specimens as well. Since these shells were analysed by homogenising the carbonate powder of the m+2 layer and the more exterior m+3 layer, these heterogeneities could have potentially increased the Mg/Ca ratio unpredictably, leading to what might look like an ontogenetic trend in a linear dataset. Whether these anomalies affected JL1 in the same way, albeit stronger, is not clear but it might well be possible. Previous studies of *P. caerulea* found similar patterns of anomalous Mg/Ca values in the m+3 layer [@Hausmann2019-fi]. These areas can be avoided using a 2-dimensional approach and if the growth increment is sufficiently wide. These heterogeneities within growth increments are little understood but some research points towards a zonation of the mollusc's mantle and along the growth edge [@Lazareth2013-jf]. This zonation could differentially influence the transport of Mg ions to the extrapallial fluid and into the shell.
+*P. rustica* has two studied specimens (JL1 and JL2) with R^2^-values of 0.02 and 0.80, respectively [@Ferguson2011-zl] (see also Supplementaries). Together with the data from two *P. caerulea* shells (JM00 and JM30 with R^2^-values of 0.69 and 0.83), the data from JL2 was used to determine a general Mg/Ca-SST relationship with an R^2^ value of 0.79. JL1 was disregarded in that calculation, as well as the second year of growth in JM00, which produced anomalous data. While no additional information about those specimens is available, it seems likely that the discarded Mg/Ca ratios from JM00, which were interpreted as an ontogenetic trend, were potentially influenced by the same intra-increment heterogeneity we see in some of our shell specimens as well. Since these shells were analysed by homogenising the carbonate powder of the m+2 layer and the more exterior m+3 layer, these heterogeneities could have potentially increased the Mg/Ca ratio unpredictably, leading to what might look like an ontogenetic trend in a linear dataset. Whether these anomalies affected JL1 in the same way, albeit stronger, is not clear but it might well be possible. Previous studies of *P. caerulea* found similar patterns of anomalous Mg/Ca values in the m+3 layer [@Hausmann2019-fi]. These areas can be avoided using a 2-dimensional approach and if the growth increment is sufficiently wide. These heterogeneities within growth increments are little understood but some research points towards a zonation of the mollusc's mantle and along the growth edge [@Lazareth2013-jf]. This zonation could differentially influence the transport of Mg ions to the extrapallial fluid and into the shell.
 
-```{r Ferguson Data, dev='png'}
-#| fig-cap: Correlation graphs for Ferguson et al., (2011) specimens.
-#| fig-height: 5
-#| fig-width: 16
-#| label: fig-Ferg
-
-Ferg_all <-
-  Ferguson_data %>% 
-  ggplot()+
-  aes(d18o,mg_ca,col=shell)+
-  geom_point(show.legend = FALSE)+
-  labs(x=expression(paste(delta^{18},"O (\u2030)")),y="Mg/Ca (mmol/mol)")+
-  stat_smooth(aes(fill = shell,col=shell), method = "lm", formula = y~x,show.legend = FALSE) +
-  # stat_regline_equation(label.x = 2, #label.y = 32
-  #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
-  #   formula = y~x
-  # ) +
-  scale_colour_manual(values = c(  "#EC7063", "#007f7f", "#1f78b4", "#542788","black", "#d73027", "#EC7063")) +
-scale_fill_manual(values = c(  "#EC7063", "#007f7f", "#1f78b4", "#542788","black", "#d73027", "#EC7063"))
-
-Ferg_individual <- Ferg_all+
-  facet_wrap(~shell,ncol=4)+#ylim(0.15,NA)+
-  ggpubr::stat_regline_equation(label.x = 0.3, label.y = 26,
-    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,size=6,
-    formula = y~x
-  )+  
-  theme_cowplot(20)+
-  coord_fixed(ratio =0.22) +
-  theme(
-    strip.background = element_rect(fill = "white", colour = NA),
-    strip.text = element_text(colour = "black"),
-    panel.border = element_rect(colour="black")
-  )
-Ferg_individual
-#Ferg_all/Ferg_individual+plot_layout(heights = c(0.5,0.5))
-```
-
-Another shell whose results we aim to explain further is ORK-LT5 (@fig-Pat_LIBS), which has previously been shown to have no substantial correlation with \$\\delta\$^18^O values or SST by implication [@Graniero2017-io]. In contrast to other specimens in this study, we were able to resample this specimen and acquire Mg/Ca data on a slightly higher resolution (20–30 µm spots in a 100 µm raster compared to 50 µm spots spaced at 150–300 µm) and using 2 dimensions, as well as using a continuous high-resolution line-scan at (20–30 µm spots spaced at 10 µm) (@fig-ORK_sub). These additional data revealed previously missed summer peaks at around 2--3 mm distance to the shell edge (grey box in @fig-ORK_sub) and revealed additional growth at the very edge (dashed box in @fig-ORK_sub) mirroring the change towards warmer temperatures at the time of collection (August). Including these missing parts lead to a better alignment of both records and a resulting R^2^-value of 0.88 (@fig-ORK_sub).
+Another shell whose results we aim to explain further is ORK-LT5 (see Supplementary Information), which has previously been shown to have no substantial correlation with \$\\delta\$^18^O values or SST by implication [@Graniero2017-io]. In contrast to other specimens in this study, we were able to resample this specimen and acquire Mg/Ca data on a slightly higher resolution (20–30 µm spots in a 100 µm raster compared to 50 µm spots spaced at 150–300 µm) and using 2 dimensions, as well as using a continuous high-resolution line-scan at (20–30 µm spots spaced at 10 µm) (@fig-ORK_sub). These additional data revealed previously missed summer peaks at around 2--3 mm distance to the shell edge (grey box in @fig-ORK_sub) and revealed additional growth at the very edge (dashed box in @fig-ORK_sub) mirroring the change towards warmer temperatures at the time of collection (August). Including these missing parts lead to a better alignment of both records and a resulting R^2^-value of 0.88 (@fig-ORK_sub).
 
 ```{r ORK_LT5}
 #| fig-cap: Comparison of previous and new Mg/Ca data for ORK-LT5 explaining the previously unsuccessful correlation of Mg/Ca and $\delta$^18^O-values
@@ -1044,6 +1013,327 @@ P3.1/P3.3
 ```
 
 We were not able to resample the *Nacella* spp. specimens in Graniero *et al.* [-@Graniero2017-io], which had similarly unrelated records of \$\\delta\$^18^O values and Mg/Ca ratios and pointed to no relationship between elemental ratios and SST at all. However, we were able to source other modern specimens of the same species from Tierra del Fuego, which shall serve here as an indicator. Similar to other patelloid shells, the results of the *Nacella* specimens in our study were successful with high R^2^ values (0.76--0.95) and suggest Mg/Ca as a reliable proxy for SST (@fig-Nac_Comp and supplementaries). Why these results are different from the studied *Nacella* spp. specimens in Graniero *et al*. [-@Graniero2017-io] is not obvious, but the occasional alignment of the Mg/Ca and \$\\delta\$^18^O records of their shells (Figure 6 in Graniero *et al*. [-@Graniero2017-io]) indicate that there is some relationship that — potentially due to the low sampling resolution or intra-increment heterogeneity — is not perfectly visible, leading to an overall result of an uncorrelated relationship between Mg/Ca ratios and SST.
+
+## Temperature correlation
+
+We further related the Mg/Ca ratios of the modern shells to actual SST data from the respective localities (@fig-SSTs). The data for ORK-LT5 from Orkney were cut to the time period between the start of our available SST data (2007) and the time of collection (August 2009). For the *Nacella* spp. from Cambaceres Bay we chose an overlapping time period, to make the results more comparable between the specimens, which is the lifespan of the youngest specimen NM-1016-3 from January 2015 to October 2016, the time of collection for all 4 specimens.
+
+As indicated by the stable isotope values, each shell individually has a good correlation with SST (R^2^ values between 0.93 to 0.96 with p-values consistently below 0.001) (@fig-SST_Corr), which are even better than the correlation between elemental ratios and stable isotope values. This improvement is most likely due to the simple and sinusoidal SST curve, which is easier to fit to other data.
+
+```{r SST-Corr-data}
+reference <- 
+  TdF_SST %>% 
+  filter(time<"2016-10-01") %>%
+  filter(time>"2015-01-01") %>%
+  mutate(analysed_sst = analysed_sst - 273.15) 
+
+query <- MgCa %>% 
+  filter(grepl("1016",sampleID)) %>% 
+  filter(!(sampleID=="ND-1016-4"&dist>2.3)) %>% 
+  filter(!(sampleID=="NM-1016-1"&dist>7.2)) %>% 
+  filter(!(sampleID=="ND-1016-3"&dist>6)) %>% 
+  arrange(-dist)
+
+TdF_plot <- reference %>% 
+  ggplot()+
+  aes(time,analysed_sst)+
+  geom_path()+
+labs(x="",y="SST in ºC")
+
+Nacella_MgCa_plot <- query %>% 
+  ggplot()+
+  aes(dist,mg_ca)+
+  geom_path()+
+  # scale_x_reverse()+
+  labs(x="Distance to shell edge in mm", y="Mg/Ca intensity ratio")+
+  facet_wrap(~sampleID,ncol=1,scales="free")
+
+#SST_P1 <- TdF_plot/Nacella_MgCa_plot+plot_layout(heights=c(1,5))
+
+
+Samples_SST <- unique(query$sampleID)
+
+Corr_data_SST <- tibble()
+
+for (sample in Samples_SST) {
+
+  temp_reference <- reference %>% 
+    select(analysed_sst) %>% 
+    mutate(sample_seq = row_number()) 
+
+  temp_MgCa <- query %>% 
+    filter(sampleID == sample) %>% 
+    select(mg_ca) %>% 
+    mutate(sample_seq = row_number())
+
+  
+   Ref_warp <- temp_reference %>% mutate(analysed_sst = scale(analysed_sst)) %>%
+        pull(analysed_sst)
+   MgCa_warp <- temp_MgCa %>% mutate(mg_ca = scale(mg_ca)) %>%
+        pull(mg_ca)
+      
+      alignment <- dtw(Ref_warp,
+                       MgCa_warp,
+                       keep = TRUE,
+                       step.pattern = symmetric2)
+      
+      Aligned_ref <- temp_reference %>% mutate(x = 1:length(temp_reference$analysed_sst),
+                                      proxy = "sst") %>% rename(value = analysed_sst) %>%
+        select(x, value, proxy) %>% 
+        group_by(x) %>% 
+        mutate(sd=sd(value,na.rm=TRUE)) %>% 
+        ungroup()
+      
+      
+      Aligned_mg_ca <-
+        temp_MgCa %>% pull(mg_ca) %>% .[alignment$index2] %>%
+        as.data.frame() %>% clean_names() %>% rename(value = x) %>%
+        cbind(x = alignment$index1) %>% mutate(proxy = "mg_ca") %>% 
+        group_by(x) %>% 
+        mutate(sd=sd(value,na.rm=TRUE)) %>% 
+        ungroup()
+      
+      # # Code for plotting alignment data
+        # plot(alignment,
+        #      type = "twoway",
+        #      offset = 10)
+
+      
+      Data_aligned <- rbind(Aligned_ref, Aligned_mg_ca) %>%
+        group_by(x, proxy,sd) %>% summarise(value = mean(value)) %>%
+        ungroup() %>% mutate(value = round(value + 1e-05 *
+                                             row_number(),5)) %>% group_by(proxy, value,sd) %>%
+        summarise(x = mean(x))
+      
+      
+      
+      
+      lmp <- function(modelobject) {
+        if (class(modelobject) != "lm")
+          stop("Not an object of class 'lm' ")
+        f <- summary(modelobject)$fstatistic
+        p <- pf(f[1], f[2], f[3], lower.tail = F)
+        attributes(p) <- NULL
+        return(p)
+      }
+      # corr_data <-
+      #   Data_aligned %>% pivot_wider(names_from = "proxy",
+      #                                values_from = "value",values_fn = mean) %>% select(sst, mg_ca)
+      
+
+
+      # LM <- lm(sst ~ mg_ca, data = corr_data,)
+      # R2 <- round(summary(LM)[[8]], 2)
+      # P_value <-
+      #   ifelse(lmp(LM) < 0.001,
+      #          "p<0.001",
+      #          ifelse(
+      #            lmp(LM) <
+      #              0.01,
+      #            "p<0.01",
+      #            ifelse(lmp(LM) < 0.05, "p<0.05",
+      #                   "ns!!!")
+      #          ))
+      # Stats <- paste0("R²=", R2, ", ", P_value)
+     
+      
+  
+  # Add the sampleID column to temp_data
+  temp_data <- Data_aligned %>% 
+    mutate(sampleID = sample) %>% filter(!(sampleID=="ND-1016-4"&proxy=="mg_ca"&value>0.25))
+  
+  
+  # Append temp_data to Corr_data
+  Corr_data_SST <- bind_rows(Corr_data_SST, temp_data) %>% 
+    arrange(x)
+
+  
+}
+
+
+##################### ADDING ORK-5
+
+
+reference <- 
+  Westray_SST %>% 
+  filter(time<"2009-08-15") %>%
+  mutate(analysed_sst = analysed_sst - 273.15) 
+
+sample <- "ORK_LT5"
+
+
+query <- MgCa %>% 
+  filter(sampleID==sample) %>% 
+    filter(relstd < 0.1) %>%
+  filter(mg_ca < 0.6 & mg_ca > 0.3) %>%
+  filter(dist<4) %>% 
+  arrange(-dist)
+
+
+  temp_reference <- reference %>% 
+    select(analysed_sst) %>% 
+    mutate(sample_seq = row_number()) 
+
+  temp_MgCa <- query %>% 
+    filter(sampleID == sample) %>% 
+    select(mg_ca) %>% 
+    mutate(sample_seq = row_number())
+
+  
+   Ref_warp <- temp_reference %>% mutate(analysed_sst = scale(analysed_sst)) %>%
+        pull(analysed_sst)
+   
+   MgCa_warp <- temp_MgCa %>% mutate(mg_ca = scale(mg_ca)) %>%
+        pull(mg_ca)
+      
+      alignment <- dtw(Ref_warp,
+                       MgCa_warp,
+                       keep = TRUE,
+                       step.pattern = symmetric2)
+      
+      Aligned_ref <- temp_reference %>% mutate(x = 1:length(temp_reference$analysed_sst),
+                                      proxy = "sst") %>% rename(value = analysed_sst) %>%
+        select(x, value, proxy) %>% 
+        group_by(x) %>% 
+        mutate(sd=sd(value,na.rm=TRUE)) %>% 
+        ungroup()
+      
+      
+      Aligned_mg_ca <-
+        temp_MgCa %>% pull(mg_ca) %>% .[alignment$index2] %>%
+        as.data.frame() %>% clean_names() %>% rename(value = x) %>%
+        cbind(x = alignment$index1) %>% mutate(proxy = "mg_ca") %>% 
+        group_by(x) %>% 
+        mutate(sd=sd(value,na.rm=TRUE)) %>% 
+        ungroup()
+      
+      # # Code for plotting alignment data
+        # plot(alignment,
+        #      type = "twoway",
+        #      offset = 10)
+
+      
+      Data_aligned <- rbind(Aligned_ref, Aligned_mg_ca) %>%
+        group_by(x, proxy,sd) %>% summarise(value = mean(value)) %>%
+        ungroup() %>% mutate(value = round(value + 1e-05 *
+                                             row_number(),5)) %>% group_by(proxy, value,sd) %>%
+        summarise(x = mean(x))
+      
+      
+      
+      
+      # lmp <- function(modelobject) {
+      #   if (class(modelobject) != "lm")
+      #     stop("Not an object of class 'lm' ")
+      #   f <- summary(modelobject)$fstatistic
+      #   p <- pf(f[1], f[2], f[3], lower.tail = F)
+      #   attributes(p) <- NULL
+      #   return(p)
+      # }
+      # corr_data <-
+      #   Data_aligned %>% pivot_wider(names_from = "proxy",
+      #                                values_from = "value",values_fn = mean) %>% select(sst, mg_ca)
+      # 
+      # 
+      # 
+      # LM <- lm(sst ~ mg_ca, data = corr_data,)
+      # R2 <- round(summary(LM)[[8]], 2)
+      # P_value <-
+      #   ifelse(lmp(LM) < 0.001,
+      #          "p<0.001",
+      #          ifelse(
+      #            lmp(LM) <
+      #              0.01,
+      #            "p<0.01",
+      #            ifelse(lmp(LM) < 0.05, "p<0.05",
+      #                   "ns!!!")
+      #          ))
+      # Stats <- paste0("R²=", R2, ", ", P_value)
+     
+      
+  
+  # Add the sampleID column to temp_data
+  temp_data <- Data_aligned %>% 
+    mutate(sampleID = sample)
+  
+  
+  # Append temp_data to Corr_data
+  Corr_data_SST <- bind_rows(Corr_data_SST, temp_data) %>% 
+    arrange(x)
+```
+
+```{r SST-Corr}
+#| fig-cap: Comparison of Mg/Ca and SST in all modern shells.
+#| fig-height: 10
+#| fig-width: 16
+#| label: fig-SST_Corr
+
+Corr_data_SST %>% 
+  pivot_wider(values_from = "value",names_from = "proxy",values_fn = mean) %>% 
+  ggplot()+
+  aes(sst,mg_ca,col=sampleID)+
+  geom_point(show.legend = FALSE)+
+  labs(x=expression("SST in ºC"),y="Mg/Ca intensity ratio")+
+  stat_smooth(aes(fill = sampleID,col=sampleID), method = "lm", formula = y~x,show.legend = FALSE) +
+  theme_cowplot(20)+
+  stat_regline_equation(label.x = 2, label.y = 0.55,
+    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
+    formula = y~x,size=5
+  ) +
+  theme(legend.position = "right")+
+  labs(col="Specimen")+
+  facet_wrap(~sampleID,ncol=4)+#ylim(0.15,NA)+
+  scale_colour_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12","#542788")) +
+scale_fill_manual(values = c( "#33a02c","#2ecc71", "#ffc100", "#f39c12","#542788"))+
+  theme_cowplot(20)+
+  coord_fixed(ratio = 20) +
+  stat_cor(
+  aes(label = paste("P-value: ", round(..p.., 10))),
+     label.x = 2, label.y = 0.5,
+  show.legend = FALSE,size=5
+  )+
+  ylim(0,0.6)
+   theme(
+    strip.background = element_rect(fill = "white", colour = NA),
+    strip.text = element_text(colour = "black"),
+    panel.border = element_rect(colour="black"),
+    legend.position="none"
+  )
+
+
+  
+
+# Corr_Samples <- Corr_data_SST %>% pull(sampleID) %>% unique()
+# 
+# Stats <- tibble()
+# 
+# for (sample in Corr_Samples){
+#   
+#   
+# LM <- lm(sst ~ mg_ca, data = Corr_data_SST %>% 
+#     filter(sampleID==sample) %>% pivot_wider(values_from = "value",names_from = "proxy",values_fn = mean)) 
+#   
+# R2 <- round(summary(LM)[[8]], 2)
+# P_value <-        ifelse(lmp(LM) < 0.001,
+#                "p<0.001",
+#                ifelse(
+#                  lmp(LM) <
+#                    0.01,
+#                  "p<0.01",
+#                  ifelse(lmp(LM) < 0.05, "p<0.05",
+#                         "ns!!!")
+#                ))
+#       Tempstats <- tibble(sample, R2, P_value)
+# 
+# Stats <- rbind(Stats,Tempstats)
+# 
+# }
+# 
+# print(Stats)
+# 
+# 
+#SST_P1 <- 
+```
 
 # Conclusion
 

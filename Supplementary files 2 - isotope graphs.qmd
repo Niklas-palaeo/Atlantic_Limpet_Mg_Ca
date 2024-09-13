@@ -7,6 +7,8 @@ format: docx
 # Overview
 These supplementary files include the linescan information for Mg/Ca and $\delta$^18^O records of all analysed [*Patella vulgata*](#Patella) and [*Nacella* sp.](#Nacella) shells, which were analysed to reassess the use of Magnesium to Calcium (Mg/Ca) ratios as palaeothermometers in Atlantic limpet shells. These supplementary files are organised by species and specimen identifiers.
 
+We also show correlation graphs of 
+
 
 ```{r Library and datasets}
 #| echo: FALSE
@@ -72,7 +74,7 @@ D18O <-   D18O %>% filter(sampleID %in% MgCa$sampleID)
 
 ```
 
-
+## Geochemical records of shells in this study
 ```{r}
 #| fig-height: 7
 #| fig-width: 16
@@ -156,3 +158,53 @@ for(sample in unique_sampleIDs) {
 
 
 ```
+
+
+## Geochemical records of modern shells in other studies mentioned within the main text
+
+``` {r Ferguson Data, dev='png'}
+#| fig-cap: Correlation graphs for Ferguson et al., (2011) specimens.
+#| fig-height: 5
+#| fig-width: 16
+#| label: fig-Ferg
+
+
+Ferguson_data <- read_csv(here("data","Ferguson-data.csv")) %>% 
+  na.omit()
+
+Ferg_all <-
+  Ferguson_data %>% 
+  ggplot()+
+  aes(d18o,mg_ca,col=shell)+
+  geom_point(show.legend = FALSE)+
+  labs(x=expression(paste(delta^{18},"O (\u2030)")),y="Mg/Ca (mmol/mol)")+
+  stat_smooth(aes(fill = shell,col=shell), method = "lm", formula = y~x,show.legend = FALSE) +
+  # stat_regline_equation(label.x = 2, #label.y = 32
+  #   aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),
+  #   formula = y~x
+  # ) +
+  scale_colour_manual(values = c(  "#EC7063", "#007f7f", "#1f78b4", "#542788","black", "#d73027", "#EC7063")) +
+scale_fill_manual(values = c(  "#EC7063", "#007f7f", "#1f78b4", "#542788","black", "#d73027", "#EC7063"))
+
+Ferg_individual <- Ferg_all+
+  facet_wrap(~shell,ncol=4)+#ylim(0.15,NA)+
+  ggpubr::stat_regline_equation(label.x = 0.3, label.y = 26,
+    aes(label =  paste(after_stat(eq.label), after_stat(adj.rr.label), sep = "~~~~")),show.legend = FALSE,size=6,
+    formula = y~x
+  )+  
+  theme_cowplot(20)+
+  coord_fixed(ratio =0.22) +
+  theme(
+    strip.background = element_rect(fill = "white", colour = NA),
+    strip.text = element_text(colour = "black"),
+    panel.border = element_rect(colour="black")
+  )
+Ferg_individual
+#Ferg_all/Ferg_individual+plot_layout(heights = c(0.5,0.5))
+
+```
+
+## References
+* Ferguson, J.E., Henderson, G.M., Fa, D.A., Finlayson, J.C., Charnley, N.R., 2011. Increased seasonality in the western
+mediterranean during the last glacial from limpet shell geochemistry. *Earth Planet. Sci. Lett.* 308, 325–333. doi:10.1016/j.
+epsl.2011.05.054.
